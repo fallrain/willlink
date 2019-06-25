@@ -2,7 +2,7 @@ import Vuex from 'vuex';
 import Vue from 'vue';
 import { axGet } from '@/lib/ajax';
 import createPersistedState from '@/lib/vuexPlugin/persistedstate';
-
+import states from './states/'
 Vue.use(Vuex);
 export default new Vuex.Store({
   plugins: [
@@ -12,8 +12,7 @@ export default new Vuex.Store({
   ],
   state: {
     aliveExclude: [
-      'Login',
-      'Register'
+      'Login'
     ]
   },
   mutations: {
@@ -34,5 +33,8 @@ export default new Vuex.Store({
     }
   },
   actions: {
+  },
+  modules: {
+    states
   }
 });
