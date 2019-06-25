@@ -250,6 +250,7 @@
 
 .app-container {
   min-height: 100vh;
+  padding-bottom: 40px;
 }
 
 .cm-btn {
@@ -259,6 +260,11 @@
   box-shadow: 0 10px 10px 0 rgba(101, 100, 118, 0.3);
   border-radius: 43px;
   color: #fff;
+
+  &.active {
+    background: #59C1B6;
+    box-shadow: 0 10px 10px 0 rgba(89, 193, 182, 0.3);
+  }
 }
 
 /*公共 end*/
@@ -292,23 +298,30 @@
     height: 88px;
     // line-height: 88px;
     font-size: 28px;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .van-field__control {
     color: #fff;
   }
 
-  .van-cell:last-child:after {
+  .van-cell:after {
     position: absolute;
     box-sizing: border-box;
     content: " ";
     pointer-events: none;
     right: 0;
     bottom: 0;
-    left: 15px;
+    left: 0;
     border-bottom: 1px solid #ebedf0;
     -webkit-transform: scaleY(.5);
     transform: scaleY(.5);
+  }
+
+  .van-nav-bar__arrow {
+    font-size: 44px;
+    color: #fff;
   }
 }
 
@@ -367,3 +380,48 @@
 }
 
 /*登录页 end*/
+
+/*忘记密码*/
+
+.forgetPassword-img-par {
+  padding-top: percentage(177/1624);
+  text-align: center;
+
+  img {
+    width: 186px;
+    height: 196px;
+  }
+}
+
+.forgetPassword-name {
+  margin-top: 38px;
+  color: #fff;
+  font-size: 40px;
+  text-align: center;
+}
+
+.forgetPassword-tel {
+  margin-top: 112px;
+  color: #C0C3CC;
+  font-size: 32px;
+  text-align: center;
+}
+
+/*忘记密码 end*/
+
+/*注册*/
+
+.register-invitationCode-tips {
+  margin-top: 14px;
+  font-size: 20px;
+  color: #474E66;
+}
+
+.register-protocol {
+  margin-top: 29px;
+  color: $login-green;
+  font-size: 24px;
+  padding-left: 10px;
+}
+
+/*注册 end*/

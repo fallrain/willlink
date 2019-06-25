@@ -28,7 +28,9 @@ module.exports = {
     'no-param-reassign': 0,//vuex不兼容
     'import/extensions': 0,
     'func-names': 0,
-    'import/no-unresolved': 0// ...
+    'import/no-unresolved': 0,// ...
+    'no-plusplus': 0,//没必要禁止
+    'no-bitwise': 0,//没必要禁止
   },
   parserOptions: {
     parser: 'babel-eslint',

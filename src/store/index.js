@@ -12,7 +12,8 @@ export default new Vuex.Store({
   ],
   state: {
     aliveExclude: [
-      'Login'
+      'Login',
+      'Register'
     ]
   },
   mutations: {
