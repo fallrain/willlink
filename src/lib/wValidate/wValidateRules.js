@@ -1,67 +1,67 @@
 export default {
   rules: {
-    required (val) {
+    required(val) {
       return val != null && /\S+/.test(val);
     },
-    objRequired (val, deepName) {
+    objRequired(val, deepName) {
       // deepName: 'parent.child.value'
-      deepName.split('.').forEach(function (key) {
+      deepName.split('.').forEach((key) => {
         val = val[key];
       });
       return val != null && /\S+/.test(val);
     },
-    arrayRequired (val, deepName) {
+    arrayRequired(val, deepName) {
       // deepName: 'parent.child.value'
-      deepName.split('.').forEach(function (key) {
+      deepName.split('.').forEach((key) => {
         val = val[key];
       });
       return val && val.length;
     },
-    number (val) {
+    number(val) {
       return /^\d+$/.test(val);
     },
-    float (val) {
+    float(val) {
       return /^[+]?\d+(\.\d+)?$/.test(val);
     },
-    mobile (val) {
+    mobile(val) {
       return /^(((13[0-9]{1})|(14[0-9]{1})|(15[0-9]{1})|(16[0-9]{1})|(17[0-9]{1})|(18[0-9]{1})|(19[0-9]{1}))+\d{8})$/.test(val);
     },
-    length (val, num) {
+    length(val, num) {
       /* 长度 */
       return val.replace(/\s/g, '').length === num;
     },
-    maxLength (val, num) {
+    maxLength(val, num) {
       /* 最大长度 */
       return val.replace(/\s/g, '').length <= num;
     },
-    minLength (val, num) {
+    minLength(val, num) {
       /* 最大小长度 */
       return val.replace(/\s/g, '').length >= num;
     },
-    max (val, num) {
+    max(val, num) {
       return val * 1 <= num * 1;
     },
-    min (val, num) {
+    min(val, num) {
       return val * 1 >= num * 1;
     },
-    encn (val) {
+    encn(val) {
       /* 英语字母 汉字 */
       return /^[\u4E00-\u9FA5a-zA-Z]+$/.test(val);
     },
-    cn (val) {
+    cn(val) {
       /* 汉字 */
       return /^[\u4E00-\u9FA5]+$/.test(val);
     },
-    en (val) {
+    en(val) {
       /* 字母 */
       return /^a-zA-Z+$/.test(val);
     },
-    IDCard (val) {
+    IDCard(val) {
       /* 身份证号 */
       if (!val && val !== 0) {
         return true;
       }
-      let aCity = {
+      const aCity = {
         11: '北京',
         12: '天津',
         13: '河北',
@@ -99,7 +99,7 @@ export default {
         91: '国外'
       };
 
-      function cidInfo (sId) {
+      function cidInfo(sId) {
         let iSum = 0;
         if (!/^\d{17}(\d|x)$/i.test(sId)) {
           return false;
@@ -108,9 +108,9 @@ export default {
         if (aCity[parseInt(sId.substr(0, 2))] == null) {
           return false;// "Error:非法地区";
         }
-        let sBirthday = sId.substr(6, 4) + '-' + Number(sId.substr(10, 2)) + '-' + Number(sId.substr(12, 2));
-        let d = new Date(sBirthday.replace(/-/g, '/'));
-        if (sBirthday !== (d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate())) {
+        const sBirthday = `${sId.substr(6, 4)}-${Number(sId.substr(10, 2))}-${Number(sId.substr(12, 2))}`;
+        const d = new Date(sBirthday.replace(/-/g, '/'));
+        if (sBirthday !== (`${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`)) {
           return false;// "Error:非法生日";
         }
         for (let i = 17; i >= 0; i--) {
@@ -119,14 +119,17 @@ export default {
         if (iSum % 11 !== 1) {
           return false;// "Error:非法证号";
         }
-        return aCity[parseInt(sId.substr(0, 2))] + ',' + sBirthday + ',' + (sId.substr(16, 1) % 2 ? '男' : '女');
+        return `${aCity[parseInt(sId.substr(0, 2))]},${sBirthday},${sId.substr(16, 1) % 2 ? '男' : '女'}`;
       }
 
       return cidInfo(val);
     },
-    multiple (val, num) {
+    multiple(val, num) {
       /* 倍数 */
       return val % num === 0;
+    },
+    email(val) {
+      return /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/.test(val);
     }
   },
   messages: {

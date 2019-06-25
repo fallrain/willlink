@@ -49,16 +49,16 @@ export default {
 </script>
 <style scoped lang="scss">
   .w-radio {
-    display: inline-block;
-    font-size: 11px;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
     color: #969796;
     margin-top: 10px;
 
     .iconfont {
-      font-size: 16px;
+      font-size: 12px;
 
       &:before {
-        transform: scale(.2);
       }
 
       &:after {

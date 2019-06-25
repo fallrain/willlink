@@ -1,17 +1,17 @@
-import hValidateRules from './hValidateRules';
+import hValidateRules from './wValidateRules';
 
 export default class {
-  constructor (option) {
+  constructor(option) {
     this.option = option;
     this.hValidateRules = hValidateRules;
   }
 
-  valid (fromData) {
-    let _this = this.option._this;
-    let vdtMap = this.option.rules;
-    for (let p in vdtMap) {
-      let regs = vdtMap[p];
-      for (let i in regs) {
+  valid(fromData) {
+    const { _this } = this.option;
+    const vdtMap = this.option.rules;
+    for (const p in vdtMap) {
+      const regs = vdtMap[p];
+      for (const i in regs) {
         if (regs[i] !== 0 && !regs[i]) {
           continue;
         }
@@ -27,10 +27,10 @@ export default class {
     return true;
   }
 
-  validOne (name) {
-    let _this = this.option._this;
-    let regs = this.option.rules[name];
-    for (let i in regs) {
+  validOne(name) {
+    const { _this } = this.option;
+    const regs = this.option.rules[name];
+    for (const i in regs) {
       if (!this.hValidateRules.rules[i](this.option.formData[name], regs[i])) {
         _this.$vux.toast.show({
           type: 'text',

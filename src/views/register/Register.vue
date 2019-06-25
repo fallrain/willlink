@@ -18,6 +18,10 @@
           clearable
           v-resetInput
         >
+          <span
+            slot="right-icon"
+            class="login-body-password-error"
+          >验证码错误</span>
         </van-field>
         <van-field
           v-model="form.verificationCode"
@@ -47,6 +51,9 @@
           v-resetInput
         >
         </van-field>
+        <span
+          class="login-body-password-error"
+        >两次输入的密码不一致</span>
         <van-field
           v-model="form.invitationCode"
           type="password"
@@ -62,32 +69,56 @@
           inf="同意协议并完成注册"
         ></w-radio>
       </div>
-      <div class="login-body-btns">
+      <div class="register-body-btns">
         <button
           type="button"
           class="cm-btn active"
         >立即注册
         </button>
-        <p class="register-protocol">
+        <p
+          class="register-protocol"
+          @click="showProtocol"
+        >
           《电子服务协议》
         </p>
       </div>
     </div>
+    <w-model
+      :show.sync="modelShow"
+    >
+      <div slot="content">
+        <div class="register-protocol-model-title">服务条款</div>
+        <div class="register-protocol-cnt">
+          <p class="register-protocol-item">
+            您认知并同意，XX公司可能会以非人工检索方式自动生成到第三方网页的链接，XX公司不存储、控制或修改该等第三方网页中的内容，
+            且不对该等第三方网页或资源的可用性负责，亦不对该等网络或资源上的或从该等网站或资源获得的任何广告、产品或其他材料加以认可。
+          <p>
+          <p class="register-protocol-item">您理解并同意自主选择、使用服务的风险自负，并且对于因使用服务而对计算机系统造成的损坏或数据的丢失，您应承担全部责任。
+          <p>
+          <p class="register-protocol-item">
+            在适用法律允许的最大范围内，XX公司明确表示不提供任何其他类型的保证，不论使明示的或默示的，包括但不限于适销性、适用性、可靠性、准确性、完整性、无病毒以及无错误的任
+          何默示保证和责任。另外，在适用法律允许的最大范围内，XX公司并不担保服务一定能满足您的要求，也不担保服务不会被修改、中断或终止，
+          并且对服务的及时性、安全性、错误发生，以及信息是否能准确、及时、顺利的传送均不作任何担保。
+          <p>
+          <p class="register-protocol-item">
+            在适用法律允许的最大范围内，XX公司不就因您使用服务引起的或与服务有关的任何意外的、非直接的、特殊的、或间接的损害或请求
+          （包括但不限于因人身伤害、因隐私泄漏、因未能履行包括诚信或合理谨慎在内的任何责任、因过失和因任何其他金钱上的损失或其他损失而造成的损害赔偿）承担任何责任。</p>
+        </div>
+      </div>
+    </w-model>
   </div>
 </template>
 
 <script>
 import Vue from 'vue';
 import { Field } from 'vant';
-import {
-  WRadio,
-  WVerificationcode
-} from '@/components/form';
+import { WModel, WRadio, WVerificationcode } from '@/components/form';
 
 Vue.use(Field);
 export default {
   name: 'Register',
   components: {
+    WModel,
     WRadio,
     WVerificationcode
   },
@@ -101,7 +132,8 @@ export default {
         verificationCode: '', // 验证码
         invitationCode: ''// 邀请码
       },
-      agree: 0// 同意协议并完成注册
+      agree: 0, // 同意协议并完成注册
+      modelShow: false// 协议弹层显示隐藏
     };
   },
   computed: {},
@@ -112,9 +144,9 @@ export default {
         name: 'Login'
       });
     },
-    changeLoginStatus() {
-      /* 改变账号登录状态 */
-      this.loginStatus = this.loginStatus === 1 ? 2 : 1;
+    showProtocol() {
+      /* 显示协议弹层 */
+      this.modelShow = true;
     }
   }
 };

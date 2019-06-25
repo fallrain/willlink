@@ -7,72 +7,93 @@
     </van-nav-bar>
     <div class="login-body">
       <p class="login-body-title">{{loginStatusName.title}}</p>
-      <div
-        v-if="loginStatus===1"
-        class="login-body-group"
-      >
-        <van-field
-          v-model="form.name"
-          placeholder="手机号/邮箱"
-          clearable
+      <div v-show="loginStatus===1">
+        <div
+          v-show="loginStatus===1"
+          class="login-body-group"
         >
-        </van-field>
-        <van-field
-          v-model="form.password"
-          type="password"
-          placeholder="请输入密码"
-          clearable
-        >
-        </van-field>
-        <div class="login-body-forget-par">
-          <span
-            class="login-body-forget"
-            @click="jumpForget"
-          >忘记密码？</span>
-        </div>
-      </div>
-      <div
-        v-else
-        class="login-body-group"
-      >
-        <van-field
-          v-model="form.phone"
-          placeholder="手机号"
-          clearable
-        >
-        </van-field>
-        <van-field
-          v-model="form.verificationCode"
-          type="password"
-          placeholder="请输入验证码"
-          clearable
-        >
-          <WVerificationcode
-            slot="button"
+          <van-field
+            v-model="form.name"
+            placeholder="手机号/邮箱"
+            clearable
+            @input="pwdLoginInput"
           >
-          </WVerificationcode>
-        </van-field>
-        <div class="login-body-forget-par">
-          <span
-            class="login-body-forget"
-            @click="jumpForget"
-          >忘记密码？</span>
+          </van-field>
+          <van-field
+            v-model="form.password"
+            type="password"
+            placeholder="请输入密码"
+            clearable
+            @input="pwdLoginInput"
+          >
+          </van-field>
+          <div class="login-body-forget-par">
+            <span
+              v-show="showPasswordError"
+              class="login-body-password-error"
+            >密码输入错误</span>
+            <span
+              class="login-body-forget"
+              @click="jumpForget"
+            >忘记密码？</span>
+          </div>
+        </div>
+        <div class="login-body-btns">
+          <button
+            type="button"
+            :class="['cm-btn',!pwdLoginDisabled && 'active']"
+            :disabled="pwdLoginDisabled"
+          >登录
+          </button>
         </div>
       </div>
-      <div class="login-body-btns">
-        <button
-          type="button"
-          class="cm-btn active"
-        >登录
-        </button>
-        <p class="login-body-btns-register">
-          <span>还没有账号？</span>
-          <span
-            class="login-body-btns-register-link"
-            @click="toRegister"
-          >立即注册</span>
-        </p>
+      <div v-show="loginStatus===2">
+        <div
+          v-show="loginStatus===2"
+          class="login-body-group"
+        >
+          <van-field
+            v-model="form.phone"
+            placeholder="手机号"
+            clearable
+            @input="nopwdLoginInput"
+          >
+          </van-field>
+          <van-field
+            v-model="form.verificationCode"
+            type="password"
+            placeholder="请输入验证码"
+            clearable
+            @input="nopwdLoginInput"
+          >
+            <WVerificationcode
+              slot="button"
+            >
+            </WVerificationcode>
+          </van-field>
+          <div class="login-body-forget-par">
+            <span
+              v-show="showVerificationCodeError"
+              class="login-body-password-error"
+            >验证码错误</span>
+          </div>
+        </div>
+        <div class="login-body-btns">
+          <button
+            type="button"
+            :class="['cm-btn',!nopwdLoginDisabled && 'active']"
+            :disabled="nopwdLoginDisabled"
+          >登录
+          </button>
+        </div>
       </div>
+      <p class="login-body-btns-register">
+        <span>还没有账号？</span>
+        <span
+          class="login-body-btns-register-link"
+          @click="toRegister"
+        >立即注册</span>
+      </p>
     </div>
   </div>
 </template>
@@ -80,9 +101,8 @@
 <script>
 import Vue from 'vue';
 import { Field } from 'vant';
-import {
-  WVerificationcode
-} from '@/components/form';
+import { WVerificationcode } from '@/components/form';
+import wValidateRules from '@/lib/wValidate/wValidateRules';
 
 Vue.use(Field);
 export default {
@@ -92,13 +112,17 @@ export default {
   },
   data() {
     return {
-      loginStatus: 2, // 登录方式 1：账号登录 2：免密登录
+      loginStatus: 1, // 登录方式 1：账号登录 2：免密登录
       form: {
         name: '', // 账户名
         password: '', // 密码
         phone: '', // 手机号
         verificationCode: '' // 验证码
-      }
+      },
+      showVerificationCodeError: false, // 验证码错误
+      showPasswordError: false, // 密码错误
+      pwdLoginDisabled: true,
+      nopwdLoginDisabled: true
     };
   },
   computed: {
@@ -131,6 +155,32 @@ export default {
       this.$router.push({
         name: 'Register'
       });
+    },
+    pwdLoginInput() {
+      /* 账号密码登录输入框事件 */
+      const { rules } = wValidateRules;
+      const {
+        name,
+        password
+      } = this.form;
+      if ((rules.mobile(name) || rules.email(name)) && rules.required(password)) {
+        this.pwdLoginDisabled = false;
+      } else {
+        this.pwdLoginDisabled = true;
+      }
+    },
+    nopwdLoginInput() {
+      /* 免密登录输入框事件 */
+      const { rules } = wValidateRules;
+      const {
+        phone,
+        verificationCode
+      } = this.form;
+      if ((rules.mobile(phone)) && rules.required(verificationCode)) {
+        this.nopwdLoginDisabled = false;
+      } else {
+        this.nopwdLoginDisabled = true;
+      }
     }
   }
 };

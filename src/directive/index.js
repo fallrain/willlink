@@ -1,7 +1,7 @@
 export default {
   resetInput: {
     // 当被绑定的元素插入到 DOM 中时
-    inserted (el) {
+    inserted(el) {
       const inputEls = el.getElementsByTagName('input');
       if (!inputEls.length) {
         return;
@@ -10,7 +10,7 @@ export default {
       if (isAndroid) {
         return;
       }
-      inputEls[0].addEventListener('blur', function () {
+      inputEls[0].addEventListener('blur', () => {
         let input = document.getElementById('reset-input');
         if (!input) {
           input = document.createElement('INPUT');

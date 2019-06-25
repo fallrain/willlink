@@ -327,6 +327,35 @@
 
 /*fix end*/
 
+/*动画*/
+
+.bottomToUp-enter {
+  bottom: 0;
+}
+
+.bottomToUp-leave-to {
+  bottom: -100%;
+}
+
+.bottomToUp-enter-active {
+  animation: model-bottomToUp .3s;
+}
+
+.bottomToUp-leave-active {
+  animation: model-bottomToUp .3s reverse;
+}
+
+@keyframes model-bottomToUp {
+  0% {
+    bottom: -100%;
+  }
+  100% {
+    bottom: 0;
+  }
+}
+
+/*动画 end*/
+
 /*登录页*/
 
 .login-body {
@@ -360,6 +389,8 @@
 }
 
 .login-body-forget-par {
+  display: flex;
+  justify-content: space-between;
   margin-top: 29px;
   text-align: right;
 }
@@ -377,6 +408,11 @@
 
 .login-body-btns-register-link {
   color: $login-green;
+}
+
+.login-body-password-error {
+  color: #FF6B6B;
+  font-size: 24px;
 }
 
 /*登录页 end*/
@@ -405,6 +441,10 @@
   color: #C0C3CC;
   font-size: 32px;
   text-align: center;
+
+  .link {
+    color: $login-green;
+  }
 }
 
 /*忘记密码 end*/
@@ -422,6 +462,29 @@
   color: $login-green;
   font-size: 24px;
   padding-left: 10px;
+}
+
+.register-protocol-model-title {
+  color: #555566;
+  font-size: 36px;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 24px;
+  line-height: 1;
+}
+
+.register-protocol-cnt {
+  margin-top: 66px;
+}
+
+.register-protocol-item {
+  text-indent: 2em;
+  color: #555566;
+  font-size: 30px;
+}
+
+.register-body-btns {
+  margin-top: 29px;
 }
 
 /*注册 end*/
