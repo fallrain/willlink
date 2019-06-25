@@ -16,6 +16,7 @@
           v-model="form.phone"
           placeholder="手机号/邮箱"
           clearable
+          v-resetInput
         >
         </van-field>
         <van-field
@@ -23,6 +24,7 @@
           type="password"
           placeholder="请输入验证码"
           clearable
+          v-resetInput
         >
           <WVerificationcode
             slot="button"
@@ -34,6 +36,7 @@
           type="password"
           placeholder="请输入登录密码"
           clearable
+          v-resetInput
         >
         </van-field>
         <van-field
@@ -41,6 +44,7 @@
           type="password"
           placeholder="请再次输入登录密码"
           clearable
+          v-resetInput
         >
         </van-field>
         <van-field
@@ -48,6 +52,7 @@
           type="password"
           placeholder="请输入邀请码"
           clearable
+          v-resetInput
         >
         </van-field>
         <p class="register-invitationCode-tips">注：邀请码必须填写</p>
