@@ -2,7 +2,8 @@ import Vuex from 'vuex';
 import Vue from 'vue';
 import { axGet } from '@/lib/ajax';
 import createPersistedState from '@/lib/vuexPlugin/persistedstate';
-import states from './states/'
+import states from './states';
+
 Vue.use(Vuex);
 export default new Vuex.Store({
   plugins: [

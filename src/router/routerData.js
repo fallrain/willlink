@@ -19,6 +19,30 @@ const data = [
     }
   },
   {
+    path: '/forgetPassword',
+    name: 'ForgetPassword',
+    component: ForgetPassword,
+    meta: {
+      title: '忘记密码'
+    }
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: Register,
+    meta: {
+      title: '快速注册'
+    }
+  },
+  {
+    path: '/registerSuc',
+    name: 'RegisterSuc',
+    component: RegisterSuc,
+    meta: {
+      title: '注册成功'
+    }
+  },
+  {
     path: '/home',
     name: 'Home',
     component: Home,
@@ -64,15 +88,7 @@ const data = [
         }
       },
     ]
-  },
-  {
-    path: '/registerSuc',
-    name: 'RegisterSuc',
-    component: RegisterSuc,
-    meta: {
-      title: '注册成功'
-    }
-  },
+  }
 ];
 if (process.env.NODE_ENV !== 'production') {
   data.unshift({

@@ -2,17 +2,17 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import routerData from '@/router/routerData';
 import store from '@/store';
+
 Vue.use(Router);
 const router = new Router({
   mode: 'history',
   base: process.env.routerBase,
   routes: routerData.data,
-  scrollBehavior (to, from, savedPosition) {
+  scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition;
-    } else {
-      return { x: 0, y: 0 };
     }
+    return { x: 0, y: 0 };
   }
 });
 router.beforeEach((to, from, next) => {
@@ -37,11 +37,11 @@ router.beforeEach((to, from, next) => {
   if (title) {
     store.dispatch('update_title', title);
   }
-  const bottomNav = (to.meta && to.meta.bottomNav) ? true : false;
-  store.dispatch('update_bottomnav', bottomNav)
+  const bottomNav = !!((to.meta && to.meta.bottomNav));
+  store.dispatch('update_bottomnav', bottomNav);
 
-  const topNav = (to.meta && to.meta.topNav) ? true : false;
-  store.dispatch('update_topnav', topNav)
+  const topNav = !!((to.meta && to.meta.topNav));
+  store.dispatch('update_topnav', topNav);
   next();
 });
 export default router;
