@@ -33,6 +33,15 @@ router.beforeEach((to, from, next) => {
   } else {
     store.commit('delAliveExclude', 'MyEventList');
   }
+  const title = to.meta && to.meta.title;
+  if (title) {
+    store.dispatch('update_title', title);
+  }
+  const bottomNav = (to.meta && to.meta.bottomNav) ? true : false;
+  store.dispatch('update_bottomnav', bottomNav)
+
+  const topNav = (to.meta && to.meta.topNav) ? true : false;
+  store.dispatch('update_topnav', topNav)
   next();
 });
 export default router;
