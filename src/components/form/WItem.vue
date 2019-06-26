@@ -51,15 +51,15 @@ export default {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 120px;
+    height: 60px;
     background: #222229;
     border-bottom: 1px solid #1C1C21;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
   }
 
   .wItem-item-title {
-    font-size: 30px;
+    font-size: 15px;
     color: #fff;
   }
 
@@ -68,8 +68,8 @@ export default {
     align-items: center;
 
     .iconfont {
-      margin-left: 60px;
-      font-size: 20px;
+      margin-left: 30px;
+      font-size: 10px;
       color: #838299;
     }
   }

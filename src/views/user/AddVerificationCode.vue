@@ -36,17 +36,26 @@
       >提交
       </button>
       <p class="login-body-btns-register">
-        <span>收不到验证码？？</span>
+        <span @click="isShowActions=true">收不到验证码？</span>
       </p>
     </div>
+    <van-action-sheet
+      v-model="isShowActions"
+      :actions="actions"
+      cancel-text="取消"
+      @select="onSelect"
+    >
+    </van-action-sheet>
   </div>
 </template>
 
 <script>
 import Vue from 'vue';
-import { Field } from 'vant';
+import { ActionSheet, Field } from 'vant';
 import wValidateRules from '@/lib/wValidate/wValidateRules';
 
+
+Vue.use(ActionSheet);
 Vue.use(Field);
 export default {
   name: 'AddVerificationCode',
@@ -55,7 +64,13 @@ export default {
     return {
       btnDisabled: true,
       account: window.decodeURIComponent(this.updateAccount),
-      verificationCode: ''
+      verificationCode: '',
+      isShowActions: false, // 展示下方action
+      actions: [
+        {
+          name: '重新获取验证码'
+        }
+      ]
     };
   },
   methods: {
@@ -70,6 +85,11 @@ export default {
       } else {
         this.btnDisabled = true;
       }
+    },
+    onSelect(item) {
+      /* 重新获取验证码 */
+      console.log(item);
+      this.isShowActions = false;
     },
     submit() {
 

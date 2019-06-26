@@ -51,12 +51,12 @@ export default {
   .w-radio {
     display: flex;
     align-items: center;
-    font-size: 20px;
+    font-size: 10px;
     color: #969796;
-    margin-top: 10px;
+    margin-top: 5px;
 
     .iconfont {
-      font-size: 12px;
+      font-size: 6px;
 
       &:before {
       }
@@ -77,7 +77,7 @@ export default {
   }
 
   .w-radio-inf {
-    margin-left: 10px;
+    margin-left: 5px;
     color: #474E66;
   }
 </style>

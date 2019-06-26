@@ -46,11 +46,11 @@ export default {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: calc(100vh - 88px);
-    padding: 30px;
+    height: calc(100vh - 44px);
+    padding: 15px;
     background: #fff;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
   }
 
   .w-model-mask {
@@ -69,7 +69,7 @@ export default {
     margin-left: auto;
 
     .iconfont {
-      font-size: 30px;
+      font-size: 15px;
       color: #222229;
     }
   }
