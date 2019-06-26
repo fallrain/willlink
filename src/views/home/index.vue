@@ -9,10 +9,10 @@
     </div>
     <!-- 底部导航栏-->
     <van-tabbar v-model="active" v-show="bottomnav">
-      <van-tabbar-item icon="wap-home" to="/home" :replace="true">首页</van-tabbar-item>
-      <van-tabbar-item icon="apps-o" to="/product" :replace="true">产品</van-tabbar-item>
-      <van-tabbar-item icon="orders-o" to="/found" :replace="true">发现</van-tabbar-item>
-      <van-tabbar-item icon="orders-o" to="/user" :replace="true">我的</van-tabbar-item>
+      <van-tabbar-item :icon="active !== 0 ? homeIcon : homeActiveIcon" to="/home" :replace="true">首页</van-tabbar-item>
+      <van-tabbar-item :icon="active !== 1 ? productIcon : productActiveIcon" to="/product" :replace="true">产品</van-tabbar-item>
+      <van-tabbar-item :icon="active !== 2 ? foundIcon : foundActiveIcon" to="/found" :replace="true">发现</van-tabbar-item>
+      <van-tabbar-item :icon="active !== 3 ? userIcon : userActiveIcon" to="/user" :replace="true">我的</van-tabbar-item>
     </van-tabbar>
   </div>
 </template>
@@ -20,6 +20,14 @@
 <script>
 import Vue from 'vue';
 import { NavBar, Tabbar, TabbarItem, NoticeBar } from 'vant';
+import home from '@/icon/home.png';
+import homeActive from '@/icon/home-active.png';
+import product from '@/icon/product.png';
+import productActive from '@/icon/product-active.png';
+import found from '@/icon/found.png';
+import foundActive from '@/icon/found-active.png';
+import user from '@/icon/user.png';
+import userActive from '@/icon/user-active.png';
 
 Vue.use(NavBar);
 Vue.use(Tabbar).use(TabbarItem);
@@ -32,7 +40,15 @@ export default {
   data() {
     return {
       active: 0,
-      navList: ['HomePage', 'Product', 'Found', 'User']
+      navList: ['HomePage', 'Product', 'Found', 'User'],
+      homeIcon: home,
+      homeActiveIcon: homeActive,
+      productIcon: product,
+      productActiveIcon: productActive,
+      foundIcon: found,
+      foundActiveIcon: foundActive,
+      userIcon: user,
+      userActiveIcon: userActive,
     };
   },
   computed: {
@@ -43,7 +59,6 @@ export default {
       return this.$store.state.states.bottomnav;
     },
     topnav() {
-      console.log(this.$store.state.states.topnav)
       return this.$store.state.states.topnav;
     },
   },
@@ -112,7 +127,7 @@ export default {
         font-family:PingFang-SC-Medium;
         font-weight:500;
         color:rgba(131,130,153,1);
-        .van-tabbar-item__icon {
+        img{
           background: red;
           font-size: 18px;
         }
