@@ -1,3 +1,5 @@
+import { mapState } from 'vuex';
+
 export default {
   async beforeRouteEnter(to, from, next) {
     next();
@@ -11,6 +13,12 @@ export default {
         }
       }
     };
+  },
+  computed: {
+    ...mapState({
+      userInfo: state => state.user.userInfo,
+      navTitle: state => state.states.text
+    })
   },
   methods: {
     back() {

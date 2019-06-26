@@ -1,4 +1,4 @@
-import * as types from './mutations_types.js';
+import * as types from '../mutations_types.js';
 
 export default {
   update_title: ({ commit }, text) => new Promise((resolve) => {

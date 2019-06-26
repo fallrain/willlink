@@ -317,6 +317,10 @@
     padding-right: 0;
   }
 
+  .van-cell__title {
+    color: #fff;
+  }
+
   .van-field__control {
     color: #fff;
   }
@@ -339,6 +343,7 @@
     color: #fff;
   }
 }
+
 
 /*fix end*/
 
@@ -687,3 +692,31 @@
 }
 
 /*个人设置 end*/
+
+/*更换账号*/
+
+.updatePhone-tips {
+  padding: 37px 56px;
+  color: #838299;
+  font-size: 26px;
+}
+
+.updatePhone-btns {
+  padding-left: 60px;
+  padding-right: 60px;
+  margin-top: 120px;
+}
+
+.updatePhone {
+  .van-cell {
+    line-height: 80px;
+    padding-left: 60px;
+    padding-right: 30px;
+
+    &:after {
+      border-bottom: 1px solid #1C1C21;
+    }
+  }
+}
+
+/*更换账号 end*/

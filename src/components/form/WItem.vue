@@ -10,7 +10,10 @@
         v-show="value!==undefined"
       >{{value}}</span>
       <slot name="right"></slot>
-      <i class="iconfont icon-youjiantou"></i>
+      <i
+        class="iconfont icon-youjiantou"
+        @click="rightHandle"
+      ></i>
     </div>
   </div>
 </template>
@@ -31,6 +34,12 @@ export default {
     // 内容
     value: {
       default: ''
+    }
+  },
+  methods: {
+    rightHandle() {
+      /* 右箭头点击事件 */
+      this.$emit('rightClick');
     }
   }
 };
@@ -57,6 +66,7 @@ export default {
   .wItem-item-right {
     display: flex;
     align-items: center;
+
     .iconfont {
       margin-left: 60px;
       font-size: 20px;

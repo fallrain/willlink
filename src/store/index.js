@@ -3,6 +3,7 @@ import Vue from 'vue';
 import { axGet } from '@/lib/ajax';
 import createPersistedState from '@/lib/vuexPlugin/persistedstate';
 import states from './states';
+import user from '@/store/user';
 
 Vue.use(Vuex);
 export default new Vuex.Store({
@@ -36,6 +37,7 @@ export default new Vuex.Store({
   actions: {
   },
   modules: {
-    states
+    states,
+    user
   }
 });

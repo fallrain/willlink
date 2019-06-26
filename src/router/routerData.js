@@ -8,8 +8,11 @@ const Home = () => import('@/views/home/index');
 const HomePage = () => import('@/views/index/index');
 const Product = () => import('@/views/product/index');
 const Found = () => import('@/views/found/index');
-const User = () => import('@/views/user/index');
-const UserSetting = () => import(/* webpackChunkName: "UserSetting" */ '@/views/user/UserSetting');
+const User = () => import('@/views/user/index'); // 我的
+const UserSetting = () => import(/* webpackChunkName: "UserSetting" */ '@/views/user/UserSetting');// 个人设置
+const UpdatePhone = () => import(/* webpackChunkName: "UpdatePhone" */ '@/views/user/UpdatePhone');// 修改手机
+const AddVerificationCode = () => import(/* webpackChunkName: "AddVerificationCode" */ '@/views/user/AddVerificationCode');// 填写验证码
+
 const data = [
   {
     path: '/login',
@@ -89,11 +92,30 @@ const data = [
         }
       },
       {
-        path: '/userSetting',
+        path: 'userSetting',
         name: 'UserSetting',
         component: UserSetting,
         meta: {
           title: '个人设置',
+          bottomNav: false
+        }
+      },
+      {
+        path: 'updatePhone',
+        name: 'UpdatePhone',
+        component: UpdatePhone,
+        meta: {
+          title: '更换账号',
+          bottomNav: false
+        }
+      },
+      {
+        path: 'addVerificationCod/:updateAccount',
+        name: 'AddVerificationCode',
+        props: true,
+        component: AddVerificationCode,
+        meta: {
+          title: '填写验证码',
           bottomNav: false
         }
       },

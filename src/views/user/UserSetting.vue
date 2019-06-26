@@ -18,6 +18,7 @@
       <w-item
         title="账号"
         :value="account"
+        @rightClick="toUpdatePhone"
       ></w-item>
       <w-item
         title="修改密码"
@@ -34,7 +35,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
 import WItem from '../../components/form/WItem';
 import portraitDefault from '@/assets/img/user/user-default.jpeg';
 
@@ -47,10 +47,13 @@ export default {
       portraitDefault
     };
   },
-  computed: {
-    ...mapState({
-      navTitle: state => state.states.text
-    })
+  methods: {
+    toUpdatePhone() {
+      /* 跳转更新手机页面 */
+      this.$router.push({
+        name: 'UpdatePhone'
+      });
+    }
   }
 };
 </script>
