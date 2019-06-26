@@ -11,7 +11,10 @@
             <img :src="lvl" class="img100per">
           </div>
         </div>
-        <div class="right">
+        <div
+          class="right"
+          @click="toUserSetting"
+        >
           <van-icon name="arrow"></van-icon>
         </div>
       </div>
@@ -146,9 +149,6 @@ Vue.use(Cell)
   .use(CellGroup);
 export default {
   name: 'User',
-  mixins: [],
-  components: {},
-  props: {},
   data() {
     return {
       portraitDefault: portraitDefaultImg,
@@ -156,15 +156,14 @@ export default {
       teamIcon
     };
   },
-  computed: {},
-  watch: {},
-  created() {
-  },
-  mounted() {
-  },
-  destroyed() {
-  },
-  methods: {}
+  methods: {
+    toUserSetting() {
+      /* 跳转个人设置页 */
+      this.$router.push({
+        name: 'UserSetting'
+      });
+    }
+  }
 };
 </script>
 

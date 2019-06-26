@@ -198,6 +198,10 @@
   margin-right: 28px;
 }
 
+.mb20 {
+  margin-bottom: 20px;
+}
+
 .mb22 {
   margin-bottom: 22px;
 }
@@ -260,6 +264,7 @@
   box-shadow: 0 10px 10px 0 rgba(101, 100, 118, 0.3);
   border-radius: 43px;
   color: #fff;
+  font-size: 34px;
 
   &.active {
     background: #59C1B6;
@@ -296,6 +301,11 @@
 
   .van-nav-bar__text {
     color: #f5f5f5;
+  }
+
+  .van-nav-bar__title {
+    font-size: 34px;
+    color: #fff;
   }
 
   .van-cell {
@@ -648,3 +658,32 @@
 }
 
 /*我的*/
+
+/*个人设置*/
+
+.userSetting-item {
+
+}
+
+.userSetting-portrait {
+  width: 120px;
+  height: 120px;
+  border-radius: 100%;
+}
+
+.userSetting-wItem-item {
+  &.wItem-item {
+    height: 170px;
+  }
+}
+
+.userSetting-btn-par {
+  position: absolute;
+  bottom: 140px;
+  width: 100%;
+  margin-top: 40px;
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+/*个人设置 end*/
