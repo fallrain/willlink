@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import App from '@/App';
-import { NavBar } from 'vant';
+import { NavBar, Icon } from 'vant';
 import router from '@/router';
 import store from '@/store';
 import VeeValidate from 'vee-validate';
@@ -17,6 +17,8 @@ Object.keys(directives).forEach((name) => {
 Vue.mixin(mixin);
 // 验证组件
 Vue.use(VeeValidate);
+// icon
+Vue.use(Icon);
 new Vue({
   router,
   store,

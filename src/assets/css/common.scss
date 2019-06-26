@@ -267,6 +267,11 @@
   }
 }
 
+.img100per {
+  width: 100%;
+  height: 100%;
+}
+
 /*公共 end*/
 
 /*fix*/
@@ -488,3 +493,158 @@
 }
 
 /*注册 end*/
+
+/*我的*/
+
+.user-main {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.user-head-par {
+  width: 100%;
+  height: 380px;
+  padding-top: 175px;
+  background: url('~@/assets/img/user/user-head-bg@2x.png') no-repeat;
+  background-size: 100% 100%;
+}
+
+.user-head {
+  display: flex;
+  align-items: center;
+  height: 120px;
+
+  .portrait {
+    width: 120px;
+    height: 120px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 100%;
+    }
+  }
+
+  .right {
+    margin-left: auto;
+    padding-right: 30px;
+
+    .van-icon {
+      font-size: 40px;
+    }
+  }
+}
+
+.user-head-cnt {
+  margin-left: 42px;
+}
+
+.user-head-cnt-name {
+  line-height: 1;
+  font-size: 30px;
+  color: #fff;
+}
+
+.user-head-cnt-lvl {
+  margin-top: 22px;
+  width: 38px;
+  height: 27px;
+}
+
+
+.user-ad {
+  margin-top: -40px;
+}
+
+.user-team {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100px;
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding-left: 24px;
+  padding-right: 30px;
+
+  & > .portrait {
+    width: 64px;
+    height: 60px;
+  }
+
+  & > .cnt {
+    color: #838299;
+    font-size: 26px;
+    margin-left: 22px;
+  }
+
+  & > .right {
+    margin-left: auto;
+    color: $login-green;
+    font-size: 20px;
+  }
+}
+
+.user-invite {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  height: 100px;
+  margin-top: 30px;
+  padding-right: 30px;
+  background: url('~@/assets/img/user/user-invite-bg.png') no-repeat;
+  background-size: 100% 100%;
+  font-size: 26px;
+  color: #fff;
+
+  img {
+    margin-left: 40px;
+    width: 26px;
+    height: 26px;
+  }
+}
+
+.user-fn-par {
+  margin-top: 40px;
+}
+
+.user-cell-par {
+  .van-cell__title {
+    display: flex;
+    align-items: center;
+    color: #fff;
+  }
+
+  .van-cell {
+    height: 120px;
+    padding: 0 30px;
+    align-items: center;
+
+    &:after {
+      border-bottom: 1px solid #1C1C21;
+    }
+  }
+}
+
+.user-cell-list {
+  margin-bottom: 18px;
+}
+
+.user-cell-item-icon {
+  width: 50px;
+  height: 50px;
+  margin-right: 42px;
+}
+
+.user-cell-item-msg-icon {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  background: #FF3419;
+  color: #fff;
+  border-radius: 100%;
+  font-size: 26px;
+}
+
+/*我的*/
