@@ -1,5 +1,5 @@
 <template>
-  <div class="homeBox">
+  <div class="main-box homeBox">
     <!--总资产-->
     <div class="assetsBox">
       <div class="assetsBox-title">总资产</div>
@@ -13,11 +13,14 @@
         <div class="right">45,756,787.98</div>
         <div class="van-clearfix"></div>
       </div>
-      <div class="assetsBox-border"></div>
+      <div class="assetsBox-border">
+        <div class="bor-l" style="width: 70%"></div>
+        <div class="bor-r" style="width: 30%"></div>
+      </div>
       <div class="assetsBox-earnings">
         <div class="name">产品收益</div>
         <div class="type">1983257 WID</div>
-        <div class="type">183275 USDT</div>
+        <div class="type text-right">183275 USDT</div>
       </div>
     </div>
     <!--产品状态-->
@@ -37,7 +40,7 @@
     <!--全部资产-->
     <div class="assetsList">
       <div class="assetsList-title">
-        全部资产<div class="assetsList-title-btn right"><van-icon name="add-o" color="#838299"/>新增</div>
+        全部资产<div class="assetsList-title-btn right"><van-icon :name="addBtn" color="#838299"/>新增</div>
       </div>
       <div class="assetsList-line">
         <img class="img left" src="../../icon/W.png">
@@ -102,6 +105,7 @@
 <script>
 import Vue from 'vue';
 import { Icon, Image } from 'vant';
+import add from '@/icon/add.png';
 
 Vue.use(Icon);
 Vue.use(Image);
@@ -112,7 +116,7 @@ export default {
   props: {},
   data() {
     return {
-
+      addBtn: add,
     };
   },
   computed: {},
@@ -162,9 +166,37 @@ export default {
       }
       &-border{
         height:8px;
-        background:rgba(255,255,255,1);
+        background:rgba(255,255,255,0.1);
         border-radius:3px;
         margin-bottom: 49px;
+        position: relative;
+        div{
+          position: absolute;
+          top: 0;
+          height:8px;
+          background:rgba(255,255,255,1);
+        }
+        .bor-l{
+          left: 0;
+          border-top-left-radius: 3px;
+          border-bottom-left-radius: 3px;
+          &:after{
+            content: '';
+            width: 16px;
+            height: 8px;
+            background: rgba(81,165,159,1);
+            display: inline-block;
+            transform: rotate(-60deg);
+            position: absolute;
+            top: 0;
+            right: 0;
+          }
+        }
+        .bor-r{
+          right: 0;
+          border-top-right-radius: 3px;
+          border-bottom-right-radius: 3px;
+        }
       }
       &-earnings{
         height:25px;
@@ -175,11 +207,11 @@ export default {
         color:rgba(255,255,255,1);
         .name{
           display: inline-block;
-          margin-right: 20px;
+          width: 33.3333%;
         }
         .type{
           display: inline-block;
-          padding-left: 61px;
+          width: 33.3333%;
         }
       }
     }
