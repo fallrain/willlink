@@ -84,7 +84,7 @@ export default {
       padding-right: 30px;*/
     }
     .ptop{
-      padding-top: 76px;
+      // padding-top: 76px;
     }
     .pbottom{
       padding-bottom: 96px;
