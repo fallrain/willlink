@@ -80,8 +80,8 @@ export default {
     color: #fff;
     font-size: 14px;
     .mian-body{
-      padding-left: 30px;
-      padding-right: 30px;
+      /*padding-left: 30px;
+      padding-right: 30px;*/
     }
     .ptop{
       padding-top: 76px;
