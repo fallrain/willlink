@@ -1,0 +1,70 @@
+<template>
+  <div class="wItem-item">
+    <span class="wItem-item-title">{{title}}</span>
+    <div
+      v-if="arrow"
+      class="wItem-item-right"
+    >
+      <span
+        class="wItem-item-right-val"
+        v-show="value!==undefined"
+      >{{value}}</span>
+      <slot name="right"></slot>
+      <i class="iconfont icon-youjiantou"></i>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'WItem',
+  props: {
+    // 是否显示右箭头
+    arrow: {
+      type: Boolean,
+      default: true
+    },
+    // 标题
+    title: {
+      default: ''
+    },
+    // 内容
+    value: {
+      default: ''
+    }
+  }
+};
+</script>
+
+<style lang="scss">
+  .wItem-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 120px;
+    background: #222229;
+    border-bottom: 1px solid #1C1C21;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .wItem-item-title {
+    font-size: 30px;
+    color: #fff;
+  }
+
+  .wItem-item-right {
+    display: flex;
+    align-items: center;
+    .iconfont {
+      margin-left: 60px;
+      font-size: 20px;
+      color: #838299;
+    }
+  }
+
+  .wItem-item-right-val {
+    color: #838299;
+  }
+</style>

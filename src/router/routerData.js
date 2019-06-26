@@ -9,6 +9,7 @@ const HomePage = () => import('@/views/index/index');
 const Product = () => import('@/views/product/index');
 const Found = () => import('@/views/found/index');
 const User = () => import('@/views/user/index');
+const UserSetting = () => import(/* webpackChunkName: "UserSetting" */ '@/views/user/UserSetting');
 const data = [
   {
     path: '/login',
@@ -85,6 +86,15 @@ const data = [
         meta: {
           title: '我的',
           bottomNav: true
+        }
+      },
+      {
+        path: '/userSetting',
+        name: 'UserSetting',
+        component: UserSetting,
+        meta: {
+          title: '个人设置',
+          bottomNav: false
         }
       },
     ]
