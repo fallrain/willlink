@@ -54,7 +54,7 @@ export default {
   .btn-send-code{
     background: transparent;
     color: #59C1B6;
-    font-size: 24px;
+    font-size: 12px;
     &.disabled{
       color: #474E66;
     }
