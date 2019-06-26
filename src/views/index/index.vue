@@ -24,7 +24,7 @@
       </div>
     </div>
     <!--产品状态-->
-    <div class="stateBox">
+    <div class="stateBox" @click="homeProduct">
       <div class="stateBox-all left">
         全部资产<p>100</p>
       </div>
@@ -33,14 +33,14 @@
         收益中产品<p>50</p>
       </div>
       <div class="stateBox-arrow right">
-        <van-icon name="arrow" color="#838299"/>
+        <van-icon name="arrow" size="24" color="#838299"/>
       </div>
       <div class="van-clearfix"></div>
     </div>
     <!--全部资产-->
     <div class="assetsList">
       <div class="assetsList-title">
-        全部资产<div class="assetsList-title-btn right"><van-icon :name="addBtn" color="#838299"/>新增</div>
+        全部资产<div class="assetsList-title-btn right" @click="homeAdd"><van-icon :name="addBtn" size="18" color="#838299"/>新增</div>
       </div>
       <div class="assetsList-line">
         <img class="img left" src="../../icon/W.png">
@@ -124,7 +124,14 @@ export default {
   created() {},
   mounted() {},
   destroyed() {},
-  methods: {}
+  methods: {
+    homeProduct() {
+      this.$router.push({ name: 'HomeProduct' });
+    },
+    homeAdd() {
+      this.$router.push({ name: 'HomeAdd' });
+    },
+  }
 };
 </script>
 
@@ -135,45 +142,47 @@ export default {
     }
     .assetsBox{
       width: 100%;
-      height:350px;
-      padding: 40px 50px 45px 50px;
-      border-radius:20px;
-      margin-bottom: 20px;
-      background-image: linear-gradient(to left, #5FC3B5, #3f7e82);
+      height:175px;
+      padding: 20px 25px 23px 25px;
+      border-radius:10px;
+      margin-bottom: 10px;
+      background: url("../../icon/back.png") center no-repeat ;
+      background-size: 100% 100%;
+      /*background-image: linear-gradient(to left, #5FC3B5, #3f7e82) ;*/
       &-title{
-        line-height: 27px;
-        font-size:28px;
+        line-height: 14px;
+        font-size:14px;
         font-family:PingFang-SC-Medium;
         font-weight:500;
         color:rgba(255,255,255,1);
-        margin-bottom: 49px;
+        margin-bottom: 25px;
       }
       &-name{
-        margin-bottom: 38px;
-        height:18px;
-        font-size:24px;
+        margin-bottom: 19px;
+        height:10px;
+        font-size:12px;
         font-family:PingFang-SC-Medium;
         font-weight:500;
         color:rgba(255,255,255,1);
       }
       &-num{
-        height:31px;
-        font-size:34px;
+        height:15px;
+        font-size:17px;
         font-family:DIN-Medium;
         font-weight:500;
         color:rgba(255,255,255,1);
-        margin-bottom: 20px;
+        margin-bottom: 10px;
       }
       &-border{
-        height:8px;
+        height:4px;
         background:rgba(255,255,255,0.1);
-        border-radius:3px;
-        margin-bottom: 49px;
+        border-radius: 2px;
+        margin-bottom: 25px;
         position: relative;
         div{
           position: absolute;
           top: 0;
-          height:8px;
+          height:4px;
           background:rgba(255,255,255,1);
         }
         .bor-l{
@@ -182,8 +191,8 @@ export default {
           border-bottom-left-radius: 3px;
           &:after{
             content: '';
-            width: 16px;
-            height: 8px;
+            width: 8px;
+            height: 4px;
             background: rgba(81,165,159,1);
             display: inline-block;
             transform: rotate(-60deg);
@@ -199,9 +208,9 @@ export default {
         }
       }
       &-earnings{
-        height:25px;
-        line-height: 25px;
-        font-size:26px;
+        height: 12px;
+        line-height: 12px;
+        font-size: 13px;
         font-family:PingFang-SC-Medium;
         font-weight:500;
         color:rgba(255,255,255,1);
@@ -216,13 +225,13 @@ export default {
       }
     }
     .stateBox{
-      height:140px;
-      line-height: 80px;
+      height: 70px;
+      line-height: 40px;
       background:rgba(34,34,41,1);
-      border-radius:20px;
-      padding: 30px 40px;
-      margin-bottom: 49px;
-      font-size:30px;
+      border-radius: 10px;
+      padding: 15px 20px;
+      margin-bottom: 25px;
+      font-size: 15px;
       font-family:PingFang-SC-Medium;
       font-weight:500;
       color:rgba(255,255,255,1);
@@ -231,80 +240,85 @@ export default {
       }
       p{
         display: inline-block;
-        margin-left: 32px;
-        font-size:35px;
+        margin-left: 16px;
+        font-size: 18px;
         font-family:PingFang-SC-Heavy;
         font-weight:800;
         color:rgba(89,193,182,1);
       }
       &-border{
-        width:2px;
-        height:80px;
+        width: 1px;
+        height: 40px;
         background:rgba(101,100,118,1);
-        margin: 0 50px;
+        margin: 0 25px;
+      }
+      &-arrow{
+        line-height: 40px;
+        margin-top: 7px;
       }
 
     }
     .assetsList{
       &-title{
-        height:33px;
-        line-height: 33px;
-        font-size:34px;
+        height: 17px;
+        line-height: 17px;
+        font-size: 17px;
         font-family:PingFang-SC-Heavy;
         font-weight:800;
         color:rgba(89,193,182,1);
         margin-bottom: 40px;
         &-btn{
-          height:33px;
-          line-height: 33px;
-          font-size:24px;
+          height: 17px;
+          line-height: 17px;
+          font-size: 12px;
           font-family:PingFang-SC-Medium;
           font-weight:500;
           color:rgba(255,255,255,1);
           display: inline-block;
           .van-icon{
-            margin-right: 10px;
+            margin-right: 5px;
+            vertical-align: sub;
           }
         }
       }
       &-line{
-        height: 140px;
-        padding: 40px 30px;
+        height: 70px;
+        padding: 20px 15px;
         background:rgba(51,51,63,1);
-        border-radius:20px;
-        margin-bottom: 16px;
+        border-radius: 10px;
+        margin-bottom: 8px;
         position: relative;
         &:last-child{
           margin-bottom: 0;
         }
         .img{
-          width:60px;
-          height:60px;
+          width: 30px;
+          height: 30px;
           background:rgba(68,117,212,1);
-          border-radius:30px;
+          border-radius: 15px;
           display: inline-block;
         }
         .name{
-          font-size:30px;
+          font-size: 15px;
           font-family:PingFang-SC-Medium;
           font-weight:500;
           color:rgba(255,255,255,1);
-          line-height: 60px;
+          line-height: 30px;
           display: inline-block;
-          margin-left: 36px;
+          margin-left: 18px;
         }
         .num{
           position: absolute;
           top: 50%;
-          right: 30px;
+          right: 15px;
           transform: translate(0%, -50%);
           div{
-            font-size:36px;
+            font-size: 18px;
             font-family:DIN-Medium;
             font-weight:500;
             color:rgba(230,230,230,1);
             &.money{
-              font-size:20px;
+              font-size: 10px;
               font-family:PingFang-SC-Medium;
               font-weight:500;
               color:rgba(153,153,153,1);
@@ -316,7 +330,7 @@ export default {
     .divider{
       height: 1px;
       width: 100%;
-      margin: 49px 0;
+      margin: 13px 0;
       background:rgba(101,100,118,1);
       position: relative;
       &-text{
@@ -324,8 +338,8 @@ export default {
         left: 50%;
         transform: translateX(-50%) translateY(-50%);
         background-color: rgba(28,28,33,1);
-        padding: 0 45px;
-        font-size:20px;
+        padding: 0 23px;
+        font-size: 10px;
         font-family:Adobe Heiti Std R;
         font-weight:normal;
         color:rgba(101,100,118,1);

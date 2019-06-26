@@ -4,10 +4,12 @@ const Login = () => import(/* webpackChunkName: "Login" */ '@/views/login/Login'
 const ForgetPassword = () => import(/* webpackChunkName: "Login" */ '@/views/login/ForgetPassword');// 忘记密码
 const Register = () => import(/* webpackChunkName: "Register" */ '@/views/register/Register');// 忘记密码
 const RegisterSuc = () => import(/* webpackChunkName: "RegisterSuc" */ '@/views/register/RegisterSuc');// 注册成功
-const Home = () => import('@/views/home/index');
-const HomePage = () => import('@/views/index/index');
-const Product = () => import('@/views/product/index');
-const Found = () => import('@/views/found/index');
+const Home = () => import('@/views/home/index'); // 引到页
+const HomePage = () => import('@/views/index/index'); // 首页
+const HomeProduct = () => import('@/views/index/product'); // 我的产品
+const HomeAdd = () =>  import('@/views/index/add'); // 新增
+const Product = () => import('@/views/product/index'); // 产品
+const Found = () => import('@/views/found/index'); // 发现
 const User = () => import('@/views/user/index'); // 我的
 const UserSetting = () => import(/* webpackChunkName: "UserSetting" */ '@/views/user/UserSetting');// 个人设置
 const UpdatePhone = () => import(/* webpackChunkName: "UpdatePhone" */ '@/views/user/UpdatePhone');// 修改手机
@@ -61,7 +63,30 @@ const data = [
         meta: {
           title: '首页',
           bottomNav: true,
-          topNav: false
+          topNav: false,
+          topNotice: true,
+        }
+      },
+      {
+        name: 'HomeProduct',
+        path: '/homeProduct',
+        component: HomeProduct,
+        meta: {
+          title: '我的产品',
+          bottomNav: false,
+          topNav: true,
+          topNotice: false,
+        }
+      },
+      {
+        name: 'HomeAdd',
+        path: '/homeAdd',
+        component: HomeAdd,
+        meta: {
+          title: '新增',
+          bottomNav: false,
+          topNav: true,
+          topNotice: false,
         }
       },
       {
@@ -70,7 +95,9 @@ const data = [
         component: Product,
         meta: {
           title: '产品',
-          bottomNav: true
+          topNav: false,
+          topNotice: false,
+          bottomNav: true,
         }
       },
       {
@@ -79,6 +106,8 @@ const data = [
         component: Found,
         meta: {
           title: '发现',
+          topNav: false,
+          topNotice: false,
           bottomNav: true
         }
       },
@@ -88,6 +117,8 @@ const data = [
         component: User,
         meta: {
           title: '我的',
+          topNav: false,
+          topNotice: false,
           bottomNav: true
         }
       },

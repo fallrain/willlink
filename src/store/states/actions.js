@@ -13,5 +13,8 @@ export default {
     commit(types.UPDATE_TOPNAV, value);
     resolve();
   }),
-
+  update_topnotice: ({ commit }, value) => new Promise((resolve) => {
+    commit(types.UPDATE_TOPNOTICE, value);
+    resolve();
+  }),
 };

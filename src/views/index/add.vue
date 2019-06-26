@@ -1,14 +1,16 @@
 <template>
-  <div class="">
-    产品
+  <div class="productBox">
+    <!--搜索-->
+
   </div>
 </template>
 
 <script>
 import Vue from 'vue';
 
+
 export default {
-  name: 'Product',
+  name: 'HomeAdd',
   mixins: [],
   components: {},
   props: {},
@@ -22,9 +24,8 @@ export default {
   created() {},
   mounted() {},
   destroyed() {},
-  methods: {
+  methods: {}
 
-  }
 };
 </script>
 

@@ -39,9 +39,10 @@ router.beforeEach((to, from, next) => {
   }
   const bottomNav = !!((to.meta && to.meta.bottomNav));
   store.dispatch('update_bottomnav', bottomNav);
-
   const topNav = !!((to.meta && to.meta.topNav));
   store.dispatch('update_topnav', topNav);
+  const topNotice = !!((to.meta && to.meta.topNotice));
+  store.dispatch('update_topnotice', topNotice);
   next();
 });
 export default router;

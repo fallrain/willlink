@@ -5,7 +5,10 @@ export default {
   getBottomnav(state) {
     return state.bottomnav;
   },
-  getToken(state) {
-    return state.token;
-  }
+  getTopnav(state) {
+    return state.topnav;
+  },
+  getTopnotice(state) {
+    return state.topnotice;
+  },
 };

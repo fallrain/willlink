@@ -10,4 +10,7 @@ export default {
   [types.UPDATE_TOPNAV](state, value) {
     state.topnav = value || false;
   },
+  [types.UPDATE_TOPNOTICE](state, value) {
+    state.topnotice = value || false;
+  },
 };

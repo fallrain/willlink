@@ -2,13 +2,13 @@
   <div class="main">
     <!-- 头部导航栏-->
     <van-nav-bar :title="title" left-arrow @click-left="onClickLeft" class="main-header" v-show="topnav"/>
-    <van-notice-bar class="hhhh" left-icon="volume-o" >公告：新版钱包上线公告</van-notice-bar>
+    <van-notice-bar left-icon="volume-o" v-show="topnotice">公告：新版钱包上线公告</van-notice-bar>
     <!-- 内容区域-->
     <div class="mian-body" :class="{ptop: !bottomnav, pbottom: !topnav } " >
       <router-view/>
     </div>
     <!-- 底部导航栏-->
-    <van-tabbar v-model="active" v-show="bottomnav">
+    <van-tabbar v-model="active" class="van-icon-size" v-show="bottomnav">
       <van-tabbar-item :icon="active !== 0 ? homeIcon : homeActiveIcon" to="/home" :replace="true">首页</van-tabbar-item>
       <van-tabbar-item :icon="active !== 1 ? productIcon : productActiveIcon" to="/product" :replace="true">产品</van-tabbar-item>
       <van-tabbar-item :icon="active !== 2 ? foundIcon : foundActiveIcon" to="/found" :replace="true">发现</van-tabbar-item>
@@ -61,6 +61,9 @@ export default {
     topnav() {
       return this.$store.state.states.topnav;
     },
+    topnotice() {
+      return this.$store.state.states.topnotice;
+    },
   },
   watch: {
     $route: {
@@ -93,7 +96,6 @@ export default {
     overflow: scroll;
     background:rgba(28,28,33,1);
     color: #fff;
-    font-size: 14px;
     .mian-body{
       /*padding-left: 30px;
       padding-right: 30px;*/
@@ -102,35 +104,38 @@ export default {
       // padding-top: 76px;
     }
     .pbottom{
-      padding-bottom: 96px;
+      padding-bottom: 49px;
     }
     .van-notice-bar{
-      height: 76px;
+      height: 44px;
       background:rgba(34,34,41,1);
-      font-size:20px;
+      font-size:10px;
       font-family:PingFang-SC-Medium;
       font-weight:500;
       color:rgba(131,130,153,1);
-      padding: 0 30px;
+      padding: 0 15px;
       .van-icon{
-        margin-right: 21px;
+        margin-right: 10px;
       }
     }
     .van-tabbar {
-      height: 98px;
+      height: 49px;
       background:rgba(34,34,41,1);
       &:after {
         border: none;
       }
+      .van-image{
+        background: red;
+        font-size: 18px;
+        width: 36px!important;
+        height: 36px!important;
+      }
       .van-tabbar-item {
-        font-size:20px;
+        font-size:10px;
         font-family:PingFang-SC-Medium;
         font-weight:500;
         color:rgba(131,130,153,1);
-        img{
-          background: red;
-          font-size: 18px;
-        }
+
       }
       .van-tabbar-item--active {
         color:rgba(89,193,182,1);
