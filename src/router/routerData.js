@@ -1,6 +1,7 @@
 import Nav from '@/views/Nav';
 
 const Login = () => import(/* webpackChunkName: "Login" */ '@/views/login/Login');// 登录
+const NoNetwork = () => import(/* webpackChunkName: "NoNetwork" */ '@/views/404/NoNetwork.vue');// 暂无网络
 const ForgetPassword = () => import(/* webpackChunkName: "Login" */ '@/views/login/ForgetPassword');// 忘记密码
 const Register = () => import(/* webpackChunkName: "Register" */ '@/views/register/Register');// 忘记密码
 const RegisterSuc = () => import(/* webpackChunkName: "RegisterSuc" */ '@/views/register/RegisterSuc');// 注册成功
@@ -15,6 +16,8 @@ const UserSetting = () => import(/* webpackChunkName: "UserSetting" */ '@/views/
 const UpdatePhone = () => import(/* webpackChunkName: "UpdatePhone" */ '@/views/user/UpdatePhone');// 修改手机
 const AddVerificationCode = () => import(/* webpackChunkName: "AddVerificationCode" */ '@/views/user/AddVerificationCode');// 填写验证码
 const UpdatePwd = () => import(/* webpackChunkName: "UpdatePwd" */ '@/views/user/UpdatePwd');// 修改密码
+const SysAnnouncement = () => import(/* webpackChunkName: "SysAnnouncement" */ '@/views/user/SysAnnouncement');// 系统公告
+const MyTeam = () => import(/* webpackChunkName: "MyTeam" */ '@/views/user/MyTeam');// 我的团队
 
 const data = [
   {
@@ -23,6 +26,14 @@ const data = [
     component: Login,
     meta: {
       title: '登录'
+    }
+  },
+  {
+    path: '/noNetwork',
+    name: 'NoNetwork',
+    component: NoNetwork,
+    meta: {
+      title: '暂无网络'
     }
   },
   {
@@ -164,6 +175,26 @@ const data = [
           bottomNav: false
         }
       },
+      {
+        path: 'sysAnnouncement',
+        name: 'SysAnnouncement',
+        component: SysAnnouncement,
+        meta: {
+          title: '系统公告',
+          scrollTop: true,
+          bottomNav: false
+        }
+      },
+      {
+        path: 'myTeam',
+        name: 'MyTeam',
+        component: MyTeam,
+        meta: {
+          title: '我的团队',
+          scrollTop: true,
+          bottomNav: false
+        }
+      }
     ]
   }
 ];

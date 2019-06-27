@@ -24,7 +24,10 @@
         <div class="portrait">
           <img :src="teamIcon" class="img100per">
         </div>
-        <div class="cnt">
+        <div
+          class="cnt"
+          @click="toMyteam"
+        >
           我的团队
         </div>
         <div class="right">查看权益</div>
@@ -36,6 +39,7 @@
     <div class="user-fn-par user-cell-par">
       <div class="user-cell-list">
         <van-cell
+          @click="toSysAnnouncement"
         >
           <template
             slot="title"
@@ -64,7 +68,7 @@
           >
             <img
               class="user-cell-item-icon"
-              src="@/assets/img/user/icon-user-sys@2x.png"
+              src="@/assets/img/user/icon-myincome@2x.png"
             >
             <span class="custom-text">我的收益</span>
           </template>
@@ -78,7 +82,7 @@
           >
             <img
               class="user-cell-item-icon"
-              src="@/assets/img/user/icon-user-sys@2x.png"
+              src="@/assets/img/user/icon-yaoshi@2x.png"
             >
             <span class="custom-text">私钥管理</span>
           </template>
@@ -90,7 +94,7 @@
           >
             <img
               class="user-cell-item-icon"
-              src="@/assets/img/user/icon-user-sys@2x.png"
+              src="@/assets/img/user/icon-qianbao@2x.png"
             >
             <span class="custom-text">冷钱包加载</span>
           </template>
@@ -102,7 +106,7 @@
           >
             <img
               class="user-cell-item-icon"
-              src="@/assets/img/user/icon-user-sys@2x.png"
+              src="@/assets/img/user/icon-zhujici@2x.png"
             >
             <span class="custom-text">助记词设置</span>
           </template>
@@ -116,7 +120,7 @@
           >
             <img
               class="user-cell-item-icon"
-              src="@/assets/img/user/icon-user-sys@2x.png"
+              src="@/assets/img/user/icon-guanyuwomen@2x.png"
             >
             <span class="custom-text">关于我们</span>
           </template>
@@ -128,7 +132,7 @@
           >
             <img
               class="user-cell-item-icon"
-              src="@/assets/img/user/icon-user-sys@2x.png"
+              src="@/assets/img/user/icon-wentifankui@2x.png"
             >
             <span class="custom-text">问题反馈</span>
           </template>
@@ -161,6 +165,18 @@ export default {
       /* 跳转个人设置页 */
       this.$router.push({
         name: 'UserSetting'
+      });
+    },
+    toSysAnnouncement() {
+      /* 跳转系统公告页面 */
+      this.$router.push({
+        name: 'SysAnnouncement'
+      });
+    },
+    toMyteam() {
+      /* 跳转我的团队页面 */
+      this.$router.push({
+        name: 'MyTeam'
       });
     }
   }

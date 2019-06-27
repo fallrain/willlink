@@ -194,6 +194,10 @@
   margin-top: 27px;
 }
 
+.mt82 {
+  margin-top: 82px;
+}
+
 .mr28 {
   margin-right: 28px;
 }
@@ -718,6 +722,7 @@
     padding-right: 15px;
     padding-top: 0;
     padding-bottom: 0;
+
     &:after {
       border-bottom: 1px solid #1C1C21;
     }
@@ -725,3 +730,32 @@
 }
 
 /*更换账号 end*/
+
+/*系统公告*/
+
+.sysAnnouncement-img-par {
+  width: 225px;
+  height: 225px;
+  margin-top: percentage(60/375);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sysAnnouncement-nomsg-tips {
+  text-align: center;
+  font-size: 16px;
+  color: #C0C3CC;
+}
+
+/*系统公告 end*/
+
+/*我的团队*/
+
+.myTeam-tree-par {
+  border-top: 10px solid #1C1C21;
+  padding: 30px 50px;
+  padding-top: 0;
+}
+
+/*我的团队 end*/
+
