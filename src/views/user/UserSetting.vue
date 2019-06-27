@@ -15,13 +15,15 @@
           <img :src="portraitDefault" class="userSetting-portrait">
         </div>
       </w-item>
+      <!--userInfo来自vuex-->
       <w-item
         title="账号"
-        :value="account"
+        :value="userInfo.phone"
         @rightClick="toUpdatePhone"
       ></w-item>
       <w-item
         title="修改密码"
+        @rightClick="toUpdatePwd"
       ></w-item>
     </div>
     <div class="userSetting-btn-par">
@@ -43,7 +45,6 @@ export default {
   components: { WItem },
   data() {
     return {
-      account: '15606711711',
       portraitDefault
     };
   },
@@ -52,6 +53,12 @@ export default {
       /* 跳转更新手机页面 */
       this.$router.push({
         name: 'UpdatePhone'
+      });
+    },
+    toUpdatePwd() {
+      /* 跳转修改密码页面 */
+      this.$router.push({
+        name: 'UpdatePwd'
       });
     }
   }

@@ -66,7 +66,7 @@
               class="user-cell-item-icon"
               src="@/assets/img/user/icon-user-sys@2x.png"
             >
-            <span class="custom-text">系统公告</span>
+            <span class="custom-text">我的收益</span>
           </template>
         </van-cell>
       </div>

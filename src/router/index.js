@@ -9,7 +9,7 @@ const router = new Router({
   base: process.env.routerBase,
   routes: routerData.data,
   scrollBehavior(to, from, savedPosition) {
-    if (savedPosition) {
+    if (savedPosition && !to.meta.scrollTop) {
       return savedPosition;
     }
     return { x: 0, y: 0 };

@@ -7,13 +7,14 @@ const RegisterSuc = () => import(/* webpackChunkName: "RegisterSuc" */ '@/views/
 const Home = () => import('@/views/home/index'); // 引到页
 const HomePage = () => import('@/views/index/index'); // 首页
 const HomeProduct = () => import('@/views/index/product'); // 我的产品
-const HomeAdd = () =>  import('@/views/index/add'); // 新增
+const HomeAdd = () => import('@/views/index/add'); // 新增
 const Product = () => import('@/views/product/index'); // 产品
 const Found = () => import('@/views/found/index'); // 发现
 const User = () => import('@/views/user/index'); // 我的
 const UserSetting = () => import(/* webpackChunkName: "UserSetting" */ '@/views/user/UserSetting');// 个人设置
 const UpdatePhone = () => import(/* webpackChunkName: "UpdatePhone" */ '@/views/user/UpdatePhone');// 修改手机
 const AddVerificationCode = () => import(/* webpackChunkName: "AddVerificationCode" */ '@/views/user/AddVerificationCode');// 填写验证码
+const UpdatePwd = () => import(/* webpackChunkName: "UpdatePwd" */ '@/views/user/UpdatePwd');// 修改密码
 
 const data = [
   {
@@ -62,6 +63,7 @@ const data = [
         component: HomePage,
         meta: {
           title: '首页',
+          scrollTop: true,
           bottomNav: true,
           topNav: false,
           topNotice: true,
@@ -73,6 +75,7 @@ const data = [
         component: HomeProduct,
         meta: {
           title: '我的产品',
+          scrollTop: true,
           bottomNav: false,
           topNav: true,
           topNotice: false,
@@ -117,6 +120,7 @@ const data = [
         component: User,
         meta: {
           title: '我的',
+          scrollTop: true,
           topNav: false,
           topNotice: false,
           bottomNav: true
@@ -147,6 +151,16 @@ const data = [
         component: AddVerificationCode,
         meta: {
           title: '填写验证码',
+          bottomNav: false
+        }
+      },
+      {
+        path: 'updatePwd',
+        name: 'UpdatePwd',
+        component: UpdatePwd,
+        meta: {
+          title: '修改密码',
+          scrollTop: true,
           bottomNav: false
         }
       },
