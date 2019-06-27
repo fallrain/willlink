@@ -9,6 +9,8 @@ const Home = () => import('@/views/home/index'); // 引到页
 const HomePage = () => import('@/views/index/index'); // 首页
 const HomeProduct = () => import('@/views/index/product'); // 我的产品
 const HomeAdd = () => import('@/views/index/add'); // 新增
+const HomeSearch = () => import('@/views/index/search'); // 搜索
+const HomeDetail = () => import('@/views/index/detail'); // 详情
 const Product = () => import('@/views/product/index'); // 产品
 const Found = () => import('@/views/found/index'); // 发现
 const User = () => import('@/views/user/index'); // 我的
@@ -77,7 +79,6 @@ const data = [
           scrollTop: true,
           bottomNav: true,
           topNav: false,
-          topNotice: true,
         }
       },
       {
@@ -89,7 +90,6 @@ const data = [
           scrollTop: true,
           bottomNav: false,
           topNav: true,
-          topNotice: false,
         }
       },
       {
@@ -100,7 +100,26 @@ const data = [
           title: '新增',
           bottomNav: false,
           topNav: true,
-          topNotice: false,
+        }
+      },
+      {
+        name: 'HomeSearch',
+        path: '/homeSearch',
+        component: HomeSearch,
+        meta: {
+          title: '',
+          bottomNav: false,
+          topNav: false,
+        }
+      },
+      {
+        name: 'HomeDetail',
+        path: '/homeDetail',
+        component: HomeDetail,
+        meta: {
+          title: '',
+          bottomNav: false,
+          topNav: false,
         }
       },
       {
@@ -110,7 +129,6 @@ const data = [
         meta: {
           title: '产品',
           topNav: false,
-          topNotice: false,
           bottomNav: true,
         }
       },
@@ -121,7 +139,6 @@ const data = [
         meta: {
           title: '发现',
           topNav: false,
-          topNotice: false,
           bottomNav: true
         }
       },
@@ -133,7 +150,6 @@ const data = [
           title: '我的',
           scrollTop: true,
           topNav: false,
-          topNotice: false,
           bottomNav: true
         }
       },

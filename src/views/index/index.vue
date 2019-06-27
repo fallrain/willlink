@@ -1,104 +1,110 @@
 <template>
-  <div class="main-box homeBox">
-    <!--总资产-->
-    <div class="assetsBox">
-      <div class="assetsBox-title">总资产</div>
-      <div class="assetsBox-name">
-        <div class="left">WID</div>
-        <div class="right">USDT</div>
-        <div class="van-clearfix"></div>
-      </div>
-      <div class="assetsBox-num">
-        <div class="left">643,234,255.43</div>
-        <div class="right">45,756,787.98</div>
-        <div class="van-clearfix"></div>
-      </div>
-      <div class="assetsBox-border">
-        <div class="bor-l" style="width: 70%"></div>
-        <div class="bor-r" style="width: 30%"></div>
-      </div>
-      <div class="assetsBox-earnings">
-        <div class="name">产品收益</div>
-        <div class="type">1983257 WID</div>
-        <div class="type text-right">183275 USDT</div>
-      </div>
+  <div class="">
+    <div class="homeNav">
+      <van-notice-bar left-icon="volume-o">公告：新版钱包上线公告</van-notice-bar>
+      <div class="sweepBtn"><van-icon :name="sweep" /></div>
     </div>
-    <!--产品状态-->
-    <div class="stateBox" @click="homeProduct">
-      <div class="stateBox-all left">
-        全部资产<p>100</p>
+    <div class="homeBox">
+      <!--总资产-->
+      <div class="assetsBox">
+        <div class="assetsBox-title">总资产</div>
+        <div class="assetsBox-name">
+          <div class="left">WID</div>
+          <div class="right">USDT</div>
+          <div class="van-clearfix"></div>
+        </div>
+        <div class="assetsBox-num">
+          <div class="left">643,234,255.43</div>
+          <div class="right">45,756,787.98</div>
+          <div class="van-clearfix"></div>
+        </div>
+        <div class="assetsBox-border">
+          <div class="bor-l" style="width: 70%"></div>
+          <div class="bor-r" style="width: 30%"></div>
+        </div>
+        <div class="assetsBox-earnings">
+          <div class="name">产品收益</div>
+          <div class="type">1983257 WID</div>
+          <div class="type text-right">183275 USDT</div>
+        </div>
       </div>
-      <div class="stateBox-border left"></div>
-      <div class="stateBox-earnings left">
-        收益中产品<p>50</p>
+      <!--产品状态-->
+      <div class="stateBox" @click="homeProduct">
+        <div class="stateBox-all left">
+          全部资产<p>100</p>
+        </div>
+        <div class="stateBox-border left"></div>
+        <div class="stateBox-earnings left">
+          收益中产品<p>50</p>
+        </div>
+        <div class="stateBox-arrow right">
+          <van-icon name="arrow" size="24" color="#838299"/>
+        </div>
+        <div class="van-clearfix"></div>
       </div>
-      <div class="stateBox-arrow right">
-        <van-icon name="arrow" size="24" color="#838299"/>
+      <!--全部资产-->
+      <div class="assetsList">
+        <div class="assetsList-title">
+          全部资产<div class="assetsList-title-btn right" @click="homeAdd"><van-icon :name="addBtn" size="18" color="#838299"/>新增</div>
+        </div>
+        <div class="assetsList-line" @click="homeDetail">
+          <img class="img left" src="../../icon/W.png">
+          <div class="name left">WID</div>
+          <div class="num right">
+            <div class="">100,000,000.00</div>
+            <div class="money">≈100,000,000.00 USDT</div>
+          </div>
+          <div class="van-clearfix"></div>
+        </div>
+        <div class="assetsList-line">
+          <img class="img left" src="../../icon/W.png">
+          <div class="name left">WID</div>
+          <div class="num right">
+            <div class="">100,000,000.00</div>
+            <div class="money">≈100,000,000.00 USDT</div>
+          </div>
+          <div class="van-clearfix"></div>
+        </div>
+        <div class="assetsList-line">
+          <img class="img left" src="../../icon/W.png">
+          <div class="name left">WID</div>
+          <div class="num right">
+            <div class="">100,000,000.00</div>
+            <div class="money">≈100,000,000.00 USDT</div>
+          </div>
+          <div class="van-clearfix"></div>
+        </div>
+        <div class="assetsList-line">
+          <img class="img left" src="../../icon/W.png">
+          <div class="name left">WID</div>
+          <div class="num right">
+            <div class="">100,000,000.00</div>
+            <div class="money">≈100,000,000.00 USDT</div>
+          </div>
+          <div class="van-clearfix"></div>
+        </div>
+        <div class="assetsList-line">
+          <img class="img left" src="../../icon/W.png">
+          <div class="name left">WID</div>
+          <div class="num right">
+            <div class="">100,000,000.00</div>
+            <div class="money">≈100,000,000.00 USDT</div>
+          </div>
+          <div class="van-clearfix"></div>
+        </div>
+        <div class="assetsList-line">
+          <img class="img left" src="../../icon/W.png">
+          <div class="name left">WID</div>
+          <div class="num right">
+            <div class="">100,000,000.00</div>
+            <div class="money">≈100,000,000.00 USDT</div>
+          </div>
+          <div class="van-clearfix"></div>
+        </div>
       </div>
-      <div class="van-clearfix"></div>
+      <!--底线-->
+      <div class="divider"><div class="divider-text">我是有底线的</div></div>
     </div>
-    <!--全部资产-->
-    <div class="assetsList">
-      <div class="assetsList-title">
-        全部资产<div class="assetsList-title-btn right" @click="homeAdd"><van-icon :name="addBtn" size="18" color="#838299"/>新增</div>
-      </div>
-      <div class="assetsList-line">
-        <img class="img left" src="../../icon/W.png">
-        <div class="name left">WID</div>
-        <div class="num right">
-          <div class="">100,000,000.00</div>
-          <div class="money">≈100,000,000.00 USDT</div>
-        </div>
-        <div class="van-clearfix"></div>
-      </div>
-      <div class="assetsList-line">
-        <img class="img left" src="../../icon/W.png">
-        <div class="name left">WID</div>
-        <div class="num right">
-          <div class="">100,000,000.00</div>
-          <div class="money">≈100,000,000.00 USDT</div>
-        </div>
-        <div class="van-clearfix"></div>
-      </div>
-      <div class="assetsList-line">
-        <img class="img left" src="../../icon/W.png">
-        <div class="name left">WID</div>
-        <div class="num right">
-          <div class="">100,000,000.00</div>
-          <div class="money">≈100,000,000.00 USDT</div>
-        </div>
-        <div class="van-clearfix"></div>
-      </div>
-      <div class="assetsList-line">
-        <img class="img left" src="../../icon/W.png">
-        <div class="name left">WID</div>
-        <div class="num right">
-          <div class="">100,000,000.00</div>
-          <div class="money">≈100,000,000.00 USDT</div>
-        </div>
-        <div class="van-clearfix"></div>
-      </div>
-      <div class="assetsList-line">
-        <img class="img left" src="../../icon/W.png">
-        <div class="name left">WID</div>
-        <div class="num right">
-          <div class="">100,000,000.00</div>
-          <div class="money">≈100,000,000.00 USDT</div>
-        </div>
-        <div class="van-clearfix"></div>
-      </div>
-      <div class="assetsList-line">
-        <img class="img left" src="../../icon/W.png">
-        <div class="name left">WID</div>
-        <div class="num right">
-          <div class="">100,000,000.00</div>
-          <div class="money">≈100,000,000.00 USDT</div>
-        </div>
-        <div class="van-clearfix"></div>
-      </div>
-    </div>
-    <!--底线-->
-    <div class="divider"><div class="divider-text">我是有底线的</div></div>
   </div>
 </template>
 
@@ -106,6 +112,7 @@
 import Vue from 'vue';
 import { Icon, Image } from 'vant';
 import add from '@/icon/add.png';
+import sweep from '@/icon/sweep.png'
 
 Vue.use(Icon);
 Vue.use(Image);
@@ -117,6 +124,7 @@ export default {
   data() {
     return {
       addBtn: add,
+      sweep: sweep,
     };
   },
   computed: {},
@@ -131,12 +139,39 @@ export default {
     homeAdd() {
       this.$router.push({ name: 'HomeAdd' });
     },
+    homeDetail() {
+      this.$router.push({ name: 'HomeDetail', params: { title: 'WID' } });
+    }
   }
 };
 </script>
 
 <style scoped lang="scss">
+  .homeNav{
+    * {
+      box-sizing: border-box;
+    }
+    position: relative;
+    .van-notice-bar{
+      height: 44px;
+      background:rgba(34,34,41,1);
+      font-size:10px;
+      font-family:PingFang-SC-Medium;
+      font-weight:500;
+      color:rgba(131,130,153,1);
+      padding: 0 15px;
+      .van-icon{
+        margin-right: 10px;
+      }
+    }
+    .sweepBtn{
+      position: absolute;
+      top: 13px;
+      right: 15px;
+    }
+  }
   .homeBox{
+    padding: 15px 15px 0 15px;
     * {
       box-sizing: border-box;
     }

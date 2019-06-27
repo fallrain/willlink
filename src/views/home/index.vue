@@ -2,7 +2,6 @@
   <div class="main">
     <!-- 头部导航栏-->
     <van-nav-bar :title="title" left-arrow @click-left="onClickLeft" class="main-header" v-show="topnav"/>
-    <van-notice-bar left-icon="volume-o" v-show="topnotice">公告：新版钱包上线公告</van-notice-bar>
     <!-- 内容区域-->
     <div class="mian-body" :class="{ptop: !bottomnav, pbottom: !topnav } " >
       <router-view/>
@@ -106,18 +105,7 @@ export default {
     .pbottom{
       padding-bottom: 49px;
     }
-    .van-notice-bar{
-      height: 44px;
-      background:rgba(34,34,41,1);
-      font-size:10px;
-      font-family:PingFang-SC-Medium;
-      font-weight:500;
-      color:rgba(131,130,153,1);
-      padding: 0 15px;
-      .van-icon{
-        margin-right: 10px;
-      }
-    }
+
     .van-tabbar {
       height: 49px;
       background:rgba(34,34,41,1);
