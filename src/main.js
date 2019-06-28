@@ -1,14 +1,18 @@
 import Vue from 'vue';
 import App from '@/App';
-import { NavBar, Icon } from 'vant';
+import {
+  Dialog,
+  NavBar,
+  Icon
+} from 'vant';
 import router from '@/router';
 import store from '@/store';
 import VeeValidate from 'vee-validate';
 import directives from './directive';
 import mixin from './mixin';
 
-
 Vue.config.productionTip = false;
+Vue.prototype.$dialog = Dialog;
 Vue.use(NavBar);
 Object.keys(directives).forEach((name) => {
   Vue.directive(name, directives[name]);

@@ -6,6 +6,7 @@
         :title="navTitle"
         @click-left="back"
         :right-text="hasAnnouncement?'全部已读':''"
+        @click-right="setAllRead"
       >
       </van-nav-bar>
       <div v-if="!hasAnnouncement">
@@ -25,9 +26,11 @@
         >
           <van-swipe-cell
             class="sysAnnouncement-list-item"
-            v-for="(item,index) in announcementList"
-            :key="index"
+            v-for="(item) in announcementList"
+            :key="item.id"
             :right-width="60"
+            :on-close="del"
+            :id="item.id"
           >
             <div class="sysAnnouncement-item-cnt">
               <div class="portrait">
@@ -37,7 +40,7 @@
                   :src="item.img"
                 >
                 <div
-                  v-if="item.isRead"
+                  v-if="!item.isRead"
                   class="dot"
                 ></div>
               </div>
@@ -77,9 +80,9 @@ export default {
   components: { WDividerWrap },
   data() {
     return {
-      hasAnnouncement: true, // 有系统消息
       announcementList: [
         {
+          id: 1,
           img: imgTest, // 此图片测试用，实际应该返回服务器图片地址
           title: '通知的大标题',
           content: '通知的内容通知的内容通知的内容通知的内容',
@@ -88,6 +91,7 @@ export default {
           isRead: true// 是否已读
         },
         {
+          id: 2,
           img: imgTest, // 此图片测试用，实际应该返回服务器图片地址
           title: '通知的大标题',
           content: '通知的内容通知的内容通知的内容通知的内容',
@@ -96,6 +100,7 @@ export default {
           isRead: true
         },
         {
+          id: 3,
           img: imgTest, // 此图片测试用，实际应该返回服务器图片地址
           title: '通知的大标题',
           content: '通知的内容通知的内容通知的内容通知的内容',
@@ -105,6 +110,46 @@ export default {
         }
       ]
     };
+  },
+  computed: {
+    hasAnnouncement() {
+      // 有系统消息
+      return !!this.announcementList.length;
+    }
+  },
+  methods: {
+    setAllRead() {
+      /* 设置全部已读 */
+      this.$dialog.confirm({
+        message: '确认全部标记为已读吗？'
+      })
+        .then(() => {
+          this.announcementList.forEach((v) => {
+            v.isRead = true;
+          });
+        });
+    },
+    del(clickPosition, instance) {
+      switch (clickPosition) {
+        case 'left':
+        case 'cell':
+        case 'outside':
+          instance.close();
+          break;
+        case 'right':
+          this.$dialog.confirm({
+            message: '确定删除吗？'
+          })
+            .then(() => {
+              const index = this.announcementList.findIndex(v => v.id === instance.$attrs.id);
+              this.announcementList.splice(index, 1);
+              instance.close();
+            });
+          break;
+        default:
+          break;
+      }
+    }
   }
 };
 </script>
