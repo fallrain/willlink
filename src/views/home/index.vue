@@ -104,7 +104,7 @@ export default {
       // padding-top: 76px;
     }
     .pbottom{
-      padding-bottom: 49px;
+      // padding-bottom: 49px;
     }
     .van-notice-bar{
       height: 44px;
