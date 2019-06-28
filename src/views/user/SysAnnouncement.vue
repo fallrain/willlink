@@ -31,6 +31,7 @@
             :right-width="60"
             :on-close="del"
             :id="item.id"
+            @click.native="toDetail"
           >
             <div class="sysAnnouncement-item-cnt">
               <div class="portrait">
@@ -68,12 +69,11 @@
 
 <script>
 import Vue from 'vue';
-import { Button, Cell, SwipeCell } from 'vant';
+import { Button, SwipeCell } from 'vant';
 import imgTest from '@/assets/img/user/user-default.jpeg';
 import WDividerWrap from '../../components/form/WDividerWrap';
 
 Vue.use(Button);
-Vue.use(Cell);
 Vue.use(SwipeCell);
 export default {
   name: 'SysAnnouncement',
@@ -130,6 +130,7 @@ export default {
         });
     },
     del(clickPosition, instance) {
+      /* 删除消息 */
       switch (clickPosition) {
         case 'left':
         case 'cell':
@@ -149,6 +150,11 @@ export default {
         default:
           break;
       }
+    },
+    toDetail() {
+      this.$router.push({
+        name: 'SysAnnouncementDetail'
+      });
     }
   }
 };

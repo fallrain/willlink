@@ -20,6 +20,7 @@ const AddVerificationCode = () => import(/* webpackChunkName: "AddVerificationCo
 const UpdatePwd = () => import(/* webpackChunkName: "UpdatePwd" */ '@/views/user/UpdatePwd');// 修改密码
 const SysAnnouncement = () => import(/* webpackChunkName: "SysAnnouncement" */ '@/views/user/SysAnnouncement');// 系统公告
 const MyTeam = () => import(/* webpackChunkName: "MyTeam" */ '@/views/user/MyTeam');// 我的团队
+const SysAnnouncementDetail = () => import(/* webpackChunkName: "SysAnnouncementDetail" */ '@/views/user/SysAnnouncementDetail');// 系统公告详情
 
 const data = [
   {
@@ -210,7 +211,17 @@ const data = [
           scrollTop: true,
           bottomNav: false
         }
-      }
+      },
+      {
+        path: 'sysAnnouncementDetail',
+        name: 'SysAnnouncementDetail',
+        component: SysAnnouncementDetail,
+        meta: {
+          title: '系统公告',
+          scrollTop: true,
+          bottomNav: false
+        }
+      },
     ]
   }
 ];

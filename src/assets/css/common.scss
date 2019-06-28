@@ -262,7 +262,7 @@
 
 /*height*/
 
-.h100per{
+.h100per {
   height: 100%;
 }
 
@@ -869,4 +869,38 @@
 }
 
 /*我的团队 end*/
+
+/*公告详情*/
+
+.sysAnnouncementDetail {
+  padding: 20px 15px;
+  border-top: 10px solid #1C1C21;
+}
+
+.sysAnnouncementDetail-title {
+  font-size: 17px;
+  line-height: 22px;
+  color: #fff;
+}
+
+.sysAnnouncementDetail-time {
+  margin-top: 14px;
+  font-size: 10px;
+  line-height: 1;
+  color: #838299;
+}
+
+.sysAnnouncementDetail-wrap {
+  background: #222229;
+}
+
+.sysAnnouncementDetail-content {
+  margin-top: 24px;
+  text-indent: 2em;
+  color: #838299;
+  font-size: 13px;
+  line-height: 21px;
+}
+
+/*公告详情 end*/
 
