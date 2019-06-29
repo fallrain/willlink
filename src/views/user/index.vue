@@ -115,6 +115,7 @@
       </div>
       <div class="user-cell-list">
         <van-cell
+          @click="toAboutUs"
         >
           <template
             slot="title"
@@ -191,6 +192,12 @@ export default {
       /* 跳转问题反馈页面 */
       this.$router.push({
         name: 'Feedback'
+      });
+    },
+    toAboutUs() {
+      /* 跳转关于我们页面 */
+      this.$router.push({
+        name: 'AboutUs'
       });
     }
   }

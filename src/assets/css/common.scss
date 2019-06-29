@@ -1008,9 +1008,38 @@
 .feedbackSuc-btns-par {
   margin-top: 66px;
   text-align: center;
-  .cm-btn-primary{
+
+  .cm-btn-primary {
     width: 130px;
   }
 }
 
 /*反馈成功 end*/
+
+/*关于我们*/
+
+.aboutUs-title {
+  text-align: center;
+  font-size: 17px;
+  color: #fff;
+  margin-bottom: 36px;
+}
+
+.aboutUs-content {
+  margin-top: 20px;
+  font-size: 13px;
+  color: #838299;
+  line-height: 21px;
+}
+
+.aboutUs-subtitle{
+  margin-bottom: 25px;
+  font-size: 14px;
+  color: #fff;
+  line-height: 21px;
+}
+
+.aboutUs-detail{
+  padding: 20px 22px;
+}
+/*关于我们*/
