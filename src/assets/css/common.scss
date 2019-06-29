@@ -1152,17 +1152,119 @@
   text-align: center;
 }
 
-.coldWalletLoad-ta-par{
-  .HTextarea-ta{
+.coldWalletLoad-ta-par {
+  .HTextarea-ta {
     height: 100%;
     padding-top: 26px;
   }
 }
 
-.coldWalletLoad-btns{
+.coldWalletLoad-btns {
   margin-top: 80px;
   padding-left: 30px;
   padding-right: 30px;
 }
+
 /*冷钱包加载 end*/
+
+/*助记词设置*/
+
+.mnemonicList-backup-status {
+  color: #838299;
+  font-size: 13px;
+  text-align: right;
+
+  &.active {
+    color: $login-green;
+  }
+}
+
+.mnemonicList-cnt {
+  .wItem-item-right {
+    .iconfont {
+      margin-left: 13px;
+    }
+  }
+}
+
+.mnemonicSetting-head {
+  margin-top: 50px;
+  margin-bottom: 20px;
+  text-align: center;
+  line-height: 1;
+
+  .name {
+    color: #fff;
+    font-size: 20px;
+  }
+
+  .info {
+    margin-top: 13px;
+    color: #828298;
+    font-size: 12px;
+  }
+}
+
+.mnemonicSetting-cnt {
+
+}
+
+.mnemonicSetting-word-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 25px;
+}
+
+.mnemonicSetting-word-item {
+  width: 70px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 5px;
+  background: #828298;
+  color: #F5F5F5;
+  text-align: center;
+  margin-right: 32px;
+  margin-bottom: 15px;
+  font-size: 15px;
+
+  &:nth-child(3n) {
+    margin-right: 0;
+  }
+}
+
+.mnemonicSetting-word-list {
+  padding-left: 35px;
+  padding-right: 35px;
+}
+
+.mnemonicSetting-word-change {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: #F5F5F5;
+  font-size: 15px;
+
+  .iconfont {
+    color: $login-green;
+    font-size: 15px;
+    margin-right: 10px;
+  }
+}
+
+.mnemonicSetting-btns {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-top: 88px;
+}
+
+.mnemonicSettingBackup-btm-tips {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 14px;
+  color: #828298;
+}
+
+/*助记词设置 end*/
+
 

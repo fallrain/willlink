@@ -103,6 +103,7 @@
           </template>
         </van-cell>
         <van-cell
+          @click="toMnemonicList"
         >
           <template
             slot="title"
@@ -212,6 +213,12 @@ export default {
       /* 跳转冷钱包加载页面 */
       this.$router.push({
         name: 'ColdWalletLoad'
+      });
+    },
+    toMnemonicList() {
+      /* 跳转助记词设置页面 */
+      this.$router.push({
+        name: 'MnemonicList'
       });
     }
   }

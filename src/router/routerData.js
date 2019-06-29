@@ -43,6 +43,9 @@ const PrivateKeyImportList = () => import(/* webpackChunkName: "PrivateKeyImport
 const PrivateKeyDelList = () => import(/* webpackChunkName: "PrivateKeyDelList" */ '@/views/user/PrivateKeyDelList');// 私钥删除列表
 const PrivateKeyUpdateList = () => import(/* webpackChunkName: "PrivateKeyUpdateList" */ '@/views/user/PrivateKeyUpdateList');// 私钥修改列表
 const ColdWalletLoad = () => import(/* webpackChunkName: "ColdWalletLoad" */ '@/views/user/ColdWalletLoad');// 冷钱包加载
+const MnemonicList = () => import(/* webpackChunkName: "MnemonicList" */ '@/views/user/MnemonicList');// 助记词设置列表
+const MnemonicSetting = () => import(/* webpackChunkName: "MnemonicSetting" */ '@/views/user/MnemonicSetting');// 助记词设置
+const MnemonicSettingBackup = () => import(/* webpackChunkName: "MnemonicSettingBackup" */ '@/views/user/MnemonicSettingBackup');// 助记词设置
 
 const data = [
   {
@@ -460,6 +463,38 @@ const data = [
         component: ColdWalletLoad,
         meta: {
           title: '冷钱包加载',
+          scrollTop: true,
+          bottomNav: false
+        }
+      },
+      {
+        path: 'mnemonicList',
+        name: 'MnemonicList',
+        component: MnemonicList,
+        meta: {
+          title: '助记词设置',
+          scrollTop: true,
+          bottomNav: false
+        }
+      },
+      {
+        path: 'mnemonicSetting',
+        name: 'MnemonicSetting',
+        props: true,
+        component: MnemonicSetting,
+        meta: {
+          title: '助记词设置',
+          scrollTop: true,
+          bottomNav: false
+        }
+      },
+      {
+        path: 'mnemonicSettingBackup',
+        name: 'MnemonicSettingBackup',
+        props: true,
+        component: MnemonicSettingBackup,
+        meta: {
+          title: '助记词设置',
           scrollTop: true,
           bottomNav: false
         }
