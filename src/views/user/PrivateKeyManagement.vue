@@ -19,7 +19,7 @@
       ></w-item>
       <w-item
         title="私钥修改"
-        urlName=""
+        urlName="PrivateKeyUpdateList"
         @rightClick="jump"
       ></w-item>
     </div>
