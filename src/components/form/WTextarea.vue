@@ -6,6 +6,8 @@
       :maxlength="maxNumber"
       v-model="taValue"
       @input="handleInput"
+      :disabled="disabled"
+      :readonly="readonly"
     ></textarea>
     <p
       v-if="conuntMaxNumber"
@@ -32,6 +34,14 @@ export default {
     placeHolder: {
       type: String,
       default: '请输入'
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    readonly: {
+      type: Boolean,
+      default: false
     }
   },
   data() {

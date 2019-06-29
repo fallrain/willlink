@@ -90,6 +90,7 @@
           </template>
         </van-cell>
         <van-cell
+          @click="toColdWalletLoad"
         >
           <template
             slot="title"
@@ -205,6 +206,12 @@ export default {
       /* 跳转私钥管理页面 */
       this.$router.push({
         name: 'PrivateKeyManagement'
+      });
+    },
+    toColdWalletLoad() {
+      /* 跳转冷钱包加载页面 */
+      this.$router.push({
+        name: 'ColdWalletLoad'
       });
     }
   }

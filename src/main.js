@@ -1,19 +1,19 @@
 import Vue from 'vue';
 import App from '@/App';
 import {
-  Dialog,
-  NavBar,
-  Icon,
-  Toast
+  Dialog, Icon, NavBar, Toast
 } from 'vant';
 import router from '@/router';
 import store from '@/store';
 import VeeValidate from 'vee-validate';
 import directives from './directive';
 import mixin from './mixin';
+import wUtil from '@/lib/util/util';
 
 Vue.config.productionTip = false;
 Vue.prototype.$dialog = Dialog;
+Vue.prototype.wUtil = wUtil;
+
 Vue.use(NavBar);
 Vue.use(Toast);
 

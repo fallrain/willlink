@@ -28,6 +28,7 @@ const AboutUs = () => import(/* webpackChunkName: "AboutUs" */ '@/views/user/Abo
 const PrivateKeyManagement = () => import(/* webpackChunkName: "PrivateKeyManagement" */ '@/views/user/PrivateKeyManagement');// 私钥管理
 const PrivateKeyImport = () => import(/* webpackChunkName: "PrivateKeyImport" */ '@/views/user/PrivateKeyImport');// 私钥导入
 const PrivateKeyImportList = () => import(/* webpackChunkName: "PrivateKeyImportList" */ '@/views/user/PrivateKeyImportList');// 私钥导入列表
+const ColdWalletLoad = () => import(/* webpackChunkName: "ColdWalletLoad" */ '@/views/user/ColdWalletLoad');// 冷钱包加载
 
 const data = [
   {
@@ -295,6 +296,16 @@ const data = [
         component: PrivateKeyImport,
         meta: {
           title: '私钥导入',
+          scrollTop: true,
+          bottomNav: false
+        }
+      },
+      {
+        path: 'coldWalletLoad',
+        name: 'ColdWalletLoad',
+        component: ColdWalletLoad,
+        meta: {
+          title: '冷钱包加载',
           scrollTop: true,
           bottomNav: false
         }
