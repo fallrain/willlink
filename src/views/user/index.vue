@@ -127,6 +127,7 @@
           </template>
         </van-cell>
         <van-cell
+          @click="toFeedback"
         >
           <template
             slot="title"
@@ -184,6 +185,12 @@ export default {
       /* 跳转我的收益页面 */
       this.$router.push({
         name: 'MyIncome'
+      });
+    },
+    toFeedback() {
+      /* 跳转问题反馈页面 */
+      this.$router.push({
+        name: 'Feedback'
       });
     }
   }
