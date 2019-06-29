@@ -1053,3 +1053,43 @@
 }
 
 /*私钥管理 end*/
+
+/*私钥导入*/
+
+.privateKeyImport-cnt {
+  padding: 15px;
+
+  .wItem-item {
+    background: linear-gradient(to right, #33333F, #444956);
+    height: 70px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+  }
+}
+
+.privateKeyImport-cnt-head {
+  color: #838299;
+  font-size: 13px;
+  line-height: 1;
+  margin-top: 4px;
+  margin-bottom: 30px;
+  padding-left: 13px;
+}
+
+.privateKeyImport-left-item {
+
+}
+
+.privateKeyImport-item-typeImg {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+}
+
+.privateKeyImport-item-name {
+  font-size: 15px;
+  color: #fff;
+  margin-left: 18px;
+}
+
+/*私钥导入*/
