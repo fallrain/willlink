@@ -31,6 +31,13 @@ const UpdatePwd = () => import(/* webpackChunkName: "UpdatePwd" */ '@/views/user
 const SysAnnouncement = () => import(/* webpackChunkName: "SysAnnouncement" */ '@/views/user/SysAnnouncement');// 系统公告
 const MyTeam = () => import(/* webpackChunkName: "MyTeam" */ '@/views/user/MyTeam');// 我的团队
 const SysAnnouncementDetail = () => import(/* webpackChunkName: "SysAnnouncementDetail" */ '@/views/user/SysAnnouncementDetail');// 系统公告详情
+const MyIncome = () => import(/* webpackChunkName: "MyIncome" */ '@/views/user/MyIncome');// 我的收益
+const Feedback = () => import(/* webpackChunkName: "Feedback" */ '@/views/user/Feedback');// 问题反馈
+const FeedbackSuc = () => import(/* webpackChunkName: "FeedbackSuc" */ '@/views/user/FeedbackSuc');// 反馈成功
+const AboutUs = () => import(/* webpackChunkName: "AboutUs" */ '@/views/user/AboutUs');// 关于我们
+const PrivateKeyManagement = () => import(/* webpackChunkName: "PrivateKeyManagement" */ '@/views/user/PrivateKeyManagement');// 私钥管理
+const PrivateKeyImport = () => import(/* webpackChunkName: "PrivateKeyImport" */ '@/views/user/PrivateKeyImport');// 私钥导入
+const PrivateKeyImportList = () => import(/* webpackChunkName: "PrivateKeyImportList" */ '@/views/user/PrivateKeyImportList');// 私钥导入列表
 
 const data = [
   {
@@ -328,6 +335,76 @@ const data = [
         component: SysAnnouncementDetail,
         meta: {
           title: '系统公告',
+          scrollTop: true,
+          bottomNav: false
+        }
+      },
+      {
+        path: 'myIncome',
+        name: 'MyIncome',
+        component: MyIncome,
+        meta: {
+          title: '我的收益',
+          scrollTop: true,
+          bottomNav: false
+        }
+      },
+      {
+        path: 'feedback',
+        name: 'Feedback',
+        component: Feedback,
+        meta: {
+          title: '问题反馈',
+          scrollTop: true,
+          bottomNav: false
+        }
+      },
+      {
+        path: 'feedbackSuc',
+        name: 'FeedbackSuc',
+        component: FeedbackSuc,
+        meta: {
+          title: '反馈成功',
+          scrollTop: true,
+          bottomNav: false
+        }
+      },
+      {
+        path: 'aboutUs',
+        name: 'AboutUs',
+        component: AboutUs,
+        meta: {
+          title: '关于我们',
+          scrollTop: true,
+          bottomNav: false
+        }
+      },
+      {
+        path: 'privateKeyManagement',
+        name: 'PrivateKeyManagement',
+        component: PrivateKeyManagement,
+        meta: {
+          title: '私钥管理',
+          scrollTop: true,
+          bottomNav: false
+        }
+      },
+      {
+        path: 'privateKeyImportList',
+        name: 'PrivateKeyImportList',
+        component: PrivateKeyImportList,
+        meta: {
+          title: '私钥导入',
+          scrollTop: true,
+          bottomNav: false
+        }
+      },
+      {
+        path: 'privateKeyImport',
+        name: 'PrivateKeyImport',
+        component: PrivateKeyImport,
+        meta: {
+          title: '私钥导入',
           scrollTop: true,
           bottomNav: false
         }

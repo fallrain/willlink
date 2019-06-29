@@ -14,7 +14,10 @@ export default new Vuex.Store({
   ],
   state: {
     aliveExclude: [
-      'Login'
+      'Login',
+      'SysAnnouncementDetail',
+      'Feedback',
+      'PrivateKeyImport'
     ]
   },
   mutations: {

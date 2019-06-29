@@ -62,6 +62,7 @@
 
         </van-cell>
         <van-cell
+          @click="toMyIncome"
         >
           <template
             slot="title"
@@ -76,6 +77,7 @@
       </div>
       <div class="user-cell-list">
         <van-cell
+          @click="toPrivateKeyManagement"
         >
           <template
             slot="title"
@@ -114,6 +116,7 @@
       </div>
       <div class="user-cell-list">
         <van-cell
+          @click="toAboutUs"
         >
           <template
             slot="title"
@@ -126,6 +129,7 @@
           </template>
         </van-cell>
         <van-cell
+          @click="toFeedback"
         >
           <template
             slot="title"
@@ -177,6 +181,30 @@ export default {
       /* 跳转我的团队页面 */
       this.$router.push({
         name: 'MyTeam'
+      });
+    },
+    toMyIncome() {
+      /* 跳转我的收益页面 */
+      this.$router.push({
+        name: 'MyIncome'
+      });
+    },
+    toFeedback() {
+      /* 跳转问题反馈页面 */
+      this.$router.push({
+        name: 'Feedback'
+      });
+    },
+    toAboutUs() {
+      /* 跳转关于我们页面 */
+      this.$router.push({
+        name: 'AboutUs'
+      });
+    },
+    toPrivateKeyManagement() {
+      /* 跳转私钥管理页面 */
+      this.$router.push({
+        name: 'PrivateKeyManagement'
       });
     }
   }

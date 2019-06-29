@@ -3,7 +3,7 @@
     <!-- 头部导航栏-->
     <van-nav-bar :title="title" left-arrow @click-left="onClickLeft" class="main-header" v-show="topnav"/>
     <!-- 内容区域-->
-    <div class="mian-body" :class="{ptop: !bottomnav, pbottom: !topnav } " >
+    <div class="mian-body" :class="{ptop: !bottomnav, pbottom: !topnav && bottomnav} " >
       <router-view/>
     </div>
     <!-- 底部导航栏-->
@@ -103,7 +103,7 @@ export default {
       // padding-top: 76px;
     }
     .pbottom{
-      // padding-bottom: 49px;
+      padding-bottom: 49px;
     }
 
     .van-tabbar {

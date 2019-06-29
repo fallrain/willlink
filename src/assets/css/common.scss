@@ -192,12 +192,20 @@
   margin-top: 12px;
 }
 
+.mt20 {
+  margin-top: 20px;
+}
+
 .mt23 {
   margin-top: 23px;
 }
 
 .mt27 {
   margin-top: 27px;
+}
+
+.mt30 {
+  margin-top: 30px;
 }
 
 .mt82 {
@@ -291,6 +299,16 @@
     background: #59C1B6;
     box-shadow: 0 5px 5px 0 rgba(89, 193, 182, 0.3);
   }
+}
+
+.cm-btn-primary {
+  width: 100%;
+  color: $login-green;
+  font-size: 14px;
+  height: 30px;
+  border: 1px solid $login-green;
+  border-radius: 15px;
+  background: transparent;
 }
 
 .img100per {
@@ -903,4 +921,223 @@
 }
 
 /*公告详情 end*/
+
+/*我的收益*/
+
+.myIncome-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 1px;
+  background: #222229;
+}
+
+.myIncome-item-left {
+  line-height: 1;
+
+  & > .name {
+    color: #fff;
+    font-size: 16px;
+  }
+
+  & > .type {
+    color: #838299;
+    font-size: 13px;
+  }
+}
+
+.myIncome-item-right {
+  line-height: 1;
+  text-align: right;
+
+  & > .time {
+    color: #838299;
+    font-size: 10px;
+  }
+
+  & > .income {
+    color: $login-green;
+    font-size: 18px;
+
+    &.positive {
+      color: #FF6B6B;
+    }
+  }
+}
+
+/*我的收益 end*/
+
+
+/*问题反馈*/
+
+.feedback-form {
+  padding: 10px 15px;
+
+  .van-cell {
+    height: 45px;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    &:after {
+      display: none;
+    }
+  }
+}
+
+.feedback-btns-par {
+  margin-top: 28px;
+  text-align: right;
+}
+
+.feedback-submit-btn {
+  width: 60px;
+  height: 25px;
+  background: #59C1B6;
+  border-radius: 5px;
+  margin-left: auto;
+  font-size: 17px;
+}
+
+/*问题反馈 end*/
+
+/*反馈成功*/
+
+.feedbackSuc-btns-par {
+  margin-top: 66px;
+  text-align: center;
+
+  .cm-btn-primary {
+    width: 130px;
+  }
+}
+
+/*反馈成功 end*/
+
+/*关于我们*/
+
+.aboutUs-title {
+  text-align: center;
+  font-size: 17px;
+  color: #fff;
+  margin-bottom: 36px;
+}
+
+.aboutUs-content {
+  margin-top: 20px;
+  font-size: 13px;
+  color: #838299;
+  line-height: 21px;
+}
+
+.aboutUs-subtitle {
+  margin-bottom: 25px;
+  font-size: 14px;
+  color: #fff;
+  line-height: 21px;
+}
+
+.aboutUs-detail {
+  padding: 20px 22px;
+}
+
+/*关于我们*/
+
+
+/*私钥管理*/
+
+.privateKeyManagement-list {
+
+}
+
+/*私钥管理 end*/
+
+/*私钥导入*/
+
+.privateKeyImport-cnt {
+  padding: 15px;
+
+  .wItem-item {
+    background: linear-gradient(to right, #33333F, #444956);
+    height: 70px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+  }
+}
+
+.privateKeyImport-cnt-head {
+  color: #838299;
+  font-size: 13px;
+  line-height: 1;
+  margin-top: 4px;
+  margin-bottom: 30px;
+  padding-left: 13px;
+}
+
+.privateKeyImport-left-item {
+
+}
+
+.privateKeyImport-item-typeImg {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+}
+
+.privateKeyImport-item-name {
+  font-size: 15px;
+  color: #fff;
+  margin-left: 18px;
+}
+
+/*私钥导入 end*/
+
+/*私钥导入表单*/
+
+.privateKeyImport-form {
+  .HTextarea {
+    height: 100px;
+    border-radius: 10px;
+  }
+}
+
+.privateKeyImport-tips {
+  color: #FF6B6B;
+  font-size: 10px;
+  line-height: 10px;
+  margin-top: 10px;
+
+  .iconfont {
+    font-size: 10px;
+    margin-right: 4px;
+  }
+}
+
+.privateKeyImport-btns {
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-top: 106px;
+}
+
+.privateKeyImport-form-ta-par {
+  position: relative;
+}
+
+.privateKeyImport-status {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width:210px;
+  height:40px;
+  line-height: 40px;
+  text-align: center;
+  background: #656476;
+  color: #fff;
+  font-size: 14px;
+}
+
+/*私钥导入表单 end*/
 

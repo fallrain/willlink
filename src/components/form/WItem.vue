@@ -1,13 +1,16 @@
 <template>
   <div class="wItem-item">
-    <span class="wItem-item-title">{{title}}</span>
+    <div class="wItem-item-left">
+      <span class="wItem-item-title" v-show="title">{{title}}</span>
+      <slot name="left"></slot>
+    </div>
     <div
       v-if="arrow"
       class="wItem-item-right"
     >
       <span
         class="wItem-item-right-val"
-        v-show="value!==undefined"
+        v-show="value"
       >{{value}}</span>
       <slot name="right"></slot>
       <i
@@ -39,7 +42,7 @@ export default {
   methods: {
     rightHandle() {
       /* 右箭头点击事件 */
-      this.$emit('rightClick');
+      this.$emit('rightClick',this);
     }
   }
 };
