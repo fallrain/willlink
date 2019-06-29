@@ -7,13 +7,13 @@
     >
     </van-nav-bar>
     <div class="privateKeyImport-cnt">
-      <p class="privateKeyImport-cnt-head">选择导入钱包的币种</p>
+      <p class="privateKeyImport-cnt-head">选择删除钱包的币种</p>
       <div class="">
 
       </div>
       <w-item
         @rightClick="jump"
-        urlName="PrivateKeyImport"
+        urlName="PrivateKeyDel"
       >
         <div
           slot="left"
@@ -28,7 +28,7 @@
       </w-item>
       <w-item
         @rightClick="jump"
-        urlName="PrivateKeyImport"
+        urlName="PrivateKeyDel"
       >
         <div
           slot="left"
@@ -43,7 +43,7 @@
       </w-item>
       <w-item
         @rightClick="jump"
-        urlName="PrivateKeyImport"
+        urlName="PrivateKeyDel"
       >
         <div
           slot="left"
@@ -58,7 +58,7 @@
       </w-item>
       <w-item
         @rightClick="jump"
-        urlName="PrivateKeyImport"
+        urlName="PrivateKeyDel"
       >
         <div
           slot="left"
@@ -73,7 +73,7 @@
       </w-item>
       <w-item
         @rightClick="jump"
-        urlName="PrivateKeyImport"
+        urlName="PrivateKeyDel"
       >
         <div
           slot="left"
@@ -88,7 +88,7 @@
       </w-item>
       <w-item
         @rightClick="jump"
-        urlName="PrivateKeyImport"
+        urlName="PrivateKeyDel"
       >
         <div
           slot="left"

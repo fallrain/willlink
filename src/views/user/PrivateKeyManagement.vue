@@ -9,12 +9,12 @@
     <div class="privateKeyManagement-list mt10">
       <w-item
         title="私钥导入"
-        urlName="PrivateKeyImport"
+        urlName="PrivateKeyImportList"
         @rightClick="jump"
       ></w-item>
       <w-item
         title="私钥删除"
-        urlName=""
+        urlName="PrivateKeyDelList"
         @rightClick="jump"
       ></w-item>
       <w-item

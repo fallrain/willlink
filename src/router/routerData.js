@@ -37,7 +37,9 @@ const FeedbackSuc = () => import(/* webpackChunkName: "FeedbackSuc" */ '@/views/
 const AboutUs = () => import(/* webpackChunkName: "AboutUs" */ '@/views/user/AboutUs');// 关于我们
 const PrivateKeyManagement = () => import(/* webpackChunkName: "PrivateKeyManagement" */ '@/views/user/PrivateKeyManagement');// 私钥管理
 const PrivateKeyImport = () => import(/* webpackChunkName: "PrivateKeyImport" */ '@/views/user/PrivateKeyImport');// 私钥导入
+const PrivateKeyDel = () => import(/* webpackChunkName: "PrivateKeyDel" */ '@/views/user/PrivateKeyDel');// 私钥删除
 const PrivateKeyImportList = () => import(/* webpackChunkName: "PrivateKeyImportList" */ '@/views/user/PrivateKeyImportList');// 私钥导入列表
+const PrivateKeyDelList = () => import(/* webpackChunkName: "PrivateKeyDelList" */ '@/views/user/PrivateKeyDelList');// 私钥删除列表
 const ColdWalletLoad = () => import(/* webpackChunkName: "ColdWalletLoad" */ '@/views/user/ColdWalletLoad');// 冷钱包加载
 
 const data = [
@@ -406,6 +408,26 @@ const data = [
         component: PrivateKeyImport,
         meta: {
           title: '私钥导入',
+          scrollTop: true,
+          bottomNav: false
+        }
+      },
+      {
+        path: 'privateKeyList',
+        name: 'PrivateKeyDelList',
+        component: PrivateKeyDelList,
+        meta: {
+          title: '私钥删除',
+          scrollTop: true,
+          bottomNav: false
+        }
+      },
+      {
+        path: 'privateKeyDel',
+        name: 'PrivateKeyDel',
+        component: PrivateKeyDel,
+        meta: {
+          title: '私钥删除',
           scrollTop: true,
           bottomNav: false
         }

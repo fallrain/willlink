@@ -19,6 +19,7 @@
           <div
             v-show="importStatus"
             class="privateKeyImport-status"
+            @click="hideImportStatus"
           >{{importStatus}}
           </div>
         </div>
@@ -69,6 +70,9 @@ export default {
       } else {
         this.btnDisabled = true;
       }
+    },
+    hideImportStatus() {
+      this.importStatus = '';
     },
     submit() {
       /* 导入 */
