@@ -62,6 +62,7 @@
 
         </van-cell>
         <van-cell
+          @click="toMyIncome"
         >
           <template
             slot="title"
@@ -177,6 +178,12 @@ export default {
       /* 跳转我的团队页面 */
       this.$router.push({
         name: 'MyTeam'
+      });
+    },
+    toMyIncome() {
+      /* 跳转我的收益页面 */
+      this.$router.push({
+        name: 'MyIncome'
       });
     }
   }

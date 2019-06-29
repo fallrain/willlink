@@ -904,3 +904,50 @@
 
 /*公告详情 end*/
 
+/*我的收益*/
+
+.myIncome-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 1px;
+  background: #222229;
+}
+
+.myIncome-item-left {
+  line-height: 1;
+
+  & > .name {
+    color: #fff;
+    font-size: 16px;
+  }
+
+  & > .type {
+    color: #838299;
+    font-size: 13px;
+  }
+}
+
+.myIncome-item-right {
+  line-height: 1;
+  text-align: right;
+
+  & > .time {
+    color: #838299;
+    font-size: 10px;
+  }
+
+  & > .income {
+    color: $login-green;
+    font-size: 18px;
+
+    &.positive {
+      color: #FF6B6B;
+    }
+  }
+}
+
+/*我的收益 end*/

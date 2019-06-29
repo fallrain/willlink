@@ -21,6 +21,7 @@ const UpdatePwd = () => import(/* webpackChunkName: "UpdatePwd" */ '@/views/user
 const SysAnnouncement = () => import(/* webpackChunkName: "SysAnnouncement" */ '@/views/user/SysAnnouncement');// 系统公告
 const MyTeam = () => import(/* webpackChunkName: "MyTeam" */ '@/views/user/MyTeam');// 我的团队
 const SysAnnouncementDetail = () => import(/* webpackChunkName: "SysAnnouncementDetail" */ '@/views/user/SysAnnouncementDetail');// 系统公告详情
+const MyIncome = () => import(/* webpackChunkName: "MyIncome" */ '@/views/user/MyIncome');// 我的收益
 
 const data = [
   {
@@ -218,6 +219,16 @@ const data = [
         component: SysAnnouncementDetail,
         meta: {
           title: '系统公告',
+          scrollTop: true,
+          bottomNav: false
+        }
+      },
+      {
+        path: 'myIncome',
+        name: 'MyIncome',
+        component: MyIncome,
+        meta: {
+          title: '我的收益',
           scrollTop: true,
           bottomNav: false
         }
