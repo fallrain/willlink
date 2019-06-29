@@ -25,6 +25,7 @@ const MyIncome = () => import(/* webpackChunkName: "MyIncome" */ '@/views/user/M
 const Feedback = () => import(/* webpackChunkName: "Feedback" */ '@/views/user/Feedback');// 问题反馈
 const FeedbackSuc = () => import(/* webpackChunkName: "FeedbackSuc" */ '@/views/user/FeedbackSuc');// 反馈成功
 const AboutUs = () => import(/* webpackChunkName: "AboutUs" */ '@/views/user/AboutUs');// 关于我们
+const PrivateKeyManagement = () => import(/* webpackChunkName: "PrivateKeyManagement" */ '@/views/user/PrivateKeyManagement');// 私钥管理
 
 const data = [
   {
@@ -262,6 +263,16 @@ const data = [
         component: AboutUs,
         meta: {
           title: '关于我们',
+          scrollTop: true,
+          bottomNav: false
+        }
+      },
+      {
+        path: 'privateKeyManagement',
+        name: 'PrivateKeyManagement',
+        component: PrivateKeyManagement,
+        meta: {
+          title: '私钥管理',
           scrollTop: true,
           bottomNav: false
         }

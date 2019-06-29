@@ -77,6 +77,7 @@
       </div>
       <div class="user-cell-list">
         <van-cell
+          @click="toPrivateKeyManagement"
         >
           <template
             slot="title"
@@ -198,6 +199,12 @@ export default {
       /* 跳转关于我们页面 */
       this.$router.push({
         name: 'AboutUs'
+      });
+    },
+    toPrivateKeyManagement() {
+      /* 跳转私钥管理页面 */
+      this.$router.push({
+        name: 'PrivateKeyManagement'
       });
     }
   }

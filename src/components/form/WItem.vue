@@ -39,7 +39,7 @@ export default {
   methods: {
     rightHandle() {
       /* 右箭头点击事件 */
-      this.$emit('rightClick');
+      this.$emit('rightClick',this);
     }
   }
 };

@@ -45,21 +45,21 @@ export default {
           income: '20.00'
         },
         {
-          id: 1,
+          id: 2,
           type: 'WID',
           dateTime: '2019-6-17 23:43',
           positive: true, // 是否为正数
           income: '20.00'
         },
         {
-          id: 1,
+          id: 3,
           type: 'WID',
           dateTime: '2019-6-17 23:43',
           positive: false, // 是否为正数
           income: '5.39'
         },
         {
-          id: 1,
+          id: 4,
           type: 'WID',
           dateTime: '2019-6-17 23:43',
           positive: true, // 是否为正数
