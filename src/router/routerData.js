@@ -8,10 +8,20 @@ const RegisterSuc = () => import(/* webpackChunkName: "RegisterSuc" */ '@/views/
 const Home = () => import('@/views/home/index'); // 引到页
 const HomePage = () => import('@/views/index/index'); // 首页
 const HomeProduct = () => import('@/views/index/product'); // 我的产品
-const HomeAdd = () => import('@/views/index/add'); // 新增
-const HomeSearch = () => import('@/views/index/search'); // 搜索
-const HomeDetail = () => import('@/views/index/detail'); // 详情
+const HomeAdd = () => import('@/views/index/add'); // 首页新增
+const HomeSearch = () => import('@/views/index/search'); // 首页搜索
+const HomeDetail = () => import('@/views/index/detail'); // 首页资产详情
+const HomeInto = () => import('@/views/index/into'); // 首页转入
+const HomeRollOut = () => import('@/views/index/rollout'); // 首页转出
+const HomeRollOutDetail = () => import('@/views/index/rolloutDetail'); // 首页转出详情
 const Product = () => import('@/views/product/index'); // 产品
+const ProductVideo = () => import('@/views/product/productVideo'); // 产品
+const ProductOrder = () => import('@/views/product/order'); // 生成订单
+const ProductAuditOrder = () => import('@/views/product/auditOrder'); // 提交审核
+const ProductOrderSucceed = () => import('@/views/product/orderSucceed'); // 生成订单
+const ProductReviewOrder = () => import('@/views/product/reviewOrder'); // 审核中
+const ProductOrderFailure = () => import('@/views/product/orderFailure'); // 审核失败
+const ProductOrderEnd = () => import('@/views/product/orderEnd'); // 交易结束
 const Found = () => import('@/views/found/index'); // 发现
 const User = () => import('@/views/user/index'); // 我的
 const UserSetting = () => import(/* webpackChunkName: "UserSetting" */ '@/views/user/UserSetting');// 个人设置
@@ -132,6 +142,36 @@ const data = [
         }
       },
       {
+        name: 'HomeInto',
+        path: '/homeInto',
+        component: HomeInto,
+        meta: {
+          title: '',
+          bottomNav: false,
+          topNav: false,
+        }
+      },
+      {
+        name: 'HomeRollOut',
+        path: '/homeRollOut',
+        component: HomeRollOut,
+        meta: {
+          title: '',
+          bottomNav: false,
+          topNav: false,
+        }
+      },
+      {
+        name: 'HomeRollOutDetail',
+        path: '/homeRollOutDetail',
+        component: HomeRollOutDetail,
+        meta: {
+          title: '账单详情',
+          bottomNav: false,
+          topNav: false,
+        }
+      },
+      {
         name: 'Product',
         path: '/product',
         component: Product,
@@ -139,6 +179,76 @@ const data = [
           title: '产品',
           topNav: false,
           bottomNav: true,
+        }
+      },
+      {
+        name: 'ProductVideo',
+        path: '/productVideo',
+        component: ProductVideo,
+        meta: {
+          title: '',
+          topNav: false,
+          bottomNav: false,
+        }
+      },
+      {
+        name: 'ProductOrder',
+        path: '/productOrder',
+        component: ProductOrder,
+        meta: {
+          title: '订单',
+          topNav: false,
+          bottomNav: false,
+        }
+      },
+      {
+        name: 'ProductAuditOrder',
+        path: '/productAuditOrder',
+        component: ProductAuditOrder,
+        meta: {
+          title: '订单',
+          topNav: false,
+          bottomNav: false,
+        }
+      },
+      {
+        name: 'ProductOrderSucceed',
+        path: '/productOrderSucceed',
+        component: ProductOrderSucceed,
+        meta: {
+          title: '',
+          topNav: false,
+          bottomNav: false,
+        }
+      },
+      {
+        name: 'ProductReviewOrder',
+        path: '/productReviewOrder',
+        component: ProductReviewOrder,
+        meta: {
+          title: '',
+          topNav: false,
+          bottomNav: false,
+        }
+      },
+      {
+        name: 'ProductOrderFailure',
+        path: '/productOrderFailure',
+        component: ProductOrderFailure,
+        meta: {
+          title: '',
+          topNav: false,
+          bottomNav: false,
+        }
+      },
+      {
+        name: 'ProductOrderEnd',
+        path: '/productOrderEnd',
+        component: ProductOrderEnd,
+        meta: {
+          title: '',
+          topNav: false,
+          bottomNav: false,
         }
       },
       {

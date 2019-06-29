@@ -2,7 +2,7 @@
   <div class="">
     <div class="homeNav">
       <van-notice-bar left-icon="volume-o">公告：新版钱包上线公告</van-notice-bar>
-      <div class="sweepBtn"><van-icon :name="sweep" /></div>
+      <div class="sweepBtn"><van-icon :name="sweepImg" /></div>
     </div>
     <div class="homeBox">
       <!--总资产-->
@@ -112,7 +112,7 @@
 import Vue from 'vue';
 import { Icon, Image } from 'vant';
 import add from '@/icon/add.png';
-import sweep from '@/icon/sweep.png'
+import sweep from '@/icon/sweep.png';
 
 Vue.use(Icon);
 Vue.use(Image);
@@ -124,7 +124,7 @@ export default {
   data() {
     return {
       addBtn: add,
-      sweep: sweep,
+      sweepImg: sweep,
     };
   },
   computed: {},
@@ -166,8 +166,9 @@ export default {
     }
     .sweepBtn{
       position: absolute;
-      top: 13px;
-      right: 15px;
+      top: 0;
+      right: 0;
+      margin: 13px 15px;
     }
   }
   .homeBox{
