@@ -22,6 +22,7 @@ const SysAnnouncement = () => import(/* webpackChunkName: "SysAnnouncement" */ '
 const MyTeam = () => import(/* webpackChunkName: "MyTeam" */ '@/views/user/MyTeam');// 我的团队
 const SysAnnouncementDetail = () => import(/* webpackChunkName: "SysAnnouncementDetail" */ '@/views/user/SysAnnouncementDetail');// 系统公告详情
 const MyIncome = () => import(/* webpackChunkName: "MyIncome" */ '@/views/user/MyIncome');// 我的收益
+const Feedback = () => import(/* webpackChunkName: "Feedback" */ '@/views/user/Feedback');// 问题反馈
 
 const data = [
   {
@@ -229,6 +230,16 @@ const data = [
         component: MyIncome,
         meta: {
           title: '我的收益',
+          scrollTop: true,
+          bottomNav: false
+        }
+      },
+      {
+        path: 'feedback',
+        name: 'Feedback',
+        component: Feedback,
+        meta: {
+          title: '问题反馈',
           scrollTop: true,
           bottomNav: false
         }

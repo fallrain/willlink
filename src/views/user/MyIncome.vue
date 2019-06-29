@@ -1,6 +1,7 @@
 <template>
   <div>
     <van-nav-bar
+      :title="navTitle"
       left-arrow
       @click-left="back"
     >
