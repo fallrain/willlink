@@ -27,6 +27,7 @@ const FeedbackSuc = () => import(/* webpackChunkName: "FeedbackSuc" */ '@/views/
 const AboutUs = () => import(/* webpackChunkName: "AboutUs" */ '@/views/user/AboutUs');// 关于我们
 const PrivateKeyManagement = () => import(/* webpackChunkName: "PrivateKeyManagement" */ '@/views/user/PrivateKeyManagement');// 私钥管理
 const PrivateKeyImport = () => import(/* webpackChunkName: "PrivateKeyImport" */ '@/views/user/PrivateKeyImport');// 私钥导入
+const PrivateKeyImportList = () => import(/* webpackChunkName: "PrivateKeyImportList" */ '@/views/user/PrivateKeyImportList');// 私钥导入列表
 
 const data = [
   {
@@ -274,6 +275,16 @@ const data = [
         component: PrivateKeyManagement,
         meta: {
           title: '私钥管理',
+          scrollTop: true,
+          bottomNav: false
+        }
+      },
+      {
+        path: 'privateKeyImportList',
+        name: 'PrivateKeyImportList',
+        component: PrivateKeyImportList,
+        meta: {
+          title: '私钥导入',
           scrollTop: true,
           bottomNav: false
         }

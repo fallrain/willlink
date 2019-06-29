@@ -7,108 +7,75 @@
     >
     </van-nav-bar>
     <div class="privateKeyImport-cnt">
-      <p class="privateKeyImport-cnt-head">选择导入钱包的币种</p>
-      <div class="">
-
+      <p class="privateKeyImport-cnt-head">请输入WID钱包的私钥地址</p>
+      <div class="privateKeyImport-form">
+        <div class="privateKeyImport-form-ta-par">
+          <w-textarea
+            v-model='form.address'
+            :conuntMaxNumber="false"
+            place-holder=""
+            @handelInput="addressInput"
+          ></w-textarea>
+          <div
+            v-show="importStatus"
+            class="privateKeyImport-status"
+          >{{importStatus}}
+          </div>
+        </div>
+        <p class="privateKeyImport-tips">
+          <i class="iconfont icon-tanhao"></i>
+          <span>仅支持WID钱包私钥，请勿输入其他币种钱包的私钥</span>
+        </p>
       </div>
-      <w-item
-        @rightClick="jump"
-      >
-        <div
-          slot="left"
-          class="privateKeyImport-left-item"
-        >
-          <img
-            class="privateKeyImport-item-typeImg"
-            src="@/assets/img/user/WID@2x.png"
-          >
-          <span class="privateKeyImport-item-name">WID</span>
-        </div>
-      </w-item>
-      <w-item
-        @rightClick="jump"
-      >
-        <div
-          slot="left"
-          class="privateKeyImport-left-item"
-        >
-          <img
-            class="privateKeyImport-item-typeImg"
-            src="@/assets/img/user/USDT@2x.png"
-          >
-          <span class="privateKeyImport-item-name">USDT</span>
-        </div>
-      </w-item>
-      <w-item
-        @rightClick="jump"
-      >
-        <div
-          slot="left"
-          class="privateKeyImport-left-item"
-        >
-          <img
-            class="privateKeyImport-item-typeImg"
-            src="@/assets/img/user/BTC@2x.png"
-          >
-          <span class="privateKeyImport-item-name">BTC</span>
-        </div>
-      </w-item>
-      <w-item
-        @rightClick="jump"
-      >
-        <div
-          slot="left"
-          class="privateKeyImport-left-item"
-        >
-          <img
-            class="privateKeyImport-item-typeImg"
-            src="@/assets/img/user/ETH@2x.png"
-          >
-          <span class="privateKeyImport-item-name">ETH</span>
-        </div>
-      </w-item>
-      <w-item
-        @rightClick="jump"
-      >
-        <div
-          slot="left"
-          class="privateKeyImport-left-item"
-        >
-          <img
-            class="privateKeyImport-item-typeImg"
-            src="@/assets/img/user/EOS@2x.png"
-          >
-          <span class="privateKeyImport-item-name">EOS</span>
-        </div>
-      </w-item>
-      <w-item
-        @rightClick="jump"
-      >
-        <div
-          slot="left"
-          class="privateKeyImport-left-item"
-        >
-          <img
-            class="privateKeyImport-item-typeImg"
-            src="@/assets/img/user/BCH@2x.png"
-          >
-          <span class="privateKeyImport-item-name">BCH</span>
-        </div>
-      </w-item>
+      <div class="privateKeyImport-btns">
+        <button
+          type="button"
+          :class="['cm-btn',!btnDisabled && 'active']"
+          :disabled="btnDisabled"
+          @click="submit"
+        >开始导入
+        </button>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import WItem from '../../components/form/WItem';
+
+import WTextarea from '../../components/form/WTextarea';
+import wValidateRules from '@/lib/wValidate/wValidateRules';
+
 export default {
   name: 'PrivateKeyImport',
-  components: { WItem },
+  components: { WTextarea },
+  data() {
+    return {
+      form: {
+        address: ''
+      },
+      btnDisabled: true, // 按钮是否可点
+      importStatus: ''// 导入状态
+    };
+  },
   methods: {
-    jump(item) {
-      this.$router.push({
-        name: item.$attrs.urlName
-      });
+    addressInput() {
+      /* 免密登录输入框事件 */
+      const { rules } = wValidateRules;
+      const {
+        address
+      } = this.form;
+      if (rules.required(address)) {
+        this.btnDisabled = false;
+      } else {
+        this.btnDisabled = true;
+      }
+    },
+    submit() {
+      /* 导入 */
+      this.form.address = '';
+      this.btnDisabled = true;
+      this.importStatus = '导入成功';
+      this.importStatus = '私钥错误，请重新输入！';
     }
   }
 };

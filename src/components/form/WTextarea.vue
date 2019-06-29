@@ -5,6 +5,7 @@
       :placeholder="placeHolder"
       :maxlength="maxNumber"
       v-model="taValue"
+      @input="handleInput"
     ></textarea>
     <p
       v-if="conuntMaxNumber"
@@ -54,6 +55,11 @@ export default {
   computed: {
     taValueLength() {
       return this.taValue.length;
+    }
+  },
+  methods: {
+    handleInput() {
+      this.$emit('handelInput');
     }
   }
 };
