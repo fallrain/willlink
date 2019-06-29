@@ -7,7 +7,7 @@
     >
     </van-nav-bar>
     <div class="privateKeyImport-cnt">
-      <p class="privateKeyImport-cnt-head">请输入WID钱包的私钥地址</p>
+      <p class="privateKeyImport-cnt-head">请输入新的WID钱包的私钥地址</p>
       <div class="privateKeyImport-form">
         <div class="privateKeyImport-form-ta-par">
           <w-textarea
@@ -34,7 +34,7 @@
           :class="['cm-btn',!btnDisabled && 'active']"
           :disabled="btnDisabled"
           @click="submit"
-        >开始导入
+        >修改
         </button>
       </div>
     </div>
@@ -47,7 +47,7 @@ import WTextarea from '../../components/form/WTextarea';
 import wValidateRules from '@/lib/wValidate/wValidateRules';
 
 export default {
-  name: 'PrivateKeyImport',
+  name: 'PrivateKeyUpdate',
   components: { WTextarea },
   data() {
     return {

@@ -7,34 +7,24 @@
     >
     </van-nav-bar>
     <div class="privateKeyImport-cnt">
-      <p class="privateKeyImport-cnt-head">请输入WID钱包的私钥地址</p>
+      <p class="coldWalletLoad-head">钱包地址</p>
       <div class="privateKeyImport-form">
-        <div class="privateKeyImport-form-ta-par">
+        <div class="coldWalletLoad-ta-par">
           <w-textarea
             v-model='form.address'
             :conuntMaxNumber="false"
+            :readonly="true"
             place-holder=""
             @handelInput="addressInput"
           ></w-textarea>
-          <div
-            v-show="importStatus"
-            class="privateKeyImport-status"
-            @click="hideImportStatus"
-          >{{importStatus}}
-          </div>
         </div>
-        <p class="privateKeyImport-tips">
-          <i class="iconfont icon-tanhao"></i>
-          <span>仅支持WID钱包私钥，请勿输入其他币种钱包的私钥</span>
-        </p>
       </div>
-      <div class="privateKeyImport-btns">
+      <div class="coldWalletLoad-btns">
         <button
           type="button"
-          :class="['cm-btn',!btnDisabled && 'active']"
-          :disabled="btnDisabled"
-          @click="submit"
-        >开始导入
+          :class="['cm-btn','active']"
+          @click="copy"
+        >复制
         </button>
       </div>
     </div>
@@ -47,12 +37,12 @@ import WTextarea from '../../components/form/WTextarea';
 import wValidateRules from '@/lib/wValidate/wValidateRules';
 
 export default {
-  name: 'PrivateKeyImport',
+  name: 'ColdWalletLoad',
   components: { WTextarea },
   data() {
     return {
       form: {
-        address: ''
+        address: '8372u36ryfbdhstw63j48fje6qjsdkjgvhsjkdb87235hfe768yutjfye62twgstw5263egdh'
       },
       btnDisabled: true, // 按钮是否可点
       importStatus: ''// 导入状态
@@ -71,15 +61,8 @@ export default {
         this.btnDisabled = true;
       }
     },
-    hideImportStatus() {
-      this.importStatus = '';
-    },
-    submit() {
-      /* 导入 */
-      this.form.address = '';
-      this.btnDisabled = true;
-      this.importStatus = '导入成功';
-      this.importStatus = '私钥错误，请重新输入！';
+    copy() {
+      /* 复制 */
     }
   }
 };

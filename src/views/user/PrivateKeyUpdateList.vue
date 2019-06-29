@@ -13,7 +13,7 @@
       </div>
       <w-item
         @rightClick="jump"
-        urlName="PrivateKeyImport"
+        urlName="PrivateKeyUpdate"
       >
         <div
           slot="left"
@@ -28,7 +28,7 @@
       </w-item>
       <w-item
         @rightClick="jump"
-        urlName="PrivateKeyImport"
+        urlName="PrivateKeyUpdate"
       >
         <div
           slot="left"
@@ -43,7 +43,7 @@
       </w-item>
       <w-item
         @rightClick="jump"
-        urlName="PrivateKeyImport"
+        urlName="PrivateKeyUpdate"
       >
         <div
           slot="left"
@@ -58,7 +58,7 @@
       </w-item>
       <w-item
         @rightClick="jump"
-        urlName="PrivateKeyImport"
+        urlName="PrivateKeyUpdate"
       >
         <div
           slot="left"
@@ -73,7 +73,7 @@
       </w-item>
       <w-item
         @rightClick="jump"
-        urlName="PrivateKeyImport"
+        urlName="PrivateKeyUpdate"
       >
         <div
           slot="left"
@@ -88,7 +88,7 @@
       </w-item>
       <w-item
         @rightClick="jump"
-        urlName="PrivateKeyImport"
+        urlName="PrivateKeyUpdate"
       >
         <div
           slot="left"
@@ -109,7 +109,7 @@
 import WItem from '../../components/form/WItem';
 
 export default {
-  name: 'PrivateKeyImportList',
+  name: 'PrivateKeyUpdateList',
   components: { WItem },
   methods: {
     jump(item) {

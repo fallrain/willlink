@@ -37,7 +37,12 @@ const FeedbackSuc = () => import(/* webpackChunkName: "FeedbackSuc" */ '@/views/
 const AboutUs = () => import(/* webpackChunkName: "AboutUs" */ '@/views/user/AboutUs');// 关于我们
 const PrivateKeyManagement = () => import(/* webpackChunkName: "PrivateKeyManagement" */ '@/views/user/PrivateKeyManagement');// 私钥管理
 const PrivateKeyImport = () => import(/* webpackChunkName: "PrivateKeyImport" */ '@/views/user/PrivateKeyImport');// 私钥导入
+const PrivateKeyDel = () => import(/* webpackChunkName: "PrivateKeyDel" */ '@/views/user/PrivateKeyDel');// 私钥删除
+const PrivateKeyUpdate = () => import(/* webpackChunkName: "PrivateKeyUpdate" */ '@/views/user/PrivateKeyUpdate');// 私钥修改
 const PrivateKeyImportList = () => import(/* webpackChunkName: "PrivateKeyImportList" */ '@/views/user/PrivateKeyImportList');// 私钥导入列表
+const PrivateKeyDelList = () => import(/* webpackChunkName: "PrivateKeyDelList" */ '@/views/user/PrivateKeyDelList');// 私钥删除列表
+const PrivateKeyUpdateList = () => import(/* webpackChunkName: "PrivateKeyUpdateList" */ '@/views/user/PrivateKeyUpdateList');// 私钥修改列表
+const ColdWalletLoad = () => import(/* webpackChunkName: "ColdWalletLoad" */ '@/views/user/ColdWalletLoad');// 冷钱包加载
 
 const data = [
   {
@@ -405,6 +410,56 @@ const data = [
         component: PrivateKeyImport,
         meta: {
           title: '私钥导入',
+          scrollTop: true,
+          bottomNav: false
+        }
+      },
+      {
+        path: 'privateKeyDelList',
+        name: 'PrivateKeyDelList',
+        component: PrivateKeyDelList,
+        meta: {
+          title: '私钥删除',
+          scrollTop: true,
+          bottomNav: false
+        }
+      },
+      {
+        path: 'privateKeyDel',
+        name: 'PrivateKeyDel',
+        component: PrivateKeyDel,
+        meta: {
+          title: '私钥删除',
+          scrollTop: true,
+          bottomNav: false
+        }
+      },
+      {
+        path: 'privateKeyUpdateList',
+        name: 'PrivateKeyUpdateList',
+        component: PrivateKeyUpdateList,
+        meta: {
+          title: '私钥修改',
+          scrollTop: true,
+          bottomNav: false
+        }
+      },
+      {
+        path: 'privateKeyUpdate',
+        name: 'PrivateKeyUpdate',
+        component: PrivateKeyUpdate,
+        meta: {
+          title: '私钥修改',
+          scrollTop: true,
+          bottomNav: false
+        }
+      },
+      {
+        path: 'coldWalletLoad',
+        name: 'ColdWalletLoad',
+        component: ColdWalletLoad,
+        meta: {
+          title: '冷钱包加载',
           scrollTop: true,
           bottomNav: false
         }

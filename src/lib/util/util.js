@@ -1,51 +1,51 @@
-let util = {
-  getUrlVal (name) {
+const util = {
+  getUrlVal(name) {
     /* 获取url参数 */
-    let urlArgs = location.search;
+    const urlArgs = location.search;
     if (urlArgs) {
-      let reg = new RegExp(name + '=([^&]+)');
-      let results = urlArgs.match(reg);
+      const reg = new RegExp(`${name}=([^&]+)`);
+      const results = urlArgs.match(reg);
       if (results) {
         return results[1];
       }
     }
   },
-  getNextDayDate () {
-    let curDate = new Date();
+  getNextDayDate() {
+    const curDate = new Date();
     let curTime = curDate.getTime();
-    curTime = curTime + 3600 * 24 * 1000;
+    curTime += 3600 * 24 * 1000;
     curDate.setTime(curTime);
     curDate.setHours(0);
     curDate.setMinutes(0);
     curDate.setSeconds(0);
     return curDate;
   },
-  getCurDate () {
-    let curDate = new Date();
-    return curDate.getFullYear() + ('0' + (curDate.getMonth() + 1)).slice(-2) + ('0' + (curDate.getDate())).slice(-2);
+  getCurDate() {
+    const curDate = new Date();
+    return curDate.getFullYear() + (`0${curDate.getMonth() + 1}`).slice(-2) + (`0${curDate.getDate()}`).slice(-2);
   },
-  isWeixin () {
-    let ua = window.navigator.userAgent.toLowerCase();
+  isWeixin() {
+    const ua = window.navigator.userAgent.toLowerCase();
     if (ua.indexOf('micromessenger') >= 0) {
       return true;
     }
   },
-  formatDate: function (date, pattern) {
+  formatDate(date, pattern) {
     if (!date) {
       return '';
     }
     if (!(date instanceof Date)) {
       date = new Date(date);
     }
-    let numToStr = function (num) {
+    const numToStr = function (num) {
       if (num < 10) {
-        num = '0' + num;
+        num = `0${num}`;
       } else {
-        num = '' + num;
+        num = `${num}`;
       }
       return num;
     };
-    let obj = {
+    const obj = {
       year: date.getFullYear(),
       month: numToStr(date.getMonth() + 1),
       date: numToStr(date.getDate()),
@@ -62,27 +62,27 @@ let util = {
     res = res.replace(/ss/g, obj.seconds);
     return res;
   },
-  formatFloat (f, digit) {
-    let m = Math.pow(10, digit);
+  formatFloat(f, digit) {
+    const m = Math.pow(10, digit);
     return Math.round(f * m, 10) / m;
   },
-  formatNoSplitTime (val, isDate) {
+  formatNoSplitTime(val, isDate) {
     if (!val) {
       return '';
     }
     val += '';
     let returnStr = '';
-    returnStr += val.substr(0, 4) + '-' + val.substr(4, 2) + '-' + val.substr(6, 2);
+    returnStr += `${val.substr(0, 4)}-${val.substr(4, 2)}-${val.substr(6, 2)}`;
     if (val.length > 8 && !isDate) {
-      returnStr += ' ' + val.substr(8, 2) + ':' + val.substr(10, 2);
+      returnStr += ` ${val.substr(8, 2)}:${val.substr(10, 2)}`;
     }
     return returnStr;
   },
-  shallowCopyObject (obj) {
+  shallowCopyObject(obj) {
     /* 浅拷贝 */
     return JSON.parse(JSON.stringify(obj));
   },
-  arithmetic (val1, val2, arithmetic = 1, floatNum = 2) {
+  arithmetic(val1, val2, arithmetic = 1, floatNum = 2) {
     val1 += '';
     val2 += '';
     const val1Split = val1.split('.');
@@ -109,8 +109,8 @@ let util = {
     }
     return this.formatFloat(returnValue, floatNum);
   },
-  addZero (value) {
-    let returnStr = value + '';
+  addZero(value) {
+    let returnStr = `${value}`;
     let len = returnStr.split('.')[1];
     if (len) {
       len = len.length;
@@ -120,12 +120,59 @@ let util = {
     returnStr += ['.00', '0', ''][len] || '';
     return returnStr;
   },
-  updateUserCommunity (data) {
+  updateUserCommunity(data) {
     sessionStorage.setItem('ownerCode', data.ownerCode);
     sessionStorage.setItem('roomCode', data.roomCode);
     sessionStorage.setItem('ownerSimpleCode', data.simpleCode);
     sessionStorage.setItem('communityName', data.communityName);
     sessionStorage.setItem('address', data.address);
+  },
+  copy(copyText) {
+    let textArea;
+
+    // 判断是不是ios端
+    function isOS() {
+      return navigator.userAgent.match(/ipad|iphone/i);
+    }
+    // 创建文本元素
+    function createTextArea(text) {
+      textArea = document.createElement('input');
+      textArea.value = text;
+      document.body.appendChild(textArea);
+    }
+    // 选择内容
+    function selectText() {
+      let range;
+      let selection;
+
+      if (isOS()) {
+        range = document.createRange();
+        range.selectNodeContents(textArea);
+        selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        textArea.setSelectionRange(0, 999999);
+      } else {
+        textArea.select();
+      }
+    }
+
+    // 复制到剪贴板
+    function copyToClipboard() {
+      let status = false;
+      try {
+        if (document.execCommand('copy')) {
+          status = true;
+        }
+      } catch (err) {
+      }
+      document.body.removeChild(textArea);
+      return status;
+    }
+
+    createTextArea(copyText);
+    selectText();
+    copyToClipboard();
   }
 };
 util.setUserInfToStorage = function () {
