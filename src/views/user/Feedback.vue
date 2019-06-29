@@ -41,7 +41,9 @@
           <button
             type="button"
             class="feedback-submit-btn"
-          >提交</button>
+            @click="submit"
+          >提交
+          </button>
         </div>
       </div>
     </div>
@@ -85,6 +87,14 @@ export default {
     },
     uploadError() {
       this.$toast('上传失败');
+    },
+    submit() {
+      /* 提交反馈 */
+      // ....提交反馈
+      // 成功后跳转反馈成功页
+      this.$router.push({
+        name: 'FeedbackSuc'
+      });
     }
   }
 };

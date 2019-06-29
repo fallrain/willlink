@@ -23,6 +23,7 @@ const MyTeam = () => import(/* webpackChunkName: "MyTeam" */ '@/views/user/MyTea
 const SysAnnouncementDetail = () => import(/* webpackChunkName: "SysAnnouncementDetail" */ '@/views/user/SysAnnouncementDetail');// 系统公告详情
 const MyIncome = () => import(/* webpackChunkName: "MyIncome" */ '@/views/user/MyIncome');// 我的收益
 const Feedback = () => import(/* webpackChunkName: "Feedback" */ '@/views/user/Feedback');// 问题反馈
+const FeedbackSuc = () => import(/* webpackChunkName: "FeedbackSuc" */ '@/views/user/FeedbackSuc');// 反馈成功
 
 const data = [
   {
@@ -240,6 +241,16 @@ const data = [
         component: Feedback,
         meta: {
           title: '问题反馈',
+          scrollTop: true,
+          bottomNav: false
+        }
+      },
+      {
+        path: 'feedbackSuc',
+        name: 'FeedbackSuc',
+        component: FeedbackSuc,
+        meta: {
+          title: '反馈成功',
           scrollTop: true,
           bottomNav: false
         }
