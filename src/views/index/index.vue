@@ -2,7 +2,7 @@
   <div class="">
     <div class="homeNav">
       <van-notice-bar left-icon="volume-o">公告：新版钱包上线公告</van-notice-bar>
-      <div class="sweepBtn"><van-icon :name="sweepImg" /></div>
+      <div class="sweepBtn" @click="sweep"><van-icon :name="sweepImg" /></div>
     </div>
     <div class="homeBox">
       <!--总资产-->
@@ -142,6 +142,9 @@ export default {
     },
     homeDetail() {
       this.$router.push({ name: 'HomeDetail', params: { title: 'WID' } });
+    },
+    sweep() {
+      this.$router.push({ name: 'HomeSweep' });
     }
   }
 };

@@ -13,6 +13,7 @@ const HomeSearch = () => import('@/views/index/search'); // 首页搜索
 const HomeDetail = () => import('@/views/index/detail'); // 首页资产详情
 const HomeInto = () => import('@/views/index/into'); // 首页转入
 const HomeRollOut = () => import('@/views/index/rollout'); // 首页转出
+const HomeSweep = () => import('@/views/index/sweep'); // 首页转出
 const HomeRollOutDetail = () => import('@/views/index/rolloutDetail'); // 首页转出详情
 const Product = () => import('@/views/product/index'); // 产品
 const ProductVideo = () => import('@/views/product/productVideo'); // 产品
@@ -164,6 +165,16 @@ const data = [
         name: 'HomeRollOut',
         path: '/homeRollOut',
         component: HomeRollOut,
+        meta: {
+          title: '',
+          bottomNav: false,
+          topNav: false,
+        }
+      },
+      {
+        name: 'HomeSweep',
+        path: '/homeSweep',
+        component: HomeSweep,
         meta: {
           title: '',
           bottomNav: false,
