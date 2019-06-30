@@ -1267,4 +1267,173 @@
 
 /*助记词设置 end*/
 
+/*发现*/
 
+.found-main {
+
+}
+
+.found-head-par {
+  width: 100%;
+  height: 150px;
+  padding-top: 75px;
+  background: url('~@/assets/img/user/user-head-bg@2x.png') no-repeat;
+  background-size: 100% 100%;
+}
+
+.found-head-icons {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.found-head-icons-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.found-head-icons-img {
+  width: 30px;
+  height: 30px;
+  margin-bottom: 12px;
+}
+
+.found-head-icons-inf {
+  font-size: 11px;
+  color: #fff;
+}
+
+.found-head-icons-item {
+  text-align: center;
+}
+
+.found-ad-bg-list {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.found-ad-bg-item {
+  margin-bottom: 8px;
+}
+
+.found-ad-bg-item-img {
+  width: 100%;
+  height: 70px;
+}
+
+.found-ranking {
+  margin-top: 25px;
+}
+
+.found-ranking-head {
+  font-size: 17px;
+  line-height: 1;
+  color: $login-green;
+  padding-left: 15px;
+}
+
+.found-ranking-tab-par {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  border-bottom: 1px solid $cnt-bg;
+  background: #222229;
+
+  .van-tabs {
+    background: #222229;
+  }
+
+  .van-tab {
+    border-bottom: 1px solid #838299;
+    padding-left: 20px;
+  }
+
+  .van-tabs__nav {
+    background: #222229;
+  }
+
+  .van-hairline--top-bottom {
+    &:after {
+      border-width: 0;
+    }
+  }
+
+
+  .van-tabs__line {
+    background: $login-green;
+    height: 1px;
+    top: 39px;
+  }
+
+  .van-tabs--line {
+    .van-tabs__wrap {
+      height: 40px;
+    }
+  }
+
+}
+
+.found-ranking-tab-title {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  color: #fff;
+  font-size: 14px;
+
+  .iconfont {
+    font-size: 20px;
+    margin-right: 8px;
+  }
+}
+
+.found-ranking-tab {
+  width: 110px;
+  height: 40px;
+  padding-left: 18px;
+  position: relative;
+
+  &.active {
+    &:after {
+      position: absolute;
+      content: '';
+      left: 0;
+      bottom: -1px;
+      display: block;
+      background: $login-green;
+      height: 1px;
+      width: 100%;
+    }
+  }
+}
+
+.found-ranking-income-list {
+  padding: 15px 20px;
+}
+
+.found-ranking-income-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  border-bottom: 1px solid #222229;
+}
+
+.found-ranking-income-item-left {
+  color: #fff;
+  font-size: 15px;
+
+  & > img {
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+  }
+}
+
+.found-ranking-income-item-right {
+  flex-shrink: 0;
+  color: #838299;
+  font-size: 15px;
+  text-align: right;
+}
+
+/*发现 end*/
