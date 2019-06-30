@@ -24,7 +24,6 @@
       <button
         type="button"
         class="cm-btn-primary"
-        @click="toHome"
       >保存二维码</button>
     </div>
   </div>
