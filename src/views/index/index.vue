@@ -144,7 +144,7 @@ export default {
       this.$router.push({ name: 'HomeDetail', params: { title: 'WID' } });
     },
     sweep() {
-      this.$router.push({ name: 'HomeSweep' });
+      this.$router.push({ name: 'HomeSweep'});
     }
   }
 };
