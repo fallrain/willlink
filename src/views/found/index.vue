@@ -26,19 +26,28 @@
         </div>
       </div>
       <ul class="found-ad-bg-list">
-        <li class="found-ad-bg-item">
+        <li
+          class="found-ad-bg-item"
+          @click="toExchange"
+        >
           <img
             class="found-ad-bg-item-img"
             src="@/assets/img/found/ad1@2x.png"
           >
         </li>
-        <li class="found-ad-bg-item">
+        <li
+          class="found-ad-bg-item"
+          @click="toExchange"
+        >
           <img
             class="found-ad-bg-item-img"
             src="@/assets/img/found/ad2@2x.png"
           >
         </li>
-        <li class="found-ad-bg-item">
+        <li
+          @click="toExchange"
+          class="found-ad-bg-item"
+        >
           <img
             class="found-ad-bg-item-img"
             src="@/assets/img/found/ad3@2x.png"
@@ -150,22 +159,20 @@ import WDividerWrap from '../../components/form/WDividerWrap';
 Vue.use(Tab).use(Tabs);
 export default {
   name: 'Found',
-  mixins: [],
   components: { WDividerWrap },
   data() {
     return {
       tabIndex: 1, // 当前tabIndex
     };
   },
-  computed: {},
-  watch: {},
-  created() {
-  },
-  mounted() {
-  },
-  destroyed() {
-  },
-  methods: {}
+  methods: {
+    toExchange() {
+      /* 跳转交易所页面 */
+      this.$router.push({
+        name: 'Exchange'
+      });
+    }
+  }
 };
 </script>
 

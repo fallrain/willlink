@@ -46,6 +46,8 @@ const ColdWalletLoad = () => import(/* webpackChunkName: "ColdWalletLoad" */ '@/
 const MnemonicList = () => import(/* webpackChunkName: "MnemonicList" */ '@/views/user/MnemonicList');// 助记词设置列表
 const MnemonicSetting = () => import(/* webpackChunkName: "MnemonicSetting" */ '@/views/user/MnemonicSetting');// 助记词设置
 const MnemonicSettingBackup = () => import(/* webpackChunkName: "MnemonicSettingBackup" */ '@/views/user/MnemonicSettingBackup');// 助记词设置
+const Exchange = () => import(/* webpackChunkName: "Exchange" */ '@/views/found/Exchange');// 交易所
+const AppDown = () => import(/* webpackChunkName: "AppDown" */ '@/views/found/AppDown');// app下载
 
 const data = [
   {
@@ -259,13 +261,35 @@ const data = [
         }
       },
       {
-        name: 'Found',
         path: '/found',
+        name: 'Found',
         component: Found,
         meta: {
           title: '发现',
           topNav: false,
           bottomNav: true
+        }
+      },
+      {
+        path: '/exchange',
+        name: 'Exchange',
+        component: Exchange,
+        meta: {
+          title: '交易所',
+          scrollTop: true,
+          topNav: false,
+          bottomNav: false
+        }
+      },
+      {
+        path: '/appDown',
+        name: 'AppDown',
+        component: AppDown,
+        meta: {
+          title: 'APP下载',
+          scrollTop: true,
+          topNav: false,
+          bottomNav: false
         }
       },
       {
