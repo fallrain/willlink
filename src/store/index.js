@@ -18,7 +18,8 @@ export default new Vuex.Store({
       'SysAnnouncementDetail',
       'Feedback',
       'PrivateKeyImport'
-    ]
+    ],
+    loadingShow: false// loading 显示隐藏
   },
   mutations: {
     /* eslint注释请不要删除 */
@@ -35,6 +36,12 @@ export default new Vuex.Store({
     addAliveExclude({ aliveExclude }, name) {
       const index = aliveExclude.indexOf(name);
       index === -1 && aliveExclude.push(name);
+    },
+    showLoading(state) {
+      state.loadingShow = true;
+    },
+    hideLoading(state) {
+      state.loadingShow = false;
     }
   },
   actions: {

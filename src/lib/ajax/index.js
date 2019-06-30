@@ -1,51 +1,39 @@
 import Vue from 'vue';
-import ax from 'axios';
+import axios from 'axios';
 import store from '@/store';
 
+const ax = axios.create();
 ax.defaults = Object.assign(
   ax.defaults,
   {
-    baseURL: process.env.base_url,
+    baseURL: process.env.VUE_APP_BASE_URL,
     method: 'post'
-    /* transformResponse : [function(data){
-      return data;
-    }], */
   }
 );
 ax.interceptors.request.use((config) => {
   if (!config.params) {
     config.params = {};
   }
-  if (!config.params.j_sub_system) {
-    const simpleCodeKeyName = store.state.curRole === 'property' ? 'propertySimpleCode' : 'ownerSimpleCode';
-    config.params.j_sub_system = sessionStorage.getItem(simpleCodeKeyName) || undefined;
-  }
-  Vue.$vux.loading.show();
+  store.commit('showLoading');
   return config;
 });
 ax.interceptors.response.use((response) => {
   // 关闭遮罩
-  // Vue.$vux.loading.hide();
+  store.commit('hideLoading');
   if (!(response.config.params && response.config.params.requestNoToast)) {
-    if (response.data.code !== '200') {
-      Vue.$vux.toast.show({
-        type: 'text',
-        text: response.data.message || '请求失败'
-      });
+    if (response.data.status !== 200) {
+      Vue.prototype.$toast(response.data.msg || '请求失败');
     }
   }
 
   return response.data;
 }, (error) => {
-  Vue.$vux.loading.hide();
+  store.commit('hideLoading');
   // return Promise.reject(error);
-  Vue.$vux.toast.show({
-    type: 'text',
-    text: '请求失败'
-  });
+  Vue.prototype.$toast('请求失败');
   error.response.data = {
     data: {
-      code: '06'
+      status: '06'
     }
   };
   return error.response.data;

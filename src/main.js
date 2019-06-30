@@ -9,10 +9,13 @@ import VeeValidate from 'vee-validate';
 import directives from './directive';
 import mixin from './mixin';
 import wUtil from '@/lib/util/util';
+import { axPost, axGet } from './lib/ajax';
 
 Vue.config.productionTip = false;
 Vue.prototype.$dialog = Dialog;
 Vue.prototype.wUtil = wUtil;
+Vue.prototype.axPost = axPost;
+Vue.prototype.axGet = axGet;
 
 Vue.use(NavBar);
 Vue.use(Toast);

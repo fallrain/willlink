@@ -7,16 +7,28 @@
         <router-view/>
       </keep-alive>
     </div>
+    <div
+      v-show="loadingShow"
+      class="app-loading"
+    >
+      <van-loading
+        color="#59C1B6"
+      ></van-loading>
+    </div>
   </div>
 </template>
 
 <script>
+import Vue from 'vue';
 import { mapState } from 'vuex';
+import { Loading } from 'vant';
 
+Vue.use(Loading);
 export default {
   name: 'App',
   computed: mapState([
-    'aliveExclude'
+    'aliveExclude',
+    'loadingShow'
   ])
 };
 </script>

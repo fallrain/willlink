@@ -2,7 +2,7 @@
   <div class="videoBox">
     <div class="box" >
       <van-icon v-show="play" @click="videoBtn" class="bofang" :name="bofangImg" size="50"/>
-      <img v-show="play" src="../../assets/img/product/product1.png" />
+      <img v-show="play" src="../../assets/img/product/productV5.png" />
       <video id="media" src="http://www.w3school.com.cn/i/movie.ogg" controls="controls" width="100%" height="210px"></video>
     </div>
   </div>

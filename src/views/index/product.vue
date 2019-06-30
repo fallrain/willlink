@@ -16,20 +16,20 @@
     <!--列表-->
     <div class="productList">
       <div class="line">
-        <img src="../../assets/img/product/product3.png"/>
+        <img src="../../assets/img/product/productV1.png"/>
         <div class="box">
           <div class="btn">订单待提交</div>
         </div>
       </div>
       <div class="line">
-        <img src="../../assets/img/product/product2.png"/>
+        <img src="../../assets/img/product/productV2.png"/>
         <div class="box">
           <div class="btn">收益中</div>
           <div class="time right">到期时间：2020-6-20</div>
         </div>
       </div>
       <div class="line">
-        <img src="../../assets/img/product/product1.png"/>
+        <img src="../../assets/img/product/productV5.png"/>
         <div class="box">
           <div class="btn disabled">交易结束</div>
           <div class="time right">到期时间：2020-6-20</div>

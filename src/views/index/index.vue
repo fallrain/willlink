@@ -129,7 +129,8 @@ export default {
   },
   computed: {},
   watch: {},
-  created() {},
+  created() {
+  },
   mounted() {},
   destroyed() {},
   methods: {
