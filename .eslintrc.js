@@ -31,7 +31,8 @@ module.exports = {
     'import/no-unresolved': 0,// ...
     'no-plusplus': 0,//没必要禁止
     'no-bitwise': 0,//没必要禁止
-    "linebreak-style": [0 ,"error", "windows"], //允许windows开发环境
+    "linebreak-style": [0, "error", "windows"], //允许windows开发环境
+    'no-unused-expressions': 0//三元表达式、逻辑或没必要禁止
   },
   parserOptions: {
     parser: 'babel-eslint',

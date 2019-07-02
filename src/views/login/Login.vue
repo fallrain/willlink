@@ -54,7 +54,7 @@
         >
           <van-field
             v-model="form.phone"
-            placeholder="手机号"
+            placeholder="手机号/邮箱"
             clearable
             @input="nopwdLoginInput"
           >
@@ -66,10 +66,13 @@
             clearable
             @input="nopwdLoginInput"
           >
-            <WVerificationcode
+            <w-verificationcode
               slot="button"
+              :phone="form.phone"
+              :type="verificationcodeType"
+              :beforeSend="validatePhone"
             >
-            </WVerificationcode>
+            </w-verificationcode>
           </van-field>
           <div class="login-body-forget-par">
             <span
@@ -122,7 +125,8 @@ export default {
       showVerificationCodeError: false, // 验证码错误
       showPasswordError: false, // 密码错误
       pwdLoginDisabled: true,
-      nopwdLoginDisabled: true
+      nopwdLoginDisabled: true,
+      verificationcodeType: 1// 发送验证码的类型，1手机，2邮箱
     };
   },
   computed: {
@@ -176,11 +180,33 @@ export default {
         phone,
         verificationCode
       } = this.form;
-      if ((rules.mobile(phone)) && rules.required(verificationCode)) {
+      if (
+        (rules.mobile(phone) || rules.email(phone))
+        && rules.required(verificationCode)
+        && rules.number(verificationCode)
+        && rules.length(verificationCode, 6)
+      ) {
         this.nopwdLoginDisabled = false;
       } else {
         this.nopwdLoginDisabled = true;
       }
+    },
+    validatePhone() {
+      /* 点击发送验证码的时候，验证是否输入了手机号 */
+      const { rules } = wValidateRules;
+      const {
+        phone
+      } = this.form;
+      let returnStatus = true;
+      if (rules.mobile(phone)) {
+        this.verificationcodeType = 1;
+      } else if (rules.email(phone)) {
+        this.verificationcodeType = 2;
+      } else {
+        returnStatus = false;
+      }
+      !returnStatus && (this.$toast('请输入正确的手机号或邮箱'));
+      return returnStatus;
     }
   }
 };
