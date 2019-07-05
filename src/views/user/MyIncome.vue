@@ -6,7 +6,14 @@
       @click-left="back"
     >
     </van-nav-bar>
-    <ul class="myIncome-list mt10">
+    <w-no-content
+      :show="!inComeList.length"
+      text="暂无收益"
+    ></w-no-content>
+    <ul
+      v-show="inComeList.length"
+      class="myIncome-list mt10"
+    >
       <li
         class="myIncome-item"
         v-for="(item) in inComeList"
@@ -24,47 +31,30 @@
               mt10:true,
               positive:item.positive
             }"
-          >{{item.positive?'+'+item.income:'-'+item.income}}</p>
+          >{{item.positive?'+'+item.income:''+item.income}}</p>
         </div>
       </li>
     </ul>
+
   </div>
 </template>
 
 <script>
+import WNoContent from '../../components/form/WNoContent';
+
 export default {
   name: 'MyIncome',
+  components: { WNoContent },
   data() {
     return {
       inComeList: [
-        {
+        /* {
           id: 1,
           type: 'WID',
           dateTime: '2019-6-17 23:43',
           positive: true, // 是否为正数
           income: '20.00'
-        },
-        {
-          id: 2,
-          type: 'WID',
-          dateTime: '2019-6-17 23:43',
-          positive: true, // 是否为正数
-          income: '20.00'
-        },
-        {
-          id: 3,
-          type: 'WID',
-          dateTime: '2019-6-17 23:43',
-          positive: false, // 是否为正数
-          income: '5.39'
-        },
-        {
-          id: 4,
-          type: 'WID',
-          dateTime: '2019-6-17 23:43',
-          positive: true, // 是否为正数
-          income: '20.00'
-        }
+        } */
       ]
     };
   },
@@ -78,7 +68,12 @@ export default {
         `v1/member/profit_list/${11}`
       ).then(({ status, data }) => {
         if (status === 200) {
-
+          this.inComeList = data.map(v => ({
+            id: v.id || new Date().getTime(),
+            type: 'WID',
+            positive: v.profit >= 0,
+            income: v.profit
+          }));
         }
       });
     }

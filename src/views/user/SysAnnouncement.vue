@@ -9,17 +9,12 @@
         @click-right="setAllRead"
       >
       </van-nav-bar>
-      <div v-if="!hasAnnouncement">
-        <div class="sysAnnouncement-img-par">
-          <img
-            class="img100per"
-            src="@/assets/img/user/user-nomsg.png"
-          >
-        </div>
-        <p class="sysAnnouncement-nomsg-tips mt82">还没有收到系统公告喔~</p>
-      </div>
+      <w-no-content
+        :show="!hasAnnouncement"
+        text="还没有收到系统公告喔"
+      ></w-no-content>
       <div
-        v-else
+        v-show="hasAnnouncement"
       >
         <div
           class="sysAnnouncement-list mt10"
@@ -72,12 +67,13 @@ import Vue from 'vue';
 import { Button, SwipeCell } from 'vant';
 import imgTest from '@/assets/img/user/user-default.jpeg';
 import WDividerWrap from '../../components/form/WDividerWrap';
+import WNoContent from '../../components/form/WNoContent';
 
 Vue.use(Button);
 Vue.use(SwipeCell);
 export default {
   name: 'SysAnnouncement',
-  components: { WDividerWrap },
+  components: { WNoContent, WDividerWrap },
   data() {
     return {
       announcementList: [
