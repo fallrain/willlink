@@ -49,7 +49,10 @@
           <div class="type text-right right">{{recordNum}}个</div>
         </div>
       </div>
-      <div class="btn">生成订单</div>
+      <div
+        class="btn"
+        @click="createOrder"
+      >生成订单</div>
     </div>
   </div>
 </template>
@@ -89,6 +92,7 @@ export default {
           this.productAmount = data.limit_money;
           this.totalAmount = data.limit_money * data.profit;
           this.type = data.type;
+          this.productProfit = data.profit;// 产品返利点，没必要放在data里
         }
       });
     },
@@ -100,6 +104,29 @@ export default {
         if (status === 200) {
           this.address = data.receiving_account;
           this.recordNum = data.transaction_record;
+        }
+      });
+    },
+    createOrder() {
+      /* 生成订单 */
+      this.axPost(
+        '/v1/order/save',
+        {
+          // 用户ID （必填，int）
+          uuid: this.userInfo.uuid,
+          // 用户手机/邮箱(必填，string)
+          username: this.userInfo.mobile,
+          // 产品ID（必填，int）
+          pid: this.productId,
+          // 产品名字(必填，string)
+          product_name: this.productName,
+          // 产品价格(必填，float(8,2))
+          product_price: this.productAmount,
+          product_profit: this.productProfit
+        }
+      ).then(({ status, data }) => {
+        if (status === 200) {
+
         }
       });
     }
