@@ -84,7 +84,7 @@ export default {
     },
     queryProduct() {
       /* 查询产品列表 */
-      this.axPost('v1/products').then(({ status, data }) => {
+      this.axGet('v1/products').then(({ status, data }) => {
         if (status === 200) {
           this.productList = data.data.map(v => ({
             ...v,
@@ -99,10 +99,6 @@ export default {
 
 <style scoped lang="scss">
   .productBox {
-    * {
-      box-sizing: border-box;
-    }
-
     .swipeBox {
       img {
         width: 100%;

@@ -18,7 +18,7 @@
       <!--userInfo来自vuex-->
       <w-item
         title="账号"
-        :value="userInfo.phone"
+        :value="userInfo.mobile"
         @rightClick="toUpdatePhone"
       ></w-item>
       <w-item

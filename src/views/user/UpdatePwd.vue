@@ -10,7 +10,7 @@
       <p>验证码已发送，请填写验证码</p>
     </div>
     <van-field
-      v-model="userInfo.phone"
+      v-model="userInfo.mobile"
       label="账号"
       readonly
     >

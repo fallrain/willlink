@@ -7,7 +7,6 @@ export default {
   state: {
     // userInfo为模拟的用户信息
     userInfo: {
-      phone: '15606711711'
     }
   },
   mutations: {

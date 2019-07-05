@@ -6,9 +6,13 @@
           <img :src="portraitDefault">
         </div>
         <div class="user-head-cnt">
-          <p class="user-head-cnt-name">17283767445</p>
+          <p class="user-head-cnt-name">{{userInfo.mobile}}</p>
           <div class="user-head-cnt-lvl">
-            <img :src="lvl" class="img100per">
+            <img
+              v-if="userInfo.level"
+              :src="lvlImg[userInfo.level]"
+              class="img100per"
+            >
           </div>
         </div>
         <div
@@ -150,10 +154,19 @@
 
 <script>
 import Vue from 'vue';
-import portraitDefaultImg from '@/assets/img/user/user-default.jpeg';
-import lvlImg from '@/assets/img/user/S1@2x.png';
-import teamIcon from '@/assets/img/user/icon-team@2x.png';
+import {
+  mapState,
+  mapMutations
+} from 'vuex';
 import { Cell, CellGroup } from 'vant';
+import mutationType from '@/store/mutations_types';
+import portraitDefaultImg from '@/assets/img/user/user-default.jpeg';
+import lvlImg1 from '@/assets/img/user/S1@2x.png';
+import lvlImg2 from '@/assets/img/user/S2@2x.png';
+import lvlImg3 from '@/assets/img/user/S3@2x.png';
+import lvlImg4 from '@/assets/img/user/S4@2x.png';
+import lvlImg5 from '@/assets/img/user/S5@2x.png';
+import teamIcon from '@/assets/img/user/icon-team@2x.png';
 
 Vue.use(Cell)
   .use(CellGroup);
@@ -162,11 +175,24 @@ export default {
   data() {
     return {
       portraitDefault: portraitDefaultImg,
-      lvl: lvlImg,
+      lvlImg: {
+        0: '',
+        1: lvlImg1,
+        2: lvlImg2,
+        3: lvlImg3,
+        4: lvlImg4,
+        5: lvlImg5
+      },
       teamIcon
     };
   },
+  created() {
+    this.queryUserInfo();
+  },
   methods: {
+    ...mapMutations([
+      mutationType.UPDATE_USER
+    ]),
     toUserSetting() {
       /* 跳转个人设置页 */
       this.$router.push({
@@ -220,6 +246,14 @@ export default {
       this.$router.push({
         name: 'MnemonicList'
       });
+    },
+    async queryUserInfo() {
+      /* 查询用户信息 */
+      // 此接口不规范
+      const data = await this.axGet('v1/me', {
+        requestNoToast: true
+      });
+      this[mutationType.UPDATE_USER](data);
     }
   }
 };

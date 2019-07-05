@@ -5,16 +5,17 @@ import {
 } from 'vant';
 import router from '@/router';
 import store from '@/store';
-import VeeValidate from 'vee-validate';
+import '@/lib/veeValidate';
 import directives from './directive';
 import mixin from './mixin';
 import wUtil from '@/lib/util/util';
-import { axPost, axGet } from './lib/ajax';
+import { axPost, axGet, axPostJson } from './lib/ajax';
 
 Vue.config.productionTip = false;
 Vue.prototype.$dialog = Dialog;
 Vue.prototype.wUtil = wUtil;
 Vue.prototype.axPost = axPost;
+Vue.prototype.axPostJson = axPostJson;
 Vue.prototype.axGet = axGet;
 
 Vue.use(NavBar);
@@ -26,8 +27,7 @@ Object.keys(directives).forEach((name) => {
 
 // 全局混入
 Vue.mixin(mixin);
-// 验证组件
-Vue.use(VeeValidate);
+
 // icon
 Vue.use(Icon);
 new Vue({

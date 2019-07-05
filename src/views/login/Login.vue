@@ -43,6 +43,7 @@
             type="button"
             :class="['cm-btn',!pwdLoginDisabled && 'active']"
             :disabled="pwdLoginDisabled"
+            @click="login"
           >登录
           </button>
         </div>
@@ -207,6 +208,24 @@ export default {
       }
       !returnStatus && (this.$toast('请输入正确的手机号或邮箱'));
       return returnStatus;
+    },
+    login() {
+      /* 普通登录 */
+      const {
+        name: val,
+        password
+      } = this.form;
+      this.axPost('v1/login', {
+        val,
+        password
+      }).then(({ status, data }) => {
+        if (status === 200) {
+          localStorage.setItem('acces_token', `${data.token_type} ${data.acces_token}`);
+          this.$router.push({
+            name: 'HomePage'
+          });
+        }
+      });
     }
   }
 };

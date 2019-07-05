@@ -14,54 +14,93 @@
       >
         <van-field
           v-model="form.phone"
+          name="phone"
           placeholder="手机号/邮箱"
           clearable
-          v-resetInput
+          v-validate="'required|phoneOrEmail'"
+          data-vv-as="手机号/邮箱"
         >
           <span
             slot="right-icon"
-            class="login-body-password-error"
-          >验证码错误</span>
+            class="w-vee-error"
+          >此号码已经被注册</span>
         </van-field>
+        <div class="w-vee-error">{{ errors.first('phone') }}</div>
         <van-field
           v-model="form.verificationCode"
+          name="verificationCode"
           type="password"
           placeholder="请输入验证码"
           clearable
-          v-resetInput
+          v-validate="'required|digits:6'"
+          data-vv-as="验证码"
         >
-          <WVerificationcode
+          <w-verificationcode
             slot="button"
+            :phone="form.phone"
+            :type="verificationcodeType"
+            :beforeSend="validatePhone"
           >
-          </WVerificationcode>
+          </w-verificationcode>
         </van-field>
+        <div class="w-vee-error">{{ errors.first('verificationCode') }}</div>
+        <div
+          class="w-vee-error"
+        >验证码错误
+        </div>
         <van-field
           v-model="form.password"
-          type="password"
+          name="password"
+          :type="passwordType"
           placeholder="请输入登录密码"
           clearable
-          v-resetInput
+          v-validate="'required|min:6'"
+          data-vv-as="密码"
+          ref="password"
         >
+          <i
+            slot="right-icon"
+            :class="[
+              'iconfont',
+              'register-iconfont-eye',
+              passwordType==='password'?'icon-yanjing':'icon-yanjing1'
+            ]"
+            @click="changePasswordType('passwordType')"
+          ></i>
         </van-field>
+        <div class="w-vee-error">{{ errors.first('password') }}</div>
         <van-field
           v-model="form.password2"
-          type="password"
+          name="password2"
+          :type="password2Type"
           placeholder="请再次输入登录密码"
           clearable
-          v-resetInput
+          v-validate="'required|min:6|confirmed:password'"
+          data-vv-as="密码"
         >
+          <i
+            slot="right-icon"
+            :class="[
+              'iconfont',
+              'register-iconfont-eye',
+              password2Type==='password'?'icon-yanjing':'icon-yanjing1'
+            ]"
+            @click="changePasswordType('password2Type')"
+          ></i>
         </van-field>
-        <span
-          class="login-body-password-error"
-        >两次输入的密码不一致</span>
+        <div class="w-vee-error">{{ errors.first('password2') }}</div>
         <van-field
           v-model="form.invitationCode"
+          name="invitationCode"
           type="password"
           placeholder="请输入邀请码"
           clearable
-          v-resetInput
+
+          v-validate="'required|digits:6'"
+          data-vv-as="邀请码"
         >
         </van-field>
+        <div class="w-vee-error">{{ errors.first('invitationCode') }}</div>
         <p class="register-invitationCode-tips">注：邀请码必须填写</p>
         <w-radio
           v-model="agree"
@@ -73,6 +112,7 @@
         <button
           type="button"
           class="cm-btn active"
+          @click="register"
         >立即注册
         </button>
         <p
@@ -97,12 +137,12 @@
           <p>
           <p class="register-protocol-item">
             在适用法律允许的最大范围内，XX公司明确表示不提供任何其他类型的保证，不论使明示的或默示的，包括但不限于适销性、适用性、可靠性、准确性、完整性、无病毒以及无错误的任
-          何默示保证和责任。另外，在适用法律允许的最大范围内，XX公司并不担保服务一定能满足您的要求，也不担保服务不会被修改、中断或终止，
-          并且对服务的及时性、安全性、错误发生，以及信息是否能准确、及时、顺利的传送均不作任何担保。
+            何默示保证和责任。另外，在适用法律允许的最大范围内，XX公司并不担保服务一定能满足您的要求，也不担保服务不会被修改、中断或终止，
+            并且对服务的及时性、安全性、错误发生，以及信息是否能准确、及时、顺利的传送均不作任何担保。
           <p>
           <p class="register-protocol-item">
             在适用法律允许的最大范围内，XX公司不就因您使用服务引起的或与服务有关的任何意外的、非直接的、特殊的、或间接的损害或请求
-          （包括但不限于因人身伤害、因隐私泄漏、因未能履行包括诚信或合理谨慎在内的任何责任、因过失和因任何其他金钱上的损失或其他损失而造成的损害赔偿）承担任何责任。</p>
+            （包括但不限于因人身伤害、因隐私泄漏、因未能履行包括诚信或合理谨慎在内的任何责任、因过失和因任何其他金钱上的损失或其他损失而造成的损害赔偿）承担任何责任。</p>
         </div>
       </div>
     </w-model>
@@ -113,6 +153,7 @@
 import Vue from 'vue';
 import { Field } from 'vant';
 import { WModel, WRadio, WVerificationcode } from '@/components/form';
+import wValidateRules from '@/lib/wValidate/wValidateRules';
 
 Vue.use(Field);
 export default {
@@ -133,7 +174,10 @@ export default {
         invitationCode: ''// 邀请码
       },
       agree: 0, // 同意协议并完成注册
-      modelShow: false// 协议弹层显示隐藏
+      modelShow: false, // 协议弹层显示隐藏
+      verificationcodeType: 1, // 发送验证码的类型，1：手机，2：邮箱
+      passwordType: 'password',
+      password2Type: 'password'
     };
   },
   computed: {},
@@ -147,6 +191,51 @@ export default {
     showProtocol() {
       /* 显示协议弹层 */
       this.modelShow = true;
+    },
+    validatePhone() {
+      /* 点击发送验证码的时候，验证是否输入了手机号 */
+      const { rules } = wValidateRules;
+      const {
+        phone
+      } = this.form;
+      let returnStatus = true;
+      if (rules.mobile(phone)) {
+        this.verificationcodeType = 1;
+      } else if (rules.email(phone)) {
+        this.verificationcodeType = 2;
+      } else {
+        returnStatus = false;
+      }
+      !returnStatus && (this.$toast('请输入正确的手机号或邮箱'));
+      return returnStatus;
+    },
+    changePasswordType(type) {
+      /* 改变密码框类型 */
+      const typeObj = {
+        text: 'password',
+        password: 'text'
+      };
+      this[type] = typeObj[this[type]];
+    },
+    async register() {
+      if (await this.$validator.validateAll()) {
+        if (this.agree !== 1) {
+          this.$toast('请勾选同意协议');
+          return;
+        }
+        const { status } = this.axPost('v1/register', {
+          val: this.form.phone,
+          password: this.form.password,
+          re_password: this.form.password2,
+          fuid: this.form.invitationCode,
+          code: this.form.verificationCode
+        });
+        if (status === 200) {
+          this.$router.push({
+            name: 'RegisterSuc'
+          });
+        }
+      }
     }
   }
 };

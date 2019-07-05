@@ -8,7 +8,7 @@
     </van-nav-bar>
     <div class="updatePhone-tips">
       <p>验证码已发送，请填写验证码</p>
-      <!--<p>当前账号：{{userInfo.phone}}</p>-->
+      <!--<p>当前账号：{{userInfo.mobile}}</p>-->
     </div>
     <van-field
       v-model="updateAccount"

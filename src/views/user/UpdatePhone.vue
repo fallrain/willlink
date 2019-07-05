@@ -8,15 +8,23 @@
     </van-nav-bar>
     <div class="updatePhone-tips">
       <p>更换账号后，下次登录可使用新账号登录。</p>
-      <p>当前账号：{{userInfo.phone}}</p>
+      <p>当前账号：{{userInfo.mobile}}</p>
     </div>
     <van-field
       v-model="account"
+      name="account"
       placeholder="请填写新的手机号或邮箱"
       clearable
       @input="pwdLoginInput"
+      data-vv-scope="updatePhone"
+      v-validate="{
+        required:true,
+        notEquals:userInfo.mobile
+      }"
+      data-vv-as="手机号/邮箱"
     >
     </van-field>
+    <div class="w-vee-error">{{ errors.first('updatePhone.account') }}</div>
     <div class="updatePhone-btns">
       <button
         type="button"
@@ -43,6 +51,17 @@ export default {
       account: ''
     };
   },
+  created() {
+    const dict = {
+      custom: {
+        account: {
+          notEquals: '不能与原账号一样'
+        }
+      }
+    };
+
+    this.$validator.localize('en', dict);
+  },
   methods: {
     pwdLoginInput() {
       /* 账号密码登录输入框事件 */
@@ -56,13 +75,15 @@ export default {
         this.btnDisabled = true;
       }
     },
-    toAddVerificationCode() {
-      this.$router.push({
-        name: 'AddVerificationCode',
-        params: {
-          updateAccount: window.encodeURIComponent(this.account)
-        }
-      });
+    async toAddVerificationCode() {
+      if (await this.$validator.validateAll('updatePhone')) {
+        this.$router.push({
+          name: 'AddVerificationCode',
+          params: {
+            updateAccount: window.encodeURIComponent(this.account)
+          }
+        });
+      }
     }
   }
 };

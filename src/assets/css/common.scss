@@ -352,6 +352,14 @@
   }
 }
 
+
+.w-vee-error {
+  color: #FF6B6B;
+  font-size: 12px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
 /*公共 end*/
 
 /*fix*/
@@ -457,6 +465,7 @@
   padding-top: 20px;
   padding-left: 15px;
   padding-right: 15px;
+  padding-bottom: 36px;
 
   .van-cell {
     margin-top: 34px;
@@ -580,6 +589,11 @@
 
 .register-body-btns {
   margin-top: 14px;
+}
+
+.register-iconfont-eye {
+  font-size: 15px;
+  color: #474E66;
 }
 
 /*注册 end*/
@@ -793,6 +807,10 @@
     &:after {
       border-bottom: 1px solid #1C1C21;
     }
+  }
+
+  .w-vee-error {
+    padding-left: 30px;
   }
 }
 
