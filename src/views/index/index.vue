@@ -14,18 +14,18 @@
           <div class="van-clearfix"></div>
         </div>
         <div class="assetsBox-num">
-          <div class="left">643,234,255.43</div>
-          <div class="right">45,756,787.98</div>
+          <div class="left">{{totalWID}}</div>
+          <div class="right">{{totalUSDT}}</div>
           <div class="van-clearfix"></div>
         </div>
         <div class="assetsBox-border">
-          <div class="bor-l" style="width: 70%"></div>
-          <div class="bor-r" style="width: 30%"></div>
+          <div class="bor-l" :style="{width: proportionUSDT+'%'}"></div>
+          <div class="bor-r" :style="{width: 100-proportionUSDT+'%'}"></div>
         </div>
         <div class="assetsBox-earnings">
           <div class="name">产品收益</div>
-          <div class="type">1983257 WID</div>
-          <div class="type text-right">183275 USDT</div>
+          <div class="type">{{productProfitWID}} WID</div>
+          <div class="type text-right">{{productProfitUSDT}} USDT</div>
         </div>
       </div>
       <!--产品状态-->
@@ -125,14 +125,18 @@ export default {
     return {
       addBtn: add,
       sweepImg: sweep,
+      totalWID: 0,
+      totalUSDT: 0,
+      productProfitWID: 0,
+      productProfitUSDT: 0,
+      proportionUSDT: 0// USDT所占比例
     };
   },
   computed: {},
   watch: {},
   created() {
+    this.queryMyProperty();
   },
-  mounted() {},
-  destroyed() {},
   methods: {
     homeProduct() {
       this.$router.push({ name: 'HomeProduct' });
@@ -145,6 +149,18 @@ export default {
     },
     sweep() {
       this.$router.push({ name: 'HomeSweep' });
+    },
+    queryMyProperty() {
+      /* 查询用户财产（总） */
+      this.axGet(`v1/member/total_profit/${this.userInfo.uuid}`).then(({ status, data }) => {
+        if (status === 200) {
+          this.totalWID = data.total_wid;
+          this.totalUSDT = data.total_usdt;
+          this.productProfitWID = data.product_profit;
+          this.productProfitUSDT = data.product_profit;
+          this.proportionUSDT = data.total_usdt * 100 / data.total_wid;
+        }
+      });
     }
   }
 };
@@ -152,9 +168,6 @@ export default {
 
 <style scoped lang="scss">
   .homeNav{
-    * {
-      box-sizing: border-box;
-    }
     position: relative;
     .van-notice-bar{
       height: 44px;
@@ -231,7 +244,7 @@ export default {
           border-bottom-left-radius: 3px;
           &:after{
             content: '';
-            width: 8px;
+            width: 6px;
             height: 4px;
             background: rgba(81,165,159,1);
             display: inline-block;
