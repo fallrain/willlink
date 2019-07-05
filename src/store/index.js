@@ -17,12 +17,12 @@ export default new Vuex.Store({
       'Login',
       'SysAnnouncementDetail',
       'Feedback',
-      'PrivateKeyImport'
+      'PrivateKeyImport',
+      'ProductOrder'
     ],
     loadingShow: false// loading 显示隐藏
   },
   getters: {
-    //userInfo: state => state.user.userInfo
   },
   mutations: {
     /* eslint注释请不要删除 */

@@ -215,6 +215,7 @@ const data = [
         name: 'ProductOrder',
         path: '/productOrder',
         component: ProductOrder,
+        props: true,
         meta: {
           title: '订单',
           topNav: false,

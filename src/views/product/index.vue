@@ -27,7 +27,10 @@
           class="line"
         >
           <img :src="item.imgSrc"/>
-          <div class="btn">去买入</div>
+          <div
+            class="btn"
+            @click="toBuy(item)"
+          >去买入</div>
         </li>
       </ul>
     </div>
@@ -90,6 +93,16 @@ export default {
             ...v,
             imgSrc: require(`@/assets/img/product/product${v.name}.png`)
           }));
+        }
+      });
+    },
+    toBuy(item) {
+      /* 去买入 */
+      this.$router.push({
+        name: 'ProductOrder',
+        params: {
+          productName: item.name,
+          productId: item.id
         }
       });
     }

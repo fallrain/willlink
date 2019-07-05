@@ -1,6 +1,7 @@
 <template>
   <div class="HTextarea">
     <textarea
+      v-bind="$attrs"
       class="HTextarea-ta"
       :placeholder="placeHolder"
       :maxlength="maxNumber"
@@ -19,6 +20,7 @@
 <script>
 export default {
   name: 'WTextarea',
+  inheritAttrs: false,
   props: {
     value: {
       type: String

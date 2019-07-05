@@ -12,7 +12,11 @@
           v-model='form.feedback'
           :maxNumber='200'
           placeHolder='请留下您的问题反馈，我们将不断完善'
+          name="feedback"
+          v-validate="'required'"
+          data-vv-as="反馈内容"
         ></w-textarea>
+        <div class="w-vee-error">{{ errors.first('feedback') }}</div>
         <w-upload
           class="mt20"
           v-show="form.imgUrl.length < 3"
@@ -35,8 +39,12 @@
           class="mt30"
           placeholder="手机号"
           clearable
+          name="phone"
+          v-validate="'required|phone'"
+          data-vv-as="手机号"
         >
         </van-field>
+        <div class="w-vee-error">{{ errors.first('phone') }}</div>
         <div class="feedback-btns-par">
           <button
             type="button"
@@ -90,10 +98,24 @@ export default {
     },
     submit() {
       /* 提交反馈 */
-      // ....提交反馈
-      // 成功后跳转反馈成功页
-      this.$router.push({
-        name: 'FeedbackSuc'
+      this.$validator.validateAll().then((valid) => {
+        if (valid) {
+          this.axPost(
+            'v1/feedback/save',
+            {
+              uuid: this.userInfo.uuid,
+              context: this.form.feedback,
+              mobile: this.form.phone,
+              img_url: this.form.imgUrl.join(','),
+            }
+          ).then(({ status, data }) => {
+            if (status === 200) {
+              this.$router.push({
+                name: 'FeedbackSuc'
+              });
+            }
+          });
+        }
       });
     }
   }

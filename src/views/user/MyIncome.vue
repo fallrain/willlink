@@ -67,6 +67,21 @@ export default {
         }
       ]
     };
+  },
+  created() {
+    this.queryIncome();
+  },
+  methods: {
+    queryIncome() {
+      /* 查询我的收益 */
+      this.axGet(
+        `v1/member/profit_list/${11}`
+      ).then(({ status, data }) => {
+        if (status === 200) {
+
+        }
+      });
+    }
   }
 };
 </script>

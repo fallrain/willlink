@@ -30,6 +30,7 @@
       <button
         type="button"
         class="cm-btn active"
+        @click="loginOut"
       >退出登录
       </button>
     </div>
@@ -59,6 +60,16 @@ export default {
       /* 跳转修改密码页面 */
       this.$router.push({
         name: 'UpdatePwd'
+      });
+    },
+    loginOut() {
+      /* 登出 */
+      this.axGet('v1/logout').then(({ status }) => {
+        if (status === 200) {
+          this.$router.replace({
+            name: 'Login'
+          });
+        }
       });
     }
   }
