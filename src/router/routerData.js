@@ -213,7 +213,7 @@ const data = [
       },
       {
         name: 'ProductOrder',
-        path: '/productOrder',
+        path: '/productOrder/:productId:productName',
         component: ProductOrder,
         props: true,
         meta: {

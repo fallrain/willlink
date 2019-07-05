@@ -7,8 +7,6 @@
         left-arrow
         :title="navTitle"
         @click-left="back"
-        :right-text="hasAnnouncement?'全部已读':''"
-        @click-right="setAllRead"
       >
       </van-nav-bar>
       <div class="sysAnnouncementDetail">

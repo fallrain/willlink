@@ -11,42 +11,42 @@
     </div>
     <div class="content">
       <div class="box">
-        <div class="line text-left">融资金额<span>5,000.00</span></div>
-        <div class="line text-right">融资期限<span>9个月</span></div>
+        <div class="line text-left">融资金额<span>{{productAmount}}</span></div>
+        <div class="line text-right">融资期限<span>365天</span></div>
         <div class="prompt">温馨提示：投资有风险，入市需谨慎！</div>
       </div>
       <div class="info">
         <div class="title">产品介绍</div>
         <div class="line">
           <div class="name text-left left">产品名称</div>
-          <div class="type text-right right">XXXXX金融产品</div>
+          <div class="type text-right right">{{productName}}</div>
         </div>
         <div class="line">
           <div class="name text-left left">产品编码</div>
-          <div class="type text-right right">89257237568192490823582</div>
+          <div class="type text-right right">{{productCode}}</div>
         </div>
         <div class="line">
           <div class="name text-left left">产品金额</div>
-          <div class="type text-right right">50,000.00</div>
+          <div class="type text-right right">{{productAmount}}</div>
         </div>
         <div class="line">
           <div class="name text-left left">到期收益</div>
-          <div class="type text-right right">5200.00</div>
+          <div class="type text-right right">{{totalAmount}}</div>
         </div>
         <div class="line">
           <div class="name text-left left">产品类型</div>
-          <div class="type text-right right">仓单</div>
+          <div class="type text-right right">{{type}}</div>
         </div>
       </div>
       <div class="info">
         <div class="title">收款方信息</div>
         <div class="line">
           <div class="name text-left left">收款钱包地址</div>
-          <div class="type text-right right">faf8523573879sfu7898ovbd12846238756459</div>
+          <div class="type text-right right">{{address}}</div>
         </div>
         <div class="line">
           <div class="name text-left left">已成交记录</div>
-          <div class="type text-right right">847个</div>
+          <div class="type text-right right">{{recordNum}}个</div>
         </div>
       </div>
       <div class="btn">生成订单</div>
@@ -63,12 +63,20 @@ export default {
   name: 'ProductOrder',
   props: ['productId', 'productName'],
   data() {
-    return {};
+    return {
+      productCode: '',
+      totalAmount: '',
+      productAmount: '',
+      type: '',
+      address: '',
+      recordNum: '',
+    };
   },
   computed: {},
   watch: {},
   created() {
     this.queryDetail();
+    this.queryPayeesInfo();
   },
   methods: {
     queryDetail() {
@@ -77,7 +85,21 @@ export default {
         `v1/products/${this.productId}`
       ).then(({ status, data }) => {
         if (status === 200) {
-
+          this.productCode = data.code;
+          this.productAmount = data.limit_money;
+          this.totalAmount = data.limit_money * data.profit;
+          this.type = data.type;
+        }
+      });
+    },
+    queryPayeesInfo() {
+      /* 查询收款人信息 */
+      this.axGet(
+        `v1/config/info/${this.productId}`
+      ).then(({ status, data }) => {
+        if (status === 200) {
+          this.address = data.receiving_account;
+          this.recordNum = data.transaction_record;
         }
       });
     }
@@ -155,7 +177,7 @@ export default {
           .type {
             width: 70%;
             display: inline-block;
-            font-size: 13px;
+            font-size: 10px;
             font-family: PingFang-SC-Medium;
             font-weight: 500;
             color: rgba(131, 130, 153, 1);
