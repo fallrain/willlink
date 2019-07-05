@@ -1,24 +1,44 @@
 <template>
   <div class="detailBox">
     <div class="navBox">
-      <van-nav-bar :title="title" left-arrow @click-left="onClickLeft" class="main-header"/>
-      <div class="sweepBtn"><van-icon :name="sweepImg" /></div>
+      <van-nav-bar :title="navTitle" left-arrow @click-left="onClickLeft" class="main-header"/>
+      <div class="sweepBtn">
+        <van-icon :name="sweepImg"/>
+      </div>
     </div>
     <div class="content">
       <div class="box">
         <div class="name">WID</div>
-        <div class="num">896,465,973.00</div>
+        <div class="num">{{totalWID}}</div>
         <div class="operate">
-          <div class="line" @click="intoBtn"><van-icon :name="intoImg" size="13"/>转入</div>
-          <div class="line" @click="rollOutBtn"><van-icon :name="rollOutImg"  size="13"/>转出</div>
+          <div class="line" @click="intoBtn('WID')">
+            <van-icon :name="intoImg" size="13"/>
+            转入
+          </div>
+          <div class="line" @click="rollOutBtn('WID')">
+            <van-icon :name="rollOutImg" size="13"/>
+            转出
+          </div>
         </div>
       </div>
       <div class="box">
         <div class="name">USDT</div>
-        <div class="num">896,465,973.00</div>
+        <div class="num">{{totalUSDT}}</div>
         <div class="operate">
-          <div class="line"><van-icon :name="intoImg" size="13"/>转入</div>
-          <div class="line"><van-icon :name="rollOutImg"  size="13"/>转出</div>
+          <div
+            class="line"
+            @click="intoBtn('USDT')"
+          >
+            <van-icon :name="intoImg" size="13"/>
+            转入
+          </div>
+          <div
+            class="line"
+            @click="intoBtn('USDT')"
+          >
+            <van-icon :name="rollOutImg" size="13"/>
+            转出
+          </div>
         </div>
       </div>
       <div class="recordBox">
@@ -88,7 +108,9 @@
 
 <script>
 import Vue from 'vue';
-import { NavBar, Icon, Search, DatetimePicker, Popup } from 'vant';
+import {
+  DatetimePicker, Icon, NavBar, Popup, Search
+} from 'vant';
 import sweep from '@/icon/sweep.png';
 import into from '@/assets/img/home/into.png';
 import rollOut from '@/assets/img/home/rollOut.png';
@@ -113,19 +135,19 @@ export default {
       rollOutImg: rollOut,
       bottomImg: bottom,
       time: false,
+      totalWID: '',
+      totalUSDT: '',
     };
   },
   computed: {},
   watch: {},
   created() {
-    // 获取详情标题
-    const navTitle = this.$router.history.current.params.title;
-    if (navTitle !== undefined) {
-      this.title = navTitle;
-    }
+    this.queryMyProperty();
   },
-  mounted() {},
-  destroyed() {},
+  mounted() {
+  },
+  destroyed() {
+  },
   methods: {
     onClickLeft() {
       /* 返回上一页 */
@@ -135,29 +157,53 @@ export default {
       this.time = !this.time;
     },
     // 转入
-    intoBtn() {
-      this.$router.push({ name: 'HomeInto', params: { title: '转入USDT' } });
+    intoBtn(type) {
+      this.$router.push({
+        name: 'HomeInto',
+        params: {
+          title: `转入${type}`
+        }
+      });
     },
     // 转出
-    rollOutBtn() {
-      this.$router.push({ name: 'HomeRollOut', params: { title: '转出WID' } });
+    rollOutBtn(type) {
+      this.$router.push({
+        name: 'HomeRollOut',
+        params: {
+          title: `转出${type}`
+        }
+      });
     },
     // 转出详情
     rolloutDetail() {
       this.$router.push({ name: 'HomeRollOutDetail' });
+    },
+    queryMyProperty() {
+      /* 查询用户财产（总） */
+      this.axGet(`v1/member/total_profit/${this.userInfo.uuid}`).then(({ status, data }) => {
+        if (status === 200) {
+          this.totalWID = data.total_wid;
+          this.totalUSDT = data.total_usdt;
+          this.productProfitWID = data.product_profit;
+          this.productProfitUSDT = data.product_profit;
+          this.proportionUSDT = data.total_usdt * 100 / data.total_wid;
+        }
+      });
     }
   }
 };
 </script>
 
 <style scoped lang="scss">
-  .detailBox{
+  .detailBox {
     * {
       box-sizing: border-box;
     }
+
     position: relative;
-    .navBox{
-      .sweepBtn{
+
+    .navBox {
+      .sweepBtn {
         position: absolute;
         top: 0;
         right: 0;
@@ -165,70 +211,80 @@ export default {
         margin: 13px 15px;
       }
     }
-    .content{
+
+    .content {
       padding: 15px;
-      .box{
-        height:115px;
+
+      .box {
+        height: 115px;
         padding: 20px 35px 15px 35px;
-        border-radius:10px;
+        border-radius: 10px;
         background: url('../../icon/back.png') 50% no-repeat;
         background-size: 100% 100%;
         margin-bottom: 8px;
-        &:last-child{
+
+        &:last-child {
           margin-bottom: 10px;
         }
-        .name{
+
+        .name {
           height: 10px;
-          font-size:14px;
-          font-family:PingFang-SC-Medium;
-          font-weight:500;
-          color:rgba(255,255,255,1);
+          font-size: 14px;
+          font-family: PingFang-SC-Medium;
+          font-weight: 500;
+          color: rgba(255, 255, 255, 1);
           margin-bottom: 15px;
         }
-        .num{
-          height:22px;
-          font-size:25px;
-          font-family:DIN-Medium;
-          font-weight:500;
-          color:rgba(255,255,255,1);
+
+        .num {
+          height: 22px;
+          font-size: 25px;
+          font-family: DIN-Medium;
+          font-weight: 500;
+          color: rgba(255, 255, 255, 1);
           margin-bottom: 10px;
         }
-        .operate{
-          .line{
+
+        .operate {
+          .line {
             width: 50%;
             display: inline-block;
-            font-size:12px;
-            font-family:PingFang-SC-Medium;
-            font-weight:500;
-            color:rgba(255,255,255,1);
-            .van-icon{
+            font-size: 12px;
+            font-family: PingFang-SC-Medium;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 1);
+
+            .van-icon {
               vertical-align: middle;
               margin-right: 5px;
             }
           }
         }
       }
-      .recordBox{
-        .record{
+
+      .recordBox {
+        .record {
           line-height: 25px;
-          font-size:15px;
-          font-family:PingFang-SC-Medium;
-          font-weight:500;
-          color:rgba(89,193,182,1);
+          font-size: 15px;
+          font-family: PingFang-SC-Medium;
+          font-weight: 500;
+          color: rgba(89, 193, 182, 1);
         }
-        .time{
+
+        .time {
           width: 100px;
-          height:25px;
+          height: 25px;
           line-height: 25px;
           text-align: center;
-          background:rgba(34,34,41,1);
-          border-radius:13px;
-          font-size:12px;
-          font-family:PingFang-SC-Medium;
-          font-weight:500;
-          color:rgba(131,130,153,1);
+          background: rgba(34, 34, 41, 1);
+          border-radius: 13px;
+          font-size: 12px;
+          font-family: PingFang-SC-Medium;
+          font-weight: 500;
+          color: rgba(131, 130, 153, 1);
           position: relative;
-          i{
+
+          i {
             width: 0px;
             height: 0px;
             color: white;
@@ -243,78 +299,90 @@ export default {
       }
 
     }
-    .detailLine{
+
+    .detailLine {
       position: relative;
       overflow: hidden;
-      .mask{
+
+      .mask {
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         height: 100vh;
-        background:rgba(28,28,33,0.8);
+        background: rgba(28, 28, 33, 0.8);
       }
     }
-    .timeSearch{
-      background:rgba(28,28,33,0.8);
+
+    .timeSearch {
+      background: rgba(28, 28, 33, 0.8);
       padding: 0 15px 20px 15px;
-      .line{
-        background:rgba(34,34,41,1);
-        border-radius:5px;
+
+      .line {
+        background: rgba(34, 34, 41, 1);
+        border-radius: 5px;
         padding: 7px 15px;
-        font-size:12px;
-        font-family:PingFang-SC-Medium;
-        font-weight:500;
-        color:rgba(131,130,153,1);
+        font-size: 12px;
+        font-family: PingFang-SC-Medium;
+        font-weight: 500;
+        color: rgba(131, 130, 153, 1);
         display: inline-block;
         margin-right: 15px;
       }
     }
-    .recordList{
-      .box{
-        height:70px;
-        background:rgba(34,34,41,1);
+
+    .recordList {
+      .box {
+        height: 70px;
+        background: rgba(34, 34, 41, 1);
         padding: 18px 15px;
         margin-bottom: 1px;
-        .line{
-          *{
+
+        .line {
+          * {
             display: inline-block;
           }
         }
-        .name{
-          font-size:15px;
-          font-family:PingFang-SC-Medium;
-          font-weight:500;
-          color:rgba(255,255,255,1);
+
+        .name {
+          font-size: 15px;
+          font-family: PingFang-SC-Medium;
+          font-weight: 500;
+          color: rgba(255, 255, 255, 1);
           margin-right: 14px;
         }
-        .lable{
+
+        .lable {
           padding: 0 3px;
-          background:rgba(55,55,66,1);
-          border-radius:3px;
-          font-size:10px;
-          font-family:Adobe Heiti Std R;
-          font-weight:normal;
-          color:rgba(131,130,153,1);
-          &.active{
-            background:rgba(89,193,182,1);
-            color:rgba(255,255,255,1);
+          background: rgba(55, 55, 66, 1);
+          border-radius: 3px;
+          font-size: 10px;
+          font-family: Adobe Heiti Std R;
+          font-weight: normal;
+          color: rgba(131, 130, 153, 1);
+
+          &.active {
+            background: rgba(89, 193, 182, 1);
+            color: rgba(255, 255, 255, 1);
           }
-          .num{
-            font-size:18px;
-            font-family:DIN-Medium;
-            font-weight:500;
-            color:rgba(230,230,230,1);
-            &.active{
-              color:rgba(255,107,107,1);
+
+          .num {
+            font-size: 18px;
+            font-family: DIN-Medium;
+            font-weight: 500;
+            color: rgba(230, 230, 230, 1);
+
+            &.active {
+              color: rgba(255, 107, 107, 1);
             }
           }
         }
-        .time{
-          font-size:12px;
-          font-family:PingFang-SC-Medium;
-          font-weight:500;
-          color:rgba(131,130,153,1);
+
+        .time {
+          font-size: 12px;
+          font-family: PingFang-SC-Medium;
+          font-weight: 500;
+          color: rgba(131, 130, 153, 1);
         }
       }
     }

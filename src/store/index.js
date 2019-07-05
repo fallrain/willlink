@@ -20,7 +20,9 @@ export default new Vuex.Store({
       'PrivateKeyImport',
       'ProductOrder',
       'MyProduct',
-      'ProductAuditOrder'
+      'ProductAuditOrder',
+      'HomeDetail',
+      'HomeRollOutDetail'
     ],
     loadingShow: false// loading 显示隐藏
   },

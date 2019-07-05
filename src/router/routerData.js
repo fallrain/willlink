@@ -153,8 +153,9 @@ const data = [
       },
       {
         name: 'HomeInto',
-        path: '/homeInto',
+        path: '/homeInto/:title',
         component: HomeInto,
+        props: true,
         meta: {
           title: '',
           bottomNav: false,
@@ -163,8 +164,9 @@ const data = [
       },
       {
         name: 'HomeRollOut',
-        path: '/homeRollOut',
+        path: '/homeRollOut/:title',
         component: HomeRollOut,
+        props: true,
         meta: {
           title: '',
           bottomNav: false,
@@ -183,8 +185,9 @@ const data = [
       },
       {
         name: 'HomeRollOutDetail',
-        path: '/homeRollOutDetail',
+        path: '/homeRollOutDetail/:id',
         component: HomeRollOutDetail,
+        props: true,
         meta: {
           title: '账单详情',
           bottomNav: false,

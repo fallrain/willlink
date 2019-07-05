@@ -1,7 +1,13 @@
 <template>
   <div class="outDetailBox">
     <div class="navBox">
-      <van-nav-bar :title="title" left-arrow @click-left="onClickLeft" class="main-header"/>
+      <van-nav-bar
+        :title="navTitle"
+        left-arrow
+        @click-left="back"
+        class="main-header"
+      >
+      </van-nav-bar>
     </div>
     <div class="content">
       <div class="action text-center">转出</div>
@@ -10,27 +16,27 @@
       <div class="infoBox">
         <div class="line">
           <div class="left name">创建时间</div>
-          <div class="right text-right type">2019-06-14 18:17</div>
+          <div class="right text-right type">{{createdTime}}</div>
           <div class="van-clearfix"></div>
         </div>
         <div class="line">
           <div class="left name">订单号</div>
-          <div class="right text-right type">89257237568192490823582</div>
+          <div class="right text-right type">{{orderNo}}</div>
           <div class="van-clearfix"></div>
         </div>
         <div class="line">
           <div class="left name">收支方式</div>
-          <div class="right text-right type">WID</div>
+          <div class="right text-right type">{{['WID','USDT'][type] || ''}}</div>
           <div class="van-clearfix"></div>
         </div>
         <div class="line">
           <div class="left name">收款地址</div>
-          <div class="right text-right type">faf8523573879sfu7898ovbd12846238756459</div>
+          <div class="right text-right type">{{address}}</div>
           <div class="van-clearfix"></div>
         </div>
         <div class="line">
           <div class="left name">转账地址</div>
-          <div class="right text-right type">faf8523573879sfu7898ovbd12846238756459</div>
+          <div class="right text-right type">{{paymentAddress}}</div>
           <div class="van-clearfix"></div>
         </div>
         <div class="line">
@@ -41,13 +47,21 @@
         <div class="line">
           <div class="left name">处理进度</div>
           <div class="right text-right type">
-            <van-steps direction="vertical" active-color="#59C1B6" :active="0">
+            <van-steps
+              direction="vertical"
+              active-color="#59C1B6"
+              :active="step"
+            >
               <van-step>
                 <h3>提交审核</h3>
                 <p>10-24 14:34</p>
               </van-step>
               <van-step>
                 <h3>审核确认</h3>
+                <p>10-24 14:34</p>
+              </van-step>
+              <van-step>
+                <h3>审核不通过</h3>
                 <p>10-24 14:34</p>
               </van-step>
               <van-step>
@@ -71,7 +85,8 @@
               placeholder="请输入留言"
               rows="3"
               autosize
-            />
+            >
+            </van-field>
           </div>
         </div>
       </div>
@@ -81,7 +96,9 @@
 
 <script>
 import Vue from 'vue';
-import { NavBar, Step, Steps, Field } from 'vant';
+import {
+  NavBar, Step, Steps, Field
+} from 'vant';
 
 Vue.use(NavBar);
 Vue.use(Step).use(Steps);
@@ -90,29 +107,36 @@ export default {
   name: 'HomeRollOutDetail',
   mixins: [],
   components: {},
-  props: {},
+  props: ['id'],
   data() {
     return {
-      title: '',
-      value: ''
+      createdTime: '',
+      orderNo: '',
+      address: '',
+      paymentAddress: '',
+      type: '',
+      step: 0
     };
   },
   computed: {},
-  watch: {},
   created() {
-    // 获取详情标题
-    console.log(this.$router.history)
-    const navTitle = this.$router.history.current.meta.title;
-    if (navTitle !== undefined) {
-      this.title = navTitle;
-    }
+    this.queryDetail();
   },
-  mounted() {},
-  destroyed() {},
   methods: {
-    onClickLeft() {
-      /* 返回上一页 */
-      this.$router.back();
+    queryDetail() {
+      /* 查询转账详情 */
+      this.axGet(
+        `v1/withdraw/detail/${this.id}`
+      ).then(({ status, data }) => {
+        if (status === 200) {
+          this.createdTime = data.created_at;
+          this.orderNo = data.withdraw_no;
+          this.address = data.user_wallet_address;
+          this.paymentAddress = data.payment_address;
+          this.type = data.currency_type;
+          this.step = data.status;
+        }
+      });
     }
   }
 };

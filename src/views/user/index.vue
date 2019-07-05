@@ -155,7 +155,6 @@
 <script>
 import Vue from 'vue';
 import {
-  mapState,
   mapMutations
 } from 'vuex';
 import { Cell, CellGroup } from 'vant';

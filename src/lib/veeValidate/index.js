@@ -7,7 +7,9 @@ const dictionary = {
     messages: {
       required: name => `${name}不能为空`,
       length: (name, len) => `${name}的长度应为${len}位`,
-      min: (name, len) => `${name}的长度最小为${min}位`,
+      min: (name, len) => `${name}的长度最小为${len}位`,
+      max: (name, len) => `${name}的长度最大为${len}位`,
+      decimal: () => '必须为小数',
       digits: (name, len) => {
         let str;
         if (len) {

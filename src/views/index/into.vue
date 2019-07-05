@@ -27,20 +27,14 @@ export default {
   name: 'HomeInto',
   mixins: [],
   components: {},
-  props: {},
+  props: ['title'],
   data() {
     return {
-      title: '',
     };
   },
   computed: {},
   watch: {},
   created() {
-    // 获取详情标题
-    const navTitle = this.$router.history.current.params.title;
-    if (navTitle !== undefined) {
-      this.title = navTitle;
-    }
   },
   mounted() {},
   destroyed() {},

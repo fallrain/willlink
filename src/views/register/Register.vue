@@ -95,7 +95,6 @@
           type="password"
           placeholder="请输入邀请码"
           clearable
-
           v-validate="'required|digits:6'"
           data-vv-as="邀请码"
         >

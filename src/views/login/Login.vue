@@ -104,6 +104,10 @@
 
 <script>
 import Vue from 'vue';
+import {
+  mapMutations
+} from 'vuex';
+import mutationType from '@/store/mutations_types';
 import { Field } from 'vant';
 import { WVerificationcode } from '@/components/form';
 import wValidateRules from '@/lib/wValidate/wValidateRules';
@@ -145,6 +149,9 @@ export default {
     }
   },
   methods: {
+    ...mapMutations([
+      mutationType.UPDATE_USER
+    ]),
     jumpForget() {
       /* 跳转忘记密码页面 */
       this.$router.push({
@@ -221,11 +228,21 @@ export default {
       }).then(({ status, data }) => {
         if (status === 200) {
           localStorage.setItem('acces_token', `${data.token_type} ${data.acces_token}`);
-          this.$router.push({
-            name: 'HomePage'
+          this.queryUserInfo().then(() => {
+            this.$router.push({
+              name: 'HomePage'
+            });
           });
         }
       });
+    },
+    async queryUserInfo() {
+      /* 查询用户信息 */
+      // 此接口不规范
+      const data = await this.axGet('v1/me', {
+        requestNoToast: true
+      });
+      this[mutationType.UPDATE_USER](data);
     }
   }
 };

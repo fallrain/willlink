@@ -14,31 +14,31 @@
     <div class="line">
       <img class="left" src="../../icon/W.png"/>
       <div class="left text">WID</div>
-      <van-switch class="right" v-model="checked" size="20px" active-color="#4CD954" inactive-color="#FFFFFF"/>
-      <div class="van-clearfix"></div>
-    </div>
-    <div class="line">
-      <img class="left" src="../../icon/W.png"/>
-      <div class="left text">WID</div>
       <van-switch class="right" v-model="checked1" size="20px" active-color="#4CD954" inactive-color="#FFFFFF"/>
       <div class="van-clearfix"></div>
     </div>
     <div class="line">
       <img class="left" src="../../icon/W.png"/>
       <div class="left text">WID</div>
-      <van-switch class="right" v-model="checked" size="20px" active-color="#4CD954" inactive-color="#FFFFFF"/>
+      <van-switch class="right" v-model="checked2" size="20px" active-color="#4CD954" inactive-color="#FFFFFF"/>
       <div class="van-clearfix"></div>
     </div>
     <div class="line">
       <img class="left" src="../../icon/W.png"/>
       <div class="left text">WID</div>
-      <van-switch class="right" v-model="checked" size="20px" active-color="#4CD954" inactive-color="#FFFFFF"/>
+      <van-switch class="right" v-model="checked3" size="20px" active-color="#4CD954" inactive-color="#FFFFFF"/>
       <div class="van-clearfix"></div>
     </div>
     <div class="line">
       <img class="left" src="../../icon/W.png"/>
       <div class="left text">WID</div>
-      <van-switch class="right" v-model="checked" size="20px" active-color="#4CD954" inactive-color="#FFFFFF"/>
+      <van-switch class="right" v-model="checked4" size="20px" active-color="#4CD954" inactive-color="#FFFFFF"/>
+      <div class="van-clearfix"></div>
+    </div>
+    <div class="line">
+      <img class="left" src="../../icon/W.png"/>
+      <div class="left text">WID</div>
+      <van-switch class="right" v-model="checked5" size="20px" active-color="#4CD954" inactive-color="#FFFFFF"/>
       <div class="van-clearfix"></div>
     </div>
   </div>
@@ -59,6 +59,10 @@ export default {
       value: '',
       checked: true,
       checked1: false,
+      checked2: true,
+      checked3: true,
+      checked4: true,
+      checked5: true,
     };
   },
   computed: {},
