@@ -32,7 +32,9 @@ module.exports = {
     'no-plusplus': 0,//没必要禁止
     'no-bitwise': 0,//没必要禁止
     "linebreak-style": [0, "error", "windows"], //允许windows开发环境
-    'no-unused-expressions': 0//三元表达式、逻辑或没必要禁止
+    'no-unused-expressions': 0,//三元表达式、逻辑或没必要禁止
+    'guard-for-in': 0,
+    'no-restricted-syntax': 0
   },
   parserOptions: {
     parser: 'babel-eslint',

@@ -224,8 +224,9 @@ const data = [
       },
       {
         name: 'ProductAuditOrder',
-        path: '/productAuditOrder',
+        path: '/productAuditOrder/:orderId',
         component: ProductAuditOrder,
+        props: true,
         meta: {
           title: '订单',
           topNav: false,

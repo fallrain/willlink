@@ -18,7 +18,9 @@ export default new Vuex.Store({
       'SysAnnouncementDetail',
       'Feedback',
       'PrivateKeyImport',
-      'ProductOrder'
+      'ProductOrder',
+      'MyProduct',
+      'ProductAuditOrder'
     ],
     loadingShow: false// loading 显示隐藏
   },
