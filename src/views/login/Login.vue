@@ -17,16 +17,24 @@
             placeholder="手机号/邮箱"
             clearable
             @input="pwdLoginInput"
+            name="name"
+            v-validate="'required|phoneOrEmail'"
+            data-vv-as="手机号/邮箱"
           >
           </van-field>
+          <div class="w-vee-error">{{ errors.first('name') }}</div>
           <van-field
             v-model="form.password"
             type="password"
             placeholder="请输入密码"
             clearable
             @input="pwdLoginInput"
+            name="password"
+            v-validate="'required|min:6'"
+            data-vv-as="密码"
           >
           </van-field>
+          <div class="w-vee-error">{{ errors.first('password') }}</div>
           <div class="login-body-forget-par">
             <span
               v-show="showPasswordError"

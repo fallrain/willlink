@@ -19,11 +19,13 @@
           clearable
           v-validate="'required|phoneOrEmail'"
           data-vv-as="手机号/邮箱"
+          @input="hadRegister=false"
         >
           <span
+            v-show="hadRegister"
             slot="right-icon"
             class="w-vee-error"
-          >此号码已经被注册</span>
+          >此账号已经被注册</span>
         </van-field>
         <div class="w-vee-error">{{ errors.first('phone') }}</div>
         <van-field
@@ -34,7 +36,8 @@
           clearable
           v-validate="'required|digits:6'"
           data-vv-as="验证码"
-        >
+          @input="verificationCodeError=false"
+        >s
           <w-verificationcode
             slot="button"
             :phone="form.phone"
@@ -45,6 +48,7 @@
         </van-field>
         <div class="w-vee-error">{{ errors.first('verificationCode') }}</div>
         <div
+          v-show="verificationCodeError"
           class="w-vee-error"
         >验证码错误
         </div>
@@ -176,7 +180,9 @@ export default {
       modelShow: false, // 协议弹层显示隐藏
       verificationcodeType: 1, // 发送验证码的类型，1：手机，2：邮箱
       passwordType: 'password',
-      password2Type: 'password'
+      password2Type: 'password',
+      hadRegister: false, // 是否已经注册
+      verificationCodeError: false, // 验证码错误
     };
   },
   computed: {},
@@ -222,7 +228,7 @@ export default {
           this.$toast('请勾选同意协议');
           return;
         }
-        const { status } = this.axPost('v1/register', {
+        const { status, msg } = await this.axPost('v1/register', {
           val: this.form.phone,
           password: this.form.password,
           re_password: this.form.password2,
@@ -230,9 +236,17 @@ export default {
           code: this.form.verificationCode
         });
         if (status === 200) {
+          this.hadRegister = true;
+          this.verificationCodeError = true;
           this.$router.push({
             name: 'RegisterSuc'
           });
+        } else {
+          if (/验证码不正确/.test(msg)) {
+            this.verificationCodeError = true;
+          } else if (/已经被注册/.test(msg)) {
+            this.hadRegister = true;
+          }
         }
       }
     }

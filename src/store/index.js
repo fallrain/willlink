@@ -1,6 +1,5 @@
 import Vuex from 'vuex';
 import Vue from 'vue';
-import { axGet } from '@/lib/ajax';
 import createPersistedState from '@/lib/vuexPlugin/persistedstate';
 import states from './states';
 import user from '@/store/user';
@@ -15,6 +14,7 @@ export default new Vuex.Store({
   state: {
     aliveExclude: [
       'Login',
+      'register',
       'SysAnnouncementDetail',
       'Feedback',
       'PrivateKeyImport',
