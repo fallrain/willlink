@@ -134,27 +134,35 @@ const util = {
     function isOS() {
       return navigator.userAgent.match(/ipad|iphone/i);
     }
+
     // 创建文本元素
     function createTextArea(text) {
       textArea = document.createElement('input');
       textArea.value = text;
-      document.body.appendChild(textArea);
+      document.documentElement.insertBefore(textArea, document.body);
     }
+
     // 选择内容
     function selectText() {
-      let range;
-      let selection;
+      // let range;
+      // let selection;
 
-      if (isOS()) {
-        range = document.createRange();
+      /* if (!isOS()) {
+         range = document.createRange();
         range.selectNodeContents(textArea);
         selection = window.getSelection();
         selection.removeAllRanges();
         selection.addRange(range);
         textArea.setSelectionRange(0, 999999);
+        textArea.select();
+        document.body.removeChild(textArea);
       } else {
         textArea.select();
-      }
+        textArea.setSelectionRange(0, textArea.value.length);
+      } */
+      textArea.focus();
+      textArea.select();
+      textArea.setSelectionRange(0, textArea.value.length);
     }
 
     // 复制到剪贴板
@@ -166,13 +174,14 @@ const util = {
         }
       } catch (err) {
       }
-      document.body.removeChild(textArea);
+      textArea.blur();
+      document.documentElement.removeChild(textArea);
       return status;
     }
 
     createTextArea(copyText);
     selectText();
-    copyToClipboard();
+    return copyToClipboard();
   }
 };
 util.setUserInfToStorage = function () {

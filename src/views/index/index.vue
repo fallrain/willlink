@@ -48,7 +48,7 @@
           全部资产<div class="assetsList-title-btn right" @click="homeAdd"><van-icon :name="addBtn" size="18" color="#838299"/>新增</div>
         </div>
         <div class="assetsList-line" @click="homeDetail">
-          <img class="img left" src="../../icon/W.png">
+          <img class="img left" src="@/assets/img/user/WID@2x.png">
           <div class="name left">WID</div>
           <div class="num right">
             <div class="">100,000,000.00</div>
@@ -57,47 +57,11 @@
           <div class="van-clearfix"></div>
         </div>
         <div class="assetsList-line">
-          <img class="img left" src="../../icon/W.png">
-          <div class="name left">WID</div>
+          <img class="img left" src="@/assets/img/user/USDT@2x.png">
+          <div class="name left">USDT</div>
           <div class="num right">
-            <div class="">100,000,000.00</div>
-            <div class="money">≈100,000,000.00 USDT</div>
-          </div>
-          <div class="van-clearfix"></div>
-        </div>
-        <div class="assetsList-line">
-          <img class="img left" src="../../icon/W.png">
-          <div class="name left">WID</div>
-          <div class="num right">
-            <div class="">100,000,000.00</div>
-            <div class="money">≈100,000,000.00 USDT</div>
-          </div>
-          <div class="van-clearfix"></div>
-        </div>
-        <div class="assetsList-line">
-          <img class="img left" src="../../icon/W.png">
-          <div class="name left">WID</div>
-          <div class="num right">
-            <div class="">100,000,000.00</div>
-            <div class="money">≈100,000,000.00 USDT</div>
-          </div>
-          <div class="van-clearfix"></div>
-        </div>
-        <div class="assetsList-line">
-          <img class="img left" src="../../icon/W.png">
-          <div class="name left">WID</div>
-          <div class="num right">
-            <div class="">100,000,000.00</div>
-            <div class="money">≈100,000,000.00 USDT</div>
-          </div>
-          <div class="van-clearfix"></div>
-        </div>
-        <div class="assetsList-line">
-          <img class="img left" src="../../icon/W.png">
-          <div class="name left">WID</div>
-          <div class="num right">
-            <div class="">100,000,000.00</div>
-            <div class="money">≈100,000,000.00 USDT</div>
+            <div class="">34,212.67</div>
+            <div class="money">≈34,212.67 USDT</div>
           </div>
           <div class="van-clearfix"></div>
         </div>

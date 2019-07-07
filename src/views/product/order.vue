@@ -124,9 +124,16 @@ export default {
           product_price: this.productAmount,
           product_profit: this.productProfit
         }
-      ).then(({ status, data }) => {
+      ).then(({ status }) => {
         if (status === 200) {
-
+          this.$toast({
+            message: '订单生成成功',
+            onClose: () => {
+              this.$router.replace({
+                name: 'HomeProduct'
+              });
+            }
+          });
         }
       });
     }

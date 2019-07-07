@@ -151,6 +151,7 @@ export default {
       ).then(({ status }) => {
         if (status === 200) {
           this.btnShow = false;
+          this.back();
         }
       });
     }

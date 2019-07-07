@@ -37,7 +37,7 @@
         <div class="right">查看权益</div>
       </div>
       <div class="user-invite">
-        我的邀请码：837267 <img src="@/assets/img/user/fuzhi@2x.png">
+        我的邀请码：837267 <img @click="copy(837267)" src="@/assets/img/user/fuzhi@2x.png">
       </div>
     </div>
     <div class="user-fn-par user-cell-par">

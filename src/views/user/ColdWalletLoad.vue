@@ -23,7 +23,7 @@
         <button
           type="button"
           :class="['cm-btn','active']"
-          @click="copy"
+          @click="copy(form.address)"
         >复制
         </button>
       </div>
@@ -60,9 +60,6 @@ export default {
       } else {
         this.btnDisabled = true;
       }
-    },
-    copy() {
-      /* 复制 */
     }
   }
 };

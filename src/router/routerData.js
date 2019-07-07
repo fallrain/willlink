@@ -11,7 +11,7 @@ const HomeProduct = () => import('@/views/index/product'); // 我的产品
 const HomeAdd = () => import('@/views/index/add'); // 首页新增
 const HomeSearch = () => import('@/views/index/search'); // 首页搜索
 const HomeDetail = () => import('@/views/index/detail'); // 首页资产详情
-const HomeInto = () => import('@/views/index/into'); // 首页转入
+const HomeInto = () => import('@/views/index/into'); // 首页转homeProduct入
 const HomeRollOut = () => import('@/views/index/rollout'); // 首页转出
 const HomeSweep = () => import('@/views/index/sweep'); // 首页转出
 const HomeRollOutDetail = () => import('@/views/index/rolloutDetail'); // 首页转出详情
