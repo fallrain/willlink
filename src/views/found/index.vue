@@ -3,29 +3,46 @@
     class="sysAnnouncementDetail-wrap"
   >
     <div class="found-main h100per">
-      <div class="found-head-par">
-        <div class="found-head-icons">
-          <ul class="found-head-icons-list">
-            <li class="found-head-icons-item">
-              <img src="@/assets/img/found/wlw@2x.png" class="found-head-icons-img">
-              <p class="found-head-icons-inf">AAA信用</p>
-            </li>
-            <li class="found-head-icons-item">
-              <img src="@/assets/img/found/plane@2x.png" class="found-head-icons-img">
-              <p class="found-head-icons-inf">银行托管</p>
-            </li>
-            <li class="found-head-icons-item">
-              <img src="@/assets/img/found/cube@2x.png" class="found-head-icons-img">
-              <p class="found-head-icons-inf">ICP许可证</p>
-            </li>
-            <li class="found-head-icons-item">
-              <img src="@/assets/img/found/chanye@2x.png" class="found-head-icons-img">
-              <p class="found-head-icons-inf">产业认证</p>
-            </li>
-          </ul>
-        </div>
+      <!-- <div class="found-head-par">
+         <div class="found-head-icons">
+           <ul class="found-head-icons-list">
+             <li class="found-head-icons-item">
+               <img src="@/assets/img/found/wlw@2x.png" class="found-head-icons-img">
+               <p class="found-head-icons-inf">AAA信用</p>
+             </li>
+             <li class="found-head-icons-item">
+               <img src="@/assets/img/found/plane@2x.png" class="found-head-icons-img">
+               <p class="found-head-icons-inf">银行托管</p>
+             </li>
+             <li class="found-head-icons-item">
+               <img src="@/assets/img/found/cube@2x.png" class="found-head-icons-img">
+               <p class="found-head-icons-inf">ICP许可证</p>
+             </li>
+             <li class="found-head-icons-item">
+               <img src="@/assets/img/found/chanye@2x.png" class="found-head-icons-img">
+               <p class="found-head-icons-inf">产业认证</p>
+             </li>
+           </ul>
+         </div>
+       </div>-->
+      <div class="exchange-swipe-par">
+        <van-swipe
+          class="exchange-swipe"
+          :autoplay="5000"
+          indicator-color="#59C1B6"
+        >
+          <van-swipe-item
+            v-for="(image, index) in images"
+            :key="index"
+          >
+            <img
+              class="found-swipe-img"
+              :src="image"
+            >
+          </van-swipe-item>
+        </van-swipe>
       </div>
-      <ul class="found-ad-bg-list">
+      <ul class="found-ad-bg-list mt10">
         <li
           class="found-ad-bg-item"
           @click="toExchange"
@@ -41,7 +58,7 @@
         >
           <img
             class="found-ad-bg-item-img"
-            src="@/assets/img/found/ad2@2x.png"
+            src="@/assets/img/found/CEBX@2x.png"
           >
         </li>
         <li
@@ -50,7 +67,7 @@
         >
           <img
             class="found-ad-bg-item-img"
-            src="@/assets/img/found/ad3@2x.png"
+            src="@/assets/img/found/w-market@2x.png"
           >
         </li>
       </ul>
@@ -155,6 +172,9 @@
 import Vue from 'vue';
 import { Tab, Tabs } from 'vant';
 import WDividerWrap from '../../components/form/WDividerWrap';
+import bg1 from '@/assets/img/found/found-head-bg@2x.png';
+import bg2 from '@/assets/img/found/swiper-OKEX@2x.png';
+import bg3 from '@/assets/img/found/swiper-shuzi@2x.png';
 
 Vue.use(Tab).use(Tabs);
 export default {
@@ -163,6 +183,11 @@ export default {
   data() {
     return {
       tabIndex: 1, // 当前tabIndex
+      images: [
+        bg1,
+        bg2,
+        bg3,
+      ],
     };
   },
   methods: {

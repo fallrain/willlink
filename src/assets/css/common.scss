@@ -1311,7 +1311,7 @@
   width: 100%;
   height: 150px;
   padding-top: 75px;
-  background: url('~@/assets/img/user/user-head-bg@2x.png') no-repeat;
+  background: url('~@/assets/img/found/found-head-bg@2x.png') no-repeat;
   background-size: 100% 100%;
 }
 
@@ -1468,6 +1468,11 @@
   color: #838299;
   font-size: 15px;
   text-align: right;
+}
+
+.found-swipe-img{
+  width: 100%;
+  height: 150px;
 }
 
 /*发现 end*/
