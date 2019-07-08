@@ -31,11 +31,11 @@
       <!--产品状态-->
       <div class="stateBox" @click="homeProduct">
         <div class="stateBox-all left">
-          全部产品<p>100</p>
+          全部产品<p>{{allProductNum}}</p>
         </div>
         <div class="stateBox-border left"></div>
         <div class="stateBox-earnings left">
-          收益中产品<p>50</p>
+          收益中产品<p>{{productInProfitNum}}</p>
         </div>
         <div class="stateBox-arrow right">
           <van-icon name="arrow" size="24" color="#838299"/>
@@ -93,7 +93,9 @@ export default {
       totalUSDT: 0,
       productProfitWCC: 0,
       productProfitUSDT: 0,
-      proportionUSDT: 0// USDT所占比例
+      proportionUSDT: 0, // USDT所占比例
+      allProductNum: 0, // 所有产品数量
+      productInProfitNum: 0, // 收益中的产品数量
     };
   },
   computed: {},
@@ -123,6 +125,8 @@ export default {
           this.productProfitWCC = data.product_profit;
           this.productProfitUSDT = data.product_profit;
           this.proportionUSDT = data.total_usdt * 100 / data.total_wid;
+          this.allProductNum = data.all_product;
+          this.productInProfitNum = data.product_in_profit;
         }
       });
     }
