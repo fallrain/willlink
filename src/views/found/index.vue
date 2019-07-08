@@ -76,7 +76,7 @@
         <div class="found-ranking-tab-par">
           <div
             :class="['found-ranking-tab',tabIndex===1 && 'active']"
-            @click="tabIndex=1"
+            @click="changeTab(1)"
           >
             <div
               slot="title"
@@ -87,7 +87,7 @@
           </div>
           <div
             :class="['found-ranking-tab',tabIndex===2 && 'active']"
-            @click="tabIndex=2"
+            @click="changeTab(2)"
           >
             <div
               slot="title"
@@ -197,11 +197,37 @@ export default {
       ],
     };
   },
+  created() {
+    this.queryRange();
+  },
   methods: {
     toExchange() {
       /* 跳转交易所页面 */
       this.$router.push({
         name: 'Exchange'
+      });
+    },
+    changeTab(index) {
+      this.tabIndex = index;
+      this.queryRange();
+    },
+    queryRange() {
+      /* 查询排行 */
+      const {
+        tabIndex
+      } = this;
+      let url;
+      if (tabIndex === 1) {
+        url = 'v1/rank/order_profit';
+      } else {
+        url = 'v1/rank/spread_profit';
+      }
+      this.axGet(
+        url
+      ).then(({ status, data }) => {
+        if (status === 200) {
+
+        }
       });
     }
   }

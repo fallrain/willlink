@@ -11,7 +11,13 @@
     <div class="earnings">
       <div class="name">昨天收益</div>
       <div class="num">
-        <van-field disabled :type="eyeType" input-align="right" v-model="value"/>
+        <van-field
+          disabled
+          :type="eyeType"
+          input-align="right"
+          v-model="yesterdayProfitFix"
+        >
+        </van-field>
         <span>WCC</span>
       </div>
       <div class="btn" @click="eyeBtn">
@@ -62,7 +68,7 @@ export default {
   props: {},
   data() {
     return {
-      value: '+10,000.00',
+      yesterdayProfit: 0,
       closeImg: close,
       openImg: open,
       eye: true,
@@ -70,10 +76,21 @@ export default {
       productList: []
     };
   },
-  computed: {},
+  computed: {
+    yesterdayProfitFix() {
+      let val = this.yesterdayProfit;
+      if (this.yesterdayProfit > 0) {
+        val = `+${val}`;
+      } else if (this.yesterdayProfit < 0) {
+        val = `-${val}`;
+      }
+      return val;
+    }
+  },
   watch: {},
   created() {
     this.queryProduct();
+    this.queryYesterdayProfit();
   },
   mounted() {
   },
@@ -96,6 +113,16 @@ export default {
             ...v,
             imgSrc: require(`@/assets/img/product/product${v.name}.png`)
           }));
+        }
+      });
+    },
+    queryYesterdayProfit() {
+      /* 查询昨日收益 */
+      this.axGet(
+        'v1/product/yesterday_profit'
+      ).then(({ status, data }) => {
+        if (status === 200) {
+          this.all_profit_of_yesterday = data.all_profit_of_yesterday;
         }
       });
     },
