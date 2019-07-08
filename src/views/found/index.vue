@@ -170,13 +170,20 @@
 
 <script>
 import Vue from 'vue';
-import { Tab, Tabs } from 'vant';
+import {
+  Tab,
+  Tabs,
+  Swipe,
+  SwipeItem
+} from 'vant';
+
 import WDividerWrap from '../../components/form/WDividerWrap';
 import bg1 from '@/assets/img/found/found-head-bg@2x.png';
 import bg2 from '@/assets/img/found/swiper-OKEX@2x.png';
 import bg3 from '@/assets/img/found/swiper-shuzi@2x.png';
 
 Vue.use(Tab).use(Tabs);
+Vue.use(Swipe).use(SwipeItem);
 export default {
   name: 'Found',
   components: { WDividerWrap },
