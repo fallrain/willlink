@@ -50,7 +50,7 @@ export default {
       inComeList: [
         /* {
           id: 1,
-          type: 'WID',
+          type: 'WCC',
           dateTime: '2019-6-17 23:43',
           positive: true, // 是否为正数
           income: '20.00'
@@ -70,7 +70,7 @@ export default {
         if (status === 200) {
           this.inComeList = data.map(v => ({
             id: v.id || new Date().getTime(),
-            type: 'WID',
+            type: 'WCC',
             positive: v.profit >= 0,
             income: v.profit
           }));

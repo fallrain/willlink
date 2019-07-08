@@ -12,7 +12,7 @@
     </form>
     <div class="box">
       <div class="title">搜索指定内容</div>
-      <a>WID</a>
+      <a>WCC</a>
       <a>BTC</a>
       <a>ETH</a>
       <a>EOS</a>

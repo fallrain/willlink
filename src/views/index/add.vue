@@ -6,38 +6,38 @@
     </div>
     <!--列表-->
     <div class="line">
-      <img class="left" src="../../icon/W.png"/>
-      <div class="left text">WID</div>
+      <img class="left" src="@/assets/img/user/WCC@2x.png">
+      <div class="left text">WCC</div>
       <van-switch class="right" v-model="checked" size="20px" active-color="#4CD954" inactive-color="#FFFFFF"/>
       <div class="van-clearfix"></div>
     </div>
     <div class="line">
-      <img class="left" src="../../icon/W.png"/>
-      <div class="left text">WID</div>
+      <img class="left" src="@/assets/img/user/BTC@2x.png">
+      <div class="left text">BTC</div>
       <van-switch class="right" v-model="checked1" size="20px" active-color="#4CD954" inactive-color="#FFFFFF"/>
       <div class="van-clearfix"></div>
     </div>
     <div class="line">
-      <img class="left" src="../../icon/W.png"/>
-      <div class="left text">WID</div>
+      <img class="left" src="@/assets/img/user/EOS@2x.png">
+      <div class="left text">EOS</div>
       <van-switch class="right" v-model="checked2" size="20px" active-color="#4CD954" inactive-color="#FFFFFF"/>
       <div class="van-clearfix"></div>
     </div>
     <div class="line">
-      <img class="left" src="../../icon/W.png"/>
-      <div class="left text">WID</div>
+      <img class="left" src="@/assets/img/user/ETH@2x.png">
+      <div class="left text">ETH</div>
       <van-switch class="right" v-model="checked3" size="20px" active-color="#4CD954" inactive-color="#FFFFFF"/>
       <div class="van-clearfix"></div>
     </div>
     <div class="line">
-      <img class="left" src="../../icon/W.png"/>
-      <div class="left text">WID</div>
+      <img class="left" src="@/assets/img/user/BCH@2x.png">
+      <div class="left text">BCH</div>
       <van-switch class="right" v-model="checked4" size="20px" active-color="#4CD954" inactive-color="#FFFFFF"/>
       <div class="van-clearfix"></div>
     </div>
     <div class="line">
-      <img class="left" src="../../icon/W.png"/>
-      <div class="left text">WID</div>
+      <img class="left" src="@/assets/img/user/USDT@2x.png">
+      <div class="left text">USDT</div>
       <van-switch class="right" v-model="checked5" size="20px" active-color="#4CD954" inactive-color="#FFFFFF"/>
       <div class="van-clearfix"></div>
     </div>

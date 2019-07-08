@@ -9,12 +9,12 @@
       <div class="assetsBox">
         <div class="assetsBox-title">总资产</div>
         <div class="assetsBox-name">
-          <div class="left">WID</div>
+          <div class="left">WCC</div>
           <div class="right">USDT</div>
           <div class="van-clearfix"></div>
         </div>
         <div class="assetsBox-num">
-          <div class="left">{{totalWID}}</div>
+          <div class="left">{{totalWCC}}</div>
           <div class="right">{{totalUSDT}}</div>
           <div class="van-clearfix"></div>
         </div>
@@ -23,15 +23,15 @@
           <div class="bor-r" :style="{width: 100-proportionUSDT+'%'}"></div>
         </div>
         <div class="assetsBox-earnings">
-          <div class="name">产品收益</div>
-          <div class="type">{{productProfitWID}} WID</div>
+          <div class="name">社区收益</div>
+          <div class="type">{{productProfitWCC}} WCC</div>
           <div class="type text-right">{{productProfitUSDT}} USDT</div>
         </div>
       </div>
       <!--产品状态-->
       <div class="stateBox" @click="homeProduct">
         <div class="stateBox-all left">
-          全部资产<p>100</p>
+          全部产品<p>100</p>
         </div>
         <div class="stateBox-border left"></div>
         <div class="stateBox-earnings left">
@@ -42,14 +42,14 @@
         </div>
         <div class="van-clearfix"></div>
       </div>
-      <!--全部资产-->
+      <!--全部产品-->
       <div class="assetsList">
         <div class="assetsList-title">
-          全部资产<div class="assetsList-title-btn right" @click="homeAdd"><van-icon :name="addBtn" size="18" color="#838299"/>新增</div>
+          全部产品<div class="assetsList-title-btn right" @click="homeAdd"><van-icon :name="addBtn" size="18" color="#838299"/>新增</div>
         </div>
         <div class="assetsList-line" @click="homeDetail">
-          <img class="img left" src="@/assets/img/user/WID@2x.png">
-          <div class="name left">WID</div>
+          <img class="img left" src="@/assets/img/user/WCC@2x.png">
+          <div class="name left">WCC</div>
           <div class="num right">
             <div class="">100,000,000.00</div>
             <div class="money">≈100,000,000.00 USDT</div>
@@ -89,9 +89,9 @@ export default {
     return {
       addBtn: add,
       sweepImg: sweep,
-      totalWID: 0,
+      totalWCC: 0,
       totalUSDT: 0,
-      productProfitWID: 0,
+      productProfitWCC: 0,
       productProfitUSDT: 0,
       proportionUSDT: 0// USDT所占比例
     };
@@ -109,7 +109,7 @@ export default {
       this.$router.push({ name: 'HomeAdd' });
     },
     homeDetail() {
-      this.$router.push({ name: 'HomeDetail', params: { title: 'WID' } });
+      this.$router.push({ name: 'HomeDetail', params: { title: 'WCC' } });
     },
     sweep() {
       this.$router.push({ name: 'HomeSweep' });
@@ -118,9 +118,9 @@ export default {
       /* 查询用户财产（总） */
       this.axGet(`v1/member/total_profit/${this.userInfo.uuid}`).then(({ status, data }) => {
         if (status === 200) {
-          this.totalWID = data.total_wid;
+          this.totalWCC = data.total_wid;
           this.totalUSDT = data.total_usdt;
-          this.productProfitWID = data.product_profit;
+          this.productProfitWCC = data.product_profit;
           this.productProfitUSDT = data.product_profit;
           this.proportionUSDT = data.total_usdt * 100 / data.total_wid;
         }

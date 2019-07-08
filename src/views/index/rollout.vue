@@ -11,7 +11,7 @@
     <div class="content">
       <div class="infoBox">
         <div class="name">可用</div>
-        <div class="num">100,000,000.00<span>WID</span></div>
+        <div class="num">100,000,000.00<span>WCC</span></div>
       </div>
       <div class="formBox">
         <div class="line">
@@ -52,7 +52,7 @@
         <div class="w-vee-error">{{ errors.first('note') }}</div>
         <div class="line">
           <van-field disabled placeholder="手续费">
-            <div slot="button" class="text">0.0005WID</div>
+            <div slot="button" class="text">0.0005WCC</div>
           </van-field>
         </div>
         <button

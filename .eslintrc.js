@@ -35,7 +35,9 @@ module.exports = {
     'no-unused-expressions': 0,//三元表达式、逻辑或没必要禁止
     'guard-for-in': 0,
     'no-restricted-syntax': 0,
-    'no-lonely-if': 0
+    'no-lonely-if': 0,
+    'consistent-return': 0,
+    'no-restricted-properties': 0
   },
   parserOptions: {
     parser: 'babel-eslint',

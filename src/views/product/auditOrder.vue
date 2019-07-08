@@ -44,9 +44,6 @@
             placeholder="转账流水号"
             :disabled="orderStatus!==0"
             clearable
-            name="transactionNo"
-            v-validate="'required'"
-            data-vv-as="转账流水号"
           >
           </van-field>
           <div class="w-vee-error">{{ errors.first('transactionNo') }}</div>
@@ -138,10 +135,10 @@ export default {
     },
     async submit() {
       /* 提交审核 */
-      const valid = await this.$validator.validateAll();
+      /* const valid = await this.$validator.validateAll();
       if (!valid) {
         return;
-      }
+      } */
       this.axPost(
         'v1/order/pay',
         {

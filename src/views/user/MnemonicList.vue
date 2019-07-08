@@ -18,9 +18,9 @@
         >
           <img
             class="privateKeyImport-item-typeImg"
-            src="@/assets/img/user/WID@2x.png"
+            src="@/assets/img/user/WCC@2x.png"
           >
-          <span class="privateKeyImport-item-name">WID</span>
+          <span class="privateKeyImport-item-name">WCC</span>
         </div>
         <div
           slot="right"

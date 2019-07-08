@@ -7,7 +7,7 @@
     >
     </van-nav-bar>
     <div class="privateKeyImport-cnt">
-      <p class="privateKeyImport-cnt-head">WID钱包的私钥地址为</p>
+      <p class="privateKeyImport-cnt-head">WCC钱包的私钥地址为</p>
       <div class="privateKeyImport-form">
         <div class="privateKeyImport-form-ta-par">
           <w-textarea

@@ -8,14 +8,14 @@
     </div>
     <div class="content">
       <div class="box">
-        <div class="name">WID</div>
-        <div class="num">{{totalWID}}</div>
+        <div class="name">WCC</div>
+        <div class="num">{{totalWCC}}</div>
         <div class="operate">
-          <div class="line" @click="intoBtn('WID')">
+          <div class="line" @click="intoBtn('WCC')">
             <van-icon :name="intoImg" size="13"/>
             转入
           </div>
-          <div class="line" @click="rollOutBtn('WID')">
+          <div class="line" @click="rollOutBtn('WCC')">
             <van-icon :name="rollOutImg" size="13"/>
             转出
           </div>
@@ -129,13 +129,13 @@ export default {
   data() {
     return {
       value: '',
-      title: 'WID',
+      title: 'WCC',
       sweepImg: sweep,
       intoImg: into,
       rollOutImg: rollOut,
       bottomImg: bottom,
       time: false,
-      totalWID: '',
+      totalWCC: '',
       totalUSDT: '',
     };
   },
@@ -182,9 +182,9 @@ export default {
       /* 查询用户财产（总） */
       this.axGet(`v1/member/total_profit/${this.userInfo.uuid}`).then(({ status, data }) => {
         if (status === 200) {
-          this.totalWID = data.total_wid;
+          this.totalWCC = data.total_wid;
           this.totalUSDT = data.total_usdt;
-          this.productProfitWID = data.product_profit;
+          this.productProfitWCC = data.product_profit;
           this.productProfitUSDT = data.product_profit;
           this.proportionUSDT = data.total_usdt * 100 / data.total_wid;
         }

@@ -37,7 +37,7 @@
         <div class="right">查看权益</div>
       </div>
       <div class="user-invite">
-        我的邀请码：837267 <img @click="copy(837267)" src="@/assets/img/user/fuzhi@2x.png">
+        我的邀请码：{{inviteCode}} <img id="user-invite-img" src="@/assets/img/user/fuzhi@2x.png">
       </div>
     </div>
     <div class="user-fn-par user-cell-par">
@@ -154,9 +154,7 @@
 
 <script>
 import Vue from 'vue';
-import {
-  mapMutations
-} from 'vuex';
+import { mapMutations } from 'vuex';
 import { Cell, CellGroup } from 'vant';
 import mutationType from '@/store/mutations_types';
 import portraitDefaultImg from '@/assets/img/user/user-default.jpeg';
@@ -167,8 +165,7 @@ import lvlImg4 from '@/assets/img/user/S4@2x.png';
 import lvlImg5 from '@/assets/img/user/S5@2x.png';
 import teamIcon from '@/assets/img/user/icon-team@2x.png';
 
-Vue.use(Cell)
-  .use(CellGroup);
+Vue.use(Cell).use(CellGroup);
 export default {
   name: 'User',
   data() {
@@ -182,11 +179,18 @@ export default {
         4: lvlImg4,
         5: lvlImg5
       },
-      teamIcon
+      teamIcon,
+      inviteCode: 837267
     };
   },
   created() {
     this.queryUserInfo();
+  },
+  mounted() {
+    this.clipboardCopy();
+  },
+  beforeDestroy() {
+    this.copyIns.destroy();
   },
   methods: {
     ...mapMutations([
@@ -253,6 +257,9 @@ export default {
         requestNoToast: true
       });
       this[mutationType.UPDATE_USER](data);
+    },
+    clipboardCopy() {
+      this.copyIns = this.copy('#user-invite-img', this.inviteCode);
     }
   }
 };

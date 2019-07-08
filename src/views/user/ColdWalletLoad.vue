@@ -21,9 +21,10 @@
       </div>
       <div class="coldWalletLoad-btns">
         <button
+          id="copyBtn"
           type="button"
           :class="['cm-btn','active']"
-          @click="copy(form.address)"
+          @click="clipboardCopy"
         >复制
         </button>
       </div>
@@ -48,6 +49,12 @@ export default {
       importStatus: ''// 导入状态
     };
   },
+  mounted() {
+    this.clipboardCopy();
+  },
+  beforeDestroy() {
+    this.copyIns.destroy();
+  },
   methods: {
     addressInput() {
       /* 免密登录输入框事件 */
@@ -60,6 +67,9 @@ export default {
       } else {
         this.btnDisabled = true;
       }
+    },
+    clipboardCopy() {
+      this.copyIns = this.copy('#copyBtn', this.form.address);
     }
   }
 };

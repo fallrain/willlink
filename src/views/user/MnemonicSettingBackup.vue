@@ -98,7 +98,7 @@ export default {
     submit() {
       /* 确认 */
       this.$dialog.confirm({
-        message: '你备份的助记词顺序验证正确，是否从WID钱包移除该助记词?'
+        message: '你备份的助记词顺序验证正确，是否从WCC钱包移除该助记词?'
       });
     }
   }

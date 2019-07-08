@@ -12,14 +12,14 @@
       <div class="name">昨天收益</div>
       <div class="num">
         <van-field disabled :type="eyeType" input-align="right" v-model="value"/>
-        <span>WID</span>
+        <span>WCC</span>
       </div>
       <div class="btn" @click="eyeBtn">
         <img :src="eye?openImg:closeImg"/>
       </div>
     </div>
     <div class="productList">
-      <div class="title">金融产品<a>更多产品>></a></div>
+      <div class="title">社区成员<!--<a>更多产品>></a>--></div>
       <ul>
         <li
           v-for="(item) in productList"
@@ -27,10 +27,13 @@
           class="line"
         >
           <img :src="item.imgSrc"/>
-          <div
-            class="btn"
+          <button
+            type="button"
+            :disabled="/V[45]/.test(item.name)"
+            :class="['btn',/V[45]/.test(item.name) && 'disabled']"
             @click="toBuy(item)"
-          >去买入</div>
+          >开启
+          </button>
         </li>
       </ul>
     </div>
@@ -229,6 +232,10 @@ export default {
           margin: 25px 0 25px 25px;
           display: inline-block;
           text-align: center;
+
+          &.disabled {
+            background: #656476;
+          }
         }
       }
     }

@@ -1,7 +1,9 @@
+import Clipboard from 'clipboard';
+
 const util = {
   getUrlVal(name) {
     /* 获取url参数 */
-    const urlArgs = location.search;
+    const urlArgs = window.location.search;
     if (urlArgs) {
       const reg = new RegExp(`${name}=([^&]+)`);
       const results = urlArgs.match(reg);
@@ -106,6 +108,8 @@ const util = {
       case 4:
         returnValue = val1 / val2;
         break;
+      default:
+        break;
     }
     return this.formatFloat(returnValue, floatNum);
   },
@@ -128,12 +132,13 @@ const util = {
     sessionStorage.setItem('address', data.address);
   },
   copy(copyText) {
+    /* 复制，微信下ios有键盘弹起的bug,即使blur掉也会推页面 */
     let textArea;
 
     // 判断是不是ios端
-    function isOS() {
+    /* function isOS() {
       return navigator.userAgent.match(/ipad|iphone/i);
-    }
+    } */
 
     // 创建文本元素
     function createTextArea(text) {
@@ -173,6 +178,7 @@ const util = {
           status = true;
         }
       } catch (err) {
+        console.log(err);
       }
       textArea.blur();
       document.documentElement.removeChild(textArea);
@@ -182,6 +188,14 @@ const util = {
     createTextArea(copyText);
     selectText();
     return copyToClipboard();
+  },
+  clipboardCopy(selector, val) {
+    const clipboard = new Clipboard(selector, {
+      text() {
+        return val;
+      }
+    });
+    return clipboard;
   }
 };
 util.setUserInfToStorage = function () {

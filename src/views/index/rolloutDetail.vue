@@ -26,7 +26,7 @@
         </div>
         <div class="line">
           <div class="left name">收支方式</div>
-          <div class="right text-right type">{{['WID','USDT'][type] || ''}}</div>
+          <div class="right text-right type">{{['WCC','USDT'][type] || ''}}</div>
           <div class="van-clearfix"></div>
         </div>
         <div class="line">
@@ -41,7 +41,7 @@
         </div>
         <div class="line">
           <div class="left name">收支说明</div>
-          <div class="right text-right type">WID转出</div>
+          <div class="right text-right type">WCC转出</div>
           <div class="van-clearfix"></div>
         </div>
         <div class="line">

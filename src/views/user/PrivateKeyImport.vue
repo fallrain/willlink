@@ -7,7 +7,7 @@
     >
     </van-nav-bar>
     <div class="privateKeyImport-cnt">
-      <p class="privateKeyImport-cnt-head">请输入WID钱包的私钥地址</p>
+      <p class="privateKeyImport-cnt-head">请输入WCC钱包的私钥地址</p>
       <div class="privateKeyImport-form">
         <div class="privateKeyImport-form-ta-par">
           <w-textarea
@@ -25,7 +25,7 @@
         </div>
         <p class="privateKeyImport-tips">
           <i class="iconfont icon-tanhao"></i>
-          <span>仅支持WID钱包私钥，请勿输入其他币种钱包的私钥</span>
+          <span>仅支持WCC钱包私钥，请勿输入其他币种钱包的私钥</span>
         </p>
       </div>
       <div class="privateKeyImport-btns">

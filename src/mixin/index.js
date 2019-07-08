@@ -25,19 +25,17 @@ export default {
       /* 返回上一页 */
       this.$router.back();
     },
-    copy(text) {
+    copy(selector, text) {
       /* 复制功能 */
-      const copySuc = this.wUtil.copy(text);
-      setTimeout(() => {
-        window.scroll(0, 0);
+      const copyIns = this.wUtil.clipboardCopy(selector, text);
+      copyIns.on('success', () => {
+        this.$toast('复制成功');
       });
-      let msg;
-      if (copySuc) {
-        msg = '复制成功';
-      } else {
-        msg = '复制失败，请手动复制';
-      }
-      this.$toast(msg);
+
+      copyIns.on('error', () => {
+        this.$toast('复制失败，请手动复制');
+      });
+      return copyIns;
     }
   }
 };
