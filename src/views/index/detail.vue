@@ -62,12 +62,26 @@
         <md-scroll-view-refresh
           slot="refresh"
           slot-scope="{ scrollTop, isRefreshActive, isRefreshing }"
-          :scroll-top="scrollTop"
+          :scroll-top="50"
           :is-refreshing="isRefreshing"
           :is-refresh-active="isRefreshActive"
         ></md-scroll-view-refresh>
         <ul class="recordList">
-          <li class="box" @click="rolloutDetail">
+          <li
+            v-for="(item,index) in recordList"
+            :key="index"
+            class="box"
+            @click="rolloutDetail"
+          >
+            <div class="line">
+              <div class="name left">{{item.typeName}}</div>
+              <div :class="['lable','left',item<4 && 'active']">{{item.statusName}}</div>
+              <div :class="['num','right',item.assets<0 && 'active']">{{item.assets}}</div>
+              <div class="van-clearfix"></div>
+            </div>
+            <div class="time">{{item.created_at}}</div>
+          </li>
+         <!-- <li class="box" @click="rolloutDetail">
             <div class="line">
               <div class="name left">Token合约转出</div>
               <div class="lable left active">进行中</div>
@@ -111,9 +125,13 @@
               <div class="van-clearfix"></div>
             </div>
             <div class="time">10-23 12:13</div>
-          </li>
+          </li>-->
         </ul>
       </md-scroll-view>
+      <w-text-line
+        text="暂无记录"
+        :show="!recordList.length"
+      ></w-text-line>
     </div>
   </div>
 
@@ -129,6 +147,7 @@ import into from '@/assets/img/home/into.png';
 import rollOut from '@/assets/img/home/rollOut.png';
 import bottom from '@/assets/img/home/arrow-bottom.png';
 import { ScrollView, ScrollViewMore, ScrollViewRefresh } from 'mand-mobile';
+import WTextLine from '../../components/form/WTextLine';
 
 Vue.use(NavBar);
 Vue.use(Icon);
@@ -139,6 +158,7 @@ export default {
   name: 'HomeDetail',
   mixins: [],
   components: {
+    WTextLine,
     'md-scroll-view': ScrollView,
     'md-scroll-view-refresh': ScrollViewRefresh,
     'md-scroll-view-more': ScrollViewMore
@@ -155,12 +175,14 @@ export default {
       time: false,
       totalWCC: '',
       totalUSDT: '',
+      recordList: []
     };
   },
   computed: {},
   watch: {},
   created() {
     this.queryMyProperty();
+    this.detailRefresh();
   },
   mounted() {
   },
@@ -208,14 +230,34 @@ export default {
         }
       });
     },
+    resetTradeRrcord() {
+      /* 重置 */
+    },
     detailRefresh() {
       /**/
-      this.axGet(
-        `v1/withdraw/record/10000${this.userInfo.uuid}`
+      return this.axGet(
+        `v1/withdraw/record/10000${this.userInfo.uuid}`,
+        {
+          noLoading: true
+        }
       ).then(({ status, data }) => {
         if (status === 200) {
-
+          this.recordList = data.data.map(v => ({
+            ...v,
+            typeName: {
+              0: 'Token合约转出',
+              1: 'Token合约转入',
+            }[v.name],
+            statusName: {
+              0: '提交审核',
+              1: '审核通过',
+              2: '审核不通过',
+              3: '区块确认',
+              4: '到账成功'
+            }[v.status]
+          }));
         }
+        this.$refs.scrollView.finishRefresh();
       });
     }
   }

@@ -5,6 +5,7 @@ import WNoContent from './WNoContent';
 import WRadio from './WRadio';
 import WTeamTree from './WTeamTree';
 import WTextarea from './WTextarea';
+import WTextLine from './WTextLine';
 import WUpload from './WUpload';
 import WVerificationcode from './WVerificationcode';
 
@@ -17,6 +18,7 @@ export {
   WRadio,
   WTeamTree,
   WTextarea,
+  WTextLine,
   WUpload,
   WVerificationcode
 };

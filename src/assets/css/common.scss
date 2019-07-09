@@ -425,6 +425,23 @@
     font-size: 22px;
     color: #fff;
   }
+
+  .md-scroll-view-refresh {
+    padding: 12px;
+    .stroke{
+      stroke: $login-green;
+    }
+    .refresh-tip {
+      font-size: 12px;
+    }
+
+    .md-activity-indicator-rolling {
+      .md-activity-indicator-svg {
+        width: 12px !important;
+        height: 12px !important;
+      }
+    }
+  }
 }
 
 
@@ -1470,7 +1487,7 @@
   text-align: right;
 }
 
-.found-swipe-img{
+.found-swipe-img {
   width: 100%;
   height: 150px;
 }

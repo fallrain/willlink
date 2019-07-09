@@ -19,12 +19,16 @@ ax.interceptors.request.use((config) => {
   if (config.headers) {
     config.headers.Authorization = localStorage.getItem('acces_token');
   }
-  store.commit('showLoading');
+  if (!config.params.noLoading) {
+    store.commit('showLoading');
+  }
   return config;
 });
 ax.interceptors.response.use((response) => {
   // 关闭遮罩
-  store.commit('hideLoading');
+  if (!response.config.params.noLoading) {
+    store.commit('hideLoading');
+  }
   const { msg } = response.data;
   if (msg === '用户未登陆') {
     router.replace({
