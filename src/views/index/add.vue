@@ -18,15 +18,21 @@
       <div class="van-clearfix"></div>
     </div>
     <div class="line">
+      <img class="left" src="@/assets/img/user/ETH@2x.png">
+      <div class="left text">ETH</div>
+      <van-switch class="right" v-model="checked3" size="20px" active-color="#4CD954" inactive-color="#FFFFFF"/>
+      <div class="van-clearfix"></div>
+    </div>
+    <div class="line">
       <img class="left" src="@/assets/img/user/EOS@2x.png">
       <div class="left text">EOS</div>
       <van-switch class="right" v-model="checked2" size="20px" active-color="#4CD954" inactive-color="#FFFFFF"/>
       <div class="van-clearfix"></div>
     </div>
     <div class="line">
-      <img class="left" src="@/assets/img/user/ETH@2x.png">
-      <div class="left text">ETH</div>
-      <van-switch class="right" v-model="checked3" size="20px" active-color="#4CD954" inactive-color="#FFFFFF"/>
+      <img class="left" src="@/assets/img/user/USDT@2x.png">
+      <div class="left text">USDT</div>
+      <van-switch class="right" v-model="checked5" size="20px" active-color="#4CD954" inactive-color="#FFFFFF"/>
       <div class="van-clearfix"></div>
     </div>
     <div class="line">
@@ -36,8 +42,14 @@
       <div class="van-clearfix"></div>
     </div>
     <div class="line">
-      <img class="left" src="@/assets/img/user/USDT@2x.png">
-      <div class="left text">USDT</div>
+      <img class="left" src="@/assets/img/user/XRP@2x.png">
+      <div class="left text">XRP</div>
+      <van-switch class="right" v-model="checked5" size="20px" active-color="#4CD954" inactive-color="#FFFFFF"/>
+      <div class="van-clearfix"></div>
+    </div>
+    <div class="line">
+      <img class="left" src="@/assets/img/user/LTC@2x.png">
+      <div class="left text">LTC</div>
       <van-switch class="right" v-model="checked5" size="20px" active-color="#4CD954" inactive-color="#FFFFFF"/>
       <div class="van-clearfix"></div>
     </div>

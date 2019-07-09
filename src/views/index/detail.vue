@@ -54,53 +54,66 @@
     </div>
     <div class="detailLine">
       <div class="mask" v-show="time"></div>
-      <ul class="recordList">
-        <li class="box" @click="rolloutDetail">
-          <div class="line">
-            <div class="name left">Token合约转出</div>
-            <div class="lable left active">进行中</div>
-            <div class="num right">-10,000.00</div>
-            <div class="van-clearfix"></div>
-          </div>
-          <div class="time">10-23 12:13</div>
-        </li>
-        <li class="box">
-          <div class="line">
-            <div class="name left">自动充值</div>
-            <div class="lable left">已完成</div>
-            <div class="num right active">+10,000.00</div>
-            <div class="van-clearfix"></div>
-          </div>
-          <div class="time">10-23 12:13</div>
-        </li>
-        <li class="box">
-          <div class="line">
-            <div class="name left">融资回款</div>
-            <div class="lable left">已完成</div>
-            <div class="num right active">+10,000.00</div>
-            <div class="van-clearfix"></div>
-          </div>
-          <div class="time">10-23 12:13</div>
-        </li>
-        <li class="box">
-          <div class="line">
-            <div class="name left">Token合约转出</div>
-            <div class="lable left">已完成</div>
-            <div class="num right">-10,000.00</div>
-            <div class="van-clearfix"></div>
-          </div>
-          <div class="time">10-23 12:13</div>
-        </li>
-        <li class="box">
-          <div class="line">
-            <div class="name left">购买金融产品</div>
-            <div class="lable left">已完成</div>
-            <div class="num right">-10,000.00</div>
-            <div class="van-clearfix"></div>
-          </div>
-          <div class="time">10-23 12:13</div>
-        </li>
-      </ul>
+      <md-scroll-view
+        ref="scrollView"
+        :scrolling-x="false"
+        @refreshing="detailRefresh"
+      >
+        <md-scroll-view-refresh
+          slot="refresh"
+          slot-scope="{ scrollTop, isRefreshActive, isRefreshing }"
+          :scroll-top="scrollTop"
+          :is-refreshing="isRefreshing"
+          :is-refresh-active="isRefreshActive"
+        ></md-scroll-view-refresh>
+        <ul class="recordList">
+          <li class="box" @click="rolloutDetail">
+            <div class="line">
+              <div class="name left">Token合约转出</div>
+              <div class="lable left active">进行中</div>
+              <div class="num right">-10,000.00</div>
+              <div class="van-clearfix"></div>
+            </div>
+            <div class="time">10-23 12:13</div>
+          </li>
+          <li class="box">
+            <div class="line">
+              <div class="name left">自动充值</div>
+              <div class="lable left">已完成</div>
+              <div class="num right active">+10,000.00</div>
+              <div class="van-clearfix"></div>
+            </div>
+            <div class="time">10-23 12:13</div>
+          </li>
+          <li class="box">
+            <div class="line">
+              <div class="name left">融资回款</div>
+              <div class="lable left">已完成</div>
+              <div class="num right active">+10,000.00</div>
+              <div class="van-clearfix"></div>
+            </div>
+            <div class="time">10-23 12:13</div>
+          </li>
+          <li class="box">
+            <div class="line">
+              <div class="name left">Token合约转出</div>
+              <div class="lable left">已完成</div>
+              <div class="num right">-10,000.00</div>
+              <div class="van-clearfix"></div>
+            </div>
+            <div class="time">10-23 12:13</div>
+          </li>
+          <li class="box">
+            <div class="line">
+              <div class="name left">购买金融产品</div>
+              <div class="lable left">已完成</div>
+              <div class="num right">-10,000.00</div>
+              <div class="van-clearfix"></div>
+            </div>
+            <div class="time">10-23 12:13</div>
+          </li>
+        </ul>
+      </md-scroll-view>
     </div>
   </div>
 
@@ -115,6 +128,7 @@ import sweep from '@/icon/sweep.png';
 import into from '@/assets/img/home/into.png';
 import rollOut from '@/assets/img/home/rollOut.png';
 import bottom from '@/assets/img/home/arrow-bottom.png';
+import { ScrollView, ScrollViewMore, ScrollViewRefresh } from 'mand-mobile';
 
 Vue.use(NavBar);
 Vue.use(Icon);
@@ -124,7 +138,11 @@ Vue.use(DatetimePicker);
 export default {
   name: 'HomeDetail',
   mixins: [],
-  components: {},
+  components: {
+    'md-scroll-view': ScrollView,
+    'md-scroll-view-refresh': ScrollViewRefresh,
+    'md-scroll-view-more': ScrollViewMore
+  },
   props: {},
   data() {
     return {
@@ -187,6 +205,16 @@ export default {
           this.productProfitWCC = data.product_profit;
           this.productProfitUSDT = data.product_profit;
           this.proportionUSDT = data.total_usdt * 100 / data.total_wid;
+        }
+      });
+    },
+    detailRefresh() {
+      /**/
+      this.axGet(
+        `v1/withdraw/record/10000${this.userInfo.uuid}`
+      ).then(({ status, data }) => {
+        if (status === 200) {
+
         }
       });
     }
