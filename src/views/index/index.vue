@@ -122,8 +122,8 @@ export default {
         if (status === 200) {
           this.totalWCC = data.total_wid;
           this.totalUSDT = data.total_usdt;
-          this.productProfitWCC = data.product_profit;
-          this.productProfitUSDT = data.product_profit;
+          this.productProfitWCC = data.wid_profit;
+          this.productProfitUSDT = data.usdt_profit;
           this.proportionUSDT = data.total_usdt * 100 / data.total_wid;
           this.allProductNum = data.all_product;
           this.productInProfitNum = data.product_in_profit;
