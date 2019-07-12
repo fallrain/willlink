@@ -235,6 +235,7 @@ export default {
         password
       }).then(({ status, data }) => {
         if (status === 200) {
+
           localStorage.setItem('acces_token', `${data.token_type} ${data.acces_token}`);
           this.queryUserInfo().then(() => {
             this.$router.push({

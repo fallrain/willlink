@@ -31,7 +31,7 @@
         <van-field
           v-model="form.verificationCode"
           name="verificationCode"
-          type="password"
+          type="text"
           placeholder="请输入验证码"
           clearable
           v-validate="'required|digits:6'"

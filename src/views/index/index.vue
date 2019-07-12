@@ -45,14 +45,16 @@
       <!--全部产品-->
       <div class="assetsList">
         <div class="assetsList-title">
-          全部产品<div class="assetsList-title-btn right" @click="homeAdd"><van-icon :name="addBtn" size="18" color="#838299"/>新增</div>
+          全部资产<div class="assetsList-title-btn right" @click="homeAdd"><van-icon :name="addBtn" size="18" color="#838299"/>新增</div>
         </div>
         <div class="assetsList-line" @click="homeDetail">
           <img class="img left" src="@/assets/img/user/WCC@2x.png">
           <div class="name left">WCC</div>
           <div class="num right">
-            <div class="">100,000,000.00</div>
+            <div class="">{{totalWCC}}</div>
+            <!--
             <div class="money">≈100,000,000.00 USDT</div>
+            -->
           </div>
           <div class="van-clearfix"></div>
         </div>
@@ -60,13 +62,15 @@
           <img class="img left" src="@/assets/img/user/USDT@2x.png">
           <div class="name left">USDT</div>
           <div class="num right">
-            <div class="">34,212.67</div>
-            <div class="money">≈34,212.67 USDT</div>
-          </div>
-          <div class="van-clearfix"></div>
-        </div>
-      </div>
-      <!--底线-->
+            <div class="">{{totalUSDT}}</div>
+            <!--
+           <div class="money">≈34,212.67 USDT</div>
+           -->
+         </div>
+         <div class="van-clearfix"></div>
+       </div>
+     </div>
+     <!--底线-->
       <div class="divider"><div class="divider-text">我是有底线的</div></div>
     </div>
   </div>

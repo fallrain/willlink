@@ -101,64 +101,34 @@
           v-show="tabIndex===1"
         >
           <ul class="found-ranking-income-list">
-            <li class="found-ranking-income-item">
+            <li class="found-ranking-income-item"
+                v-for="(item,index) in orderList"
+                :key="index"
+            >
               <div class="found-ranking-income-item-left text-ellipsis">
-                <img src="@/assets/img/found/jiangbei-@2x.png">
-                收益一
+                <img :src="getImgUrl(index)">
+                收益排名-{{index+1}}
               </div>
               <div class="found-ranking-income-item-right">
-                本周累计收益：7627.38
+                本周累计收益：{{item.week_total_profit}}
               </div>
             </li>
-            <li class="found-ranking-income-item">
-              <div class="found-ranking-income-item-left text-ellipsis">
-                <img src="@/assets/img/found/jiangbei-3@2x.png">
-                收益一
-              </div>
-              <div class="found-ranking-income-item-right">
-                本周累计收益：7627.38
-              </div>
-            </li>
-            <li class="found-ranking-income-item">
-              <div class="found-ranking-income-item-left text-ellipsis">
-                <img src="@/assets/img/found/jiangbei-2@2x.png">
-                收益一收益一收益一收益一收益一收益一收益一收益一收益一收益一
-              </div>
-              <div class="found-ranking-income-item-right">
-                本周累计收益：7627.38
-              </div>
-            </li>
+
           </ul>
         </div>
         <div
           v-show="tabIndex===2"
         >
           <ul class="found-ranking-income-list">
-            <li class="found-ranking-income-item">
+            <li class="found-ranking-income-item"
+                v-for="(item,index) in orderList"
+                :key="index" >
               <div class="found-ranking-income-item-left text-ellipsis">
-                <img src="@/assets/img/found/jiangbei-2@2x.png">
-                收益二
+                <img :src="getImgUrl(index)">
+                收益排名-{{index+1}}
               </div>
               <div class="found-ranking-income-item-right">
-                本周累计收益：12.38
-              </div>
-            </li>
-            <li class="found-ranking-income-item">
-              <div class="found-ranking-income-item-left text-ellipsis">
-                <img src="@/assets/img/found/jiangbei-3@2x.png">
-                收益二
-              </div>
-              <div class="found-ranking-income-item-right">
-                本周累计收益：12.38
-              </div>
-            </li>
-            <li class="found-ranking-income-item">
-              <div class="found-ranking-income-item-left text-ellipsis">
-                <img src="@/assets/img/found/jiangbei-2@2x.png">
-                收益一收益一收益一收益一收益一收益一收益一收益一收益一收益一
-              </div>
-              <div class="found-ranking-income-item-right">
-                本周累计收益：7627.38
+                本周累计收益：{{item.week_total_profit}}
               </div>
             </li>
           </ul>
@@ -195,6 +165,7 @@ export default {
         bg2,
         bg3,
       ],
+      orderList: [],
     };
   },
   created() {
@@ -206,6 +177,10 @@ export default {
       this.$router.push({
         name: 'Exchange'
       });
+    },
+    getImgUrl(index) {
+      // eslint-disable-next-line global-require,import/no-dynamic-require
+      return require(`@/assets/img/found/jiangbei-${index}@2x.png`);
     },
     changeTab(index) {
       this.tabIndex = index;
@@ -226,7 +201,7 @@ export default {
         url
       ).then(({ status, data }) => {
         if (status === 200) {
-
+          this.orderList = data;
         }
       });
     }
