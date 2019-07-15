@@ -34,6 +34,7 @@
           <van-swipe-item
             v-for="(image, index) in images"
             :key="index"
+            @click="gotoURL"
           >
             <img
               class="found-swipe-img"
@@ -181,6 +182,11 @@ export default {
     getImgUrl(index) {
       // eslint-disable-next-line global-require,import/no-dynamic-require
       return require(`@/assets/img/found/jiangbei-${index}@2x.png`);
+    },
+    gotoURL() {
+      this.$router.push({
+        name: 'Exchange'
+      });
     },
     changeTab(index) {
       this.tabIndex = index;

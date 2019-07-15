@@ -11,11 +11,11 @@
         <div class="name">WCC</div>
         <div class="num">{{totalWCC}}</div>
         <div class="operate">
-          <div class="line" @click="intoBtn('WCC')">
+          <div class="line" @click="intoBtn('WCC', totalWCC)">
             <van-icon :name="intoImg" size="13"/>
             转入
           </div>
-          <div class="line" @click="rollOutBtn('WCC')">
+          <div class="line" @click="rollOutBtn('WCC', totalWCC)">
             <van-icon :name="rollOutImg" size="13"/>
             转出
           </div>
@@ -27,14 +27,14 @@
         <div class="operate">
           <div
             class="line"
-            @click="intoBtn('USDT')"
+            @click="intoBtn('USDT', totalUSDT)"
           >
             <van-icon :name="intoImg" size="13"/>
             转入
           </div>
           <div
             class="line"
-            @click="intoBtn('USDT')"
+            @click="rollOutBtn('USDT', totalUSDT)"
           >
             <van-icon :name="rollOutImg" size="13"/>
             转出
@@ -161,6 +161,7 @@ export default {
     WTextLine,
     'md-scroll-view': ScrollView,
     'md-scroll-view-refresh': ScrollViewRefresh,
+    // eslint-disable-next-line vue/no-unused-components
     'md-scroll-view-more': ScrollViewMore
   },
   props: {},
@@ -197,20 +198,22 @@ export default {
       this.time = !this.time;
     },
     // 转入
-    intoBtn(type) {
+    intoBtn(type, money) {
       this.$router.push({
         name: 'HomeInto',
         params: {
-          title: `转入${type}`
+          title: `转入${type}`,
+          money: `${money}`
         }
       });
     },
     // 转出
-    rollOutBtn(type) {
+    rollOutBtn(type, money) {
       this.$router.push({
         name: 'HomeRollOut',
         params: {
-          title: `转出${type}`
+          title: `转出${type}`,
+          money: `${money}`
         }
       });
     },

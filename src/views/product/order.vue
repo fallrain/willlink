@@ -43,6 +43,7 @@
         <div class="line">
           <div class="name text-left left">收款钱包地址</div>
           <div class="type text-right right">{{address}}</div>
+
         </div>
         <div class="line">
           <div class="name text-left left">已成交记录</div>

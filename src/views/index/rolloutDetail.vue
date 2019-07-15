@@ -11,8 +11,8 @@
     </div>
     <div class="content">
       <div class="action text-center">转出</div>
-      <div class="money text-center">-10,000,000.00</div>
-      <div class="state text-centerc">进行中</div>
+      <div class="money text-center">-{{assets}}</div>
+      <div class="state text-centerc">{{strStatus}}</div>
       <div class="infoBox">
         <div class="line">
           <div class="left name">创建时间</div>
@@ -41,7 +41,7 @@
         </div>
         <div class="line">
           <div class="left name">收支说明</div>
-          <div class="right text-right type">WCC转出</div>
+          <div class="right text-right type">{{sysRemark}}</div>
           <div class="van-clearfix"></div>
         </div>
         <div class="line">
@@ -54,44 +54,46 @@
             >
               <van-step>
                 <h3>提交审核</h3>
+                <!--
                 <p>10-24 14:34</p>
+                -->
               </van-step>
               <van-step>
                 <h3>审核确认</h3>
-                <p>10-24 14:34</p>
-              </van-step>
-              <van-step>
-                <h3>审核不通过</h3>
-                <p>10-24 14:34</p>
-              </van-step>
-              <van-step>
-                <h3>区块确认</h3>
-                <p>10-24 14:34</p>
-              </van-step>
-              <van-step>
-                <h3>到账成功</h3>
-                <p>10-24 14:34</p>
-              </van-step>
-            </van-steps>
-          </div>
-          <div class="van-clearfix"></div>
-        </div>
-        <div class="line">
-          <div class="note">备注</div>
-          <div class="remark">
-            <van-field
-              v-model="value"
-              type="textarea"
-              placeholder="请输入留言"
-              rows="3"
-              autosize
-            >
-            </van-field>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+                <!--
+               <p>10-24 14:34</p>
+               -->
+             </van-step>
+             <van-step>
+               <h3>审核不通过</h3>
+                <!--
+               <p>10-24 14:34</p>
+               -->
+             </van-step>
+             <van-step>
+               <h3>区块确认</h3>
+                <!--
+               <p>10-24 14:34</p>
+               -->
+             </van-step>
+             <van-step>
+               <h3>到账成功</h3>
+                <!--
+               <p>10-24 14:34</p>
+               -->
+             </van-step>
+           </van-steps>
+         </div>
+         <div class="van-clearfix"></div>
+       </div>
+       <div class="line">
+         <div class="note">备注</div>
+         <div class="remark">{{remark}}
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
 </template>
 
 <script>
@@ -115,7 +117,16 @@ export default {
       address: '',
       paymentAddress: '',
       type: '',
-      step: 0
+      step: 0,
+      assets: '',
+      currencyType: '',
+      fee: '',
+      remark: '',
+      sysRemark: '',
+      updateTime: '',
+      uuid: '',
+      withdrawNo: '',
+      strStatus: ''
     };
   },
   computed: {},
@@ -135,6 +146,29 @@ export default {
           this.paymentAddress = data.payment_address;
           this.type = data.currency_type;
           this.step = data.status;
+          this.assets = data.assets;
+          this.currencyType = data.currency_type;
+          this.fee = data.fee;
+          this.remark = data.remark;
+          this.sysRemark = data.sys_remark;
+          this.updateTime = data.updated_at;
+          this.uuid = data.uuid;
+          this.withdrawNo = data.withdraw_no;
+          if (data.status != null && data.status === 0) {
+            this.strStatus = '提交审核';
+          }
+          if (data.status != null && data.status === 1) {
+            this.strStatus = '审核通过';
+          }
+          if (data.status != null && data.status === 2) {
+            this.strStatus = '审核不通过';
+          }
+          if (data.status != null && data.status === 3) {
+            this.strStatus = '区块确认';
+          }
+          if (data.status != null && data.status === 4) {
+            this.strStatus = '到账成功';
+          }
         }
       });
     }
@@ -143,103 +177,103 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .outDetailBox{
-    * {
-      box-sizing: border-box;
-    }
-    .content{
-      padding: 15px;
-      .action{
-        font-size:15px;
-        font-family:PingFang-SC-Medium;
-        font-weight:500;
-        color:rgba(255,255,255,1);
-        margin-bottom: 25px;
-      }
-      .money{
-        font-size:26px;
-        font-family:DIN-Medium;
-        font-weight:500;
-        color:rgba(255,255,255,1);
-        margin-bottom: 15px;
-      }
-      .state{
-        font-size:14px;
-        font-family:PingFang-SC-Medium;
-        font-weight:500;
-        color:rgba(131,130,153,1);
-        margin-bottom: 35px;
-      }
-      .infoBox{
-        .line{
-          margin-bottom: 12px;
-          .name,.note{
-            font-size:13px;
-            font-family:PingFang-SC-Medium;
-            font-weight:500;
-            color:rgba(255,255,255,1);
-            line-height:34px;
-            display: inline-block;
-            width: 30%;
-          }
-          .type{
-            width: 70%;
-            display: inline-block;
-            font-size:13px;
-            font-family:PingFang-SC-Medium;
-            font-weight:500;
-            color:rgba(131,130,153,1);
-            line-height:34px;
-            .van-steps{
-              background:#1c1c21;
-              width: 80%;
-              float: right;
-              .van-step{
-                padding: 0 0 20px 0!important;
-                &:after{
-                  border: none!important;
-                }
-                &:before{
-                  border: none!important;
-                  height: 0!important;
-                }
-                .van-icon-checked:before{
-                  content: ''!important;
-                  width:8px!important;;
-                  height:8px!important;;
-                  border-radius:50%!important;;
-                }
-              }
-            }
-            h3{
-              font-size:10px;
-              font-family:PingFang-SC-Medium;
-              font-weight:500;
-              color:rgba(255,255,255,1);
-              line-height:34px;
-              display: inline-block;
-            }
-            p{
-              font-size:10px;
-              font-family:PingFang-SC-Medium;
-              font-weight:500;
-              color:rgba(131,130,153,1);
-              line-height:34px;
-              margin-left: 10px;
-              display: inline-block;
-            }
-          }
-          .van-cell{
-            height:75px;
-            background:rgba(47,47,56,1);
-            border-radius:5px;
-            padding: 10px;
-            &:after {
-              border-bottom: none;
-            }
-          }
-        }
-      }
-    }
-  }
+ .outDetailBox{
+   * {
+     box-sizing: border-box;
+   }
+   .content{
+     padding: 15px;
+     .action{
+       font-size:15px;
+       font-family:PingFang-SC-Medium;
+       font-weight:500;
+       color:rgba(255,255,255,1);
+       margin-bottom: 25px;
+     }
+     .money{
+       font-size:26px;
+       font-family:DIN-Medium;
+       font-weight:500;
+       color:rgba(255,255,255,1);
+       margin-bottom: 15px;
+     }
+     .state{
+       font-size:14px;
+       font-family:PingFang-SC-Medium;
+       font-weight:500;
+       color:rgba(131,130,153,1);
+       margin-bottom: 35px;
+     }
+     .infoBox{
+       .line{
+         margin-bottom: 12px;
+         .name,.note{
+           font-size:13px;
+           font-family:PingFang-SC-Medium;
+           font-weight:500;
+           color:rgba(255,255,255,1);
+           line-height:34px;
+           display: inline-block;
+           width: 30%;
+         }
+         .type{
+           width: 70%;
+           display: inline-block;
+           font-size:13px;
+           font-family:PingFang-SC-Medium;
+           font-weight:500;
+           color:rgba(131,130,153,1);
+           line-height:34px;
+           .van-steps{
+             background:#1c1c21;
+             width: 80%;
+             float: right;
+             .van-step{
+               padding: 0 0 20px 0!important;
+               &:after{
+                 border: none!important;
+               }
+               &:before{
+                 border: none!important;
+                 height: 0!important;
+               }
+               .van-icon-checked:before{
+                 content: ''!important;
+                 width:8px!important;;
+                 height:8px!important;;
+                 border-radius:50%!important;;
+               }
+             }
+           }
+           h3{
+             font-size:10px;
+             font-family:PingFang-SC-Medium;
+             font-weight:500;
+             color:rgba(255,255,255,1);
+             line-height:34px;
+             display: inline-block;
+           }
+           p{
+             font-size:10px;
+             font-family:PingFang-SC-Medium;
+             font-weight:500;
+             color:rgba(131,130,153,1);
+             line-height:34px;
+             margin-left: 10px;
+             display: inline-block;
+           }
+         }
+         .van-cell{
+           height:75px;
+           background:rgba(47,47,56,1);
+           border-radius:5px;
+           padding: 10px;
+           &:after {
+             border-bottom: none;
+           }
+         }
+       }
+     }
+   }
+ }
 </style>

@@ -11,7 +11,7 @@
     <div class="content">
       <div class="infoBox">
         <div class="name">可用</div>
-        <div class="num">100,000,000.00<span>WCC</span></div>
+        <div class="num">{{money}}<span>WCC</span></div>
       </div>
       <div class="formBox">
         <div class="line">
@@ -44,7 +44,7 @@
             placeholder="备注"
             clearable
             name="note"
-            v-validate="'max:2'"
+            v-validate="'max:20'"
             data-vv-as="备注"
           >
           </van-field>
@@ -52,7 +52,7 @@
         <div class="w-vee-error">{{ errors.first('note') }}</div>
         <div class="line">
           <van-field disabled placeholder="手续费">
-            <div slot="button" class="text">0.0005WCC</div>
+            <div slot="button" class="text">0</div>
           </van-field>
         </div>
         <button
@@ -75,7 +75,7 @@ export default {
   name: 'HomeRollOut',
   mixins: [],
   components: {},
-  props: ['title'],
+  props: ['title', 'money'],
   data() {
     return {
       disabled: false,
