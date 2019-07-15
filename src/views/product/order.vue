@@ -43,7 +43,12 @@
         <div class="line">
           <div class="name text-left left">收款钱包地址</div>
           <div class="type text-right right">{{address}}</div>
-
+        </div>
+        <div class="line">
+          <div class="name text-left left"></div>
+          <div class="type text-right right">
+            <span @click="clipboardCopy" id="copyBtn">复制地址</span>
+          </div>
         </div>
         <div class="line">
           <div class="name text-left left">已成交记录</div>
@@ -53,7 +58,8 @@
       <div
         class="btn"
         @click="createOrder"
-      >生成订单</div>
+      >生成订单
+      </div>
     </div>
   </div>
 </template>
@@ -137,6 +143,9 @@ export default {
           });
         }
       });
+    },
+    clipboardCopy() {
+      this.copyIns = this.copy('#copyBtn', this.address);
     }
   }
 };

@@ -62,6 +62,9 @@ export default {
 
     this.$validator.localize('en', dict);
   },
+  $_veeValidate: {
+    validator: 'new'
+  },
   methods: {
     pwdLoginInput() {
       /* 账号密码登录输入框事件 */

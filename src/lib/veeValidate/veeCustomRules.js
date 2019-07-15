@@ -25,5 +25,13 @@ export default {
     validate(val, args) {
       return val !== args[0];
     }
-  }
+  },
+  enOrNumber: {
+    getMessage(name) {
+      return `${name}应由数字字母组成`;
+    },
+    validate(val) {
+      return rules.enOrNumber(val);
+    }
+  },
 };

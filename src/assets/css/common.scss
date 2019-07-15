@@ -428,9 +428,11 @@
 
   .md-scroll-view-refresh {
     padding: 12px;
-    .stroke{
+
+    .stroke {
       stroke: $login-green;
     }
+
     .refresh-tip {
       font-size: 12px;
     }
@@ -1606,3 +1608,15 @@
 }
 
 /*交易所 end*/
+
+/*敬请期待*/
+
+.except-img-par {
+  width: 335px;
+  height: 345px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 6400/812 + vh;
+}
+
+/*敬请期待 end*/

@@ -46,7 +46,7 @@
       <ul class="found-ad-bg-list mt10">
         <li
           class="found-ad-bg-item"
-          @click="toExchange"
+          @click="toExcept"
         >
           <img
             class="found-ad-bg-item-img"
@@ -55,7 +55,7 @@
         </li>
         <li
           class="found-ad-bg-item"
-          @click="toExchange"
+          @click="toExcept"
         >
           <img
             class="found-ad-bg-item-img"
@@ -63,7 +63,7 @@
           >
         </li>
         <li
-          @click="toExchange"
+          @click="toExcept"
           class="found-ad-bg-item"
         >
           <img
@@ -177,6 +177,12 @@ export default {
       /* 跳转交易所页面 */
       this.$router.push({
         name: 'Exchange'
+      });
+    },
+    toExcept() {
+      /* 跳转交易所页面 */
+      this.$router.push({
+        name: 'Except'
       });
     },
     getImgUrl(index) {

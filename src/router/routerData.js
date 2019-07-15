@@ -2,6 +2,7 @@ import Nav from '@/views/Nav';
 
 const Login = () => import(/* webpackChunkName: "Login" */ '@/views/login/Login');// 登录
 const NoNetwork = () => import(/* webpackChunkName: "NoNetwork" */ '@/views/404/NoNetwork.vue');// 暂无网络
+const Except = () => import(/* webpackChunkName: "Except" */ '@/views/404/Except.vue');// 敬请期待
 const ForgetPassword = () => import(/* webpackChunkName: "Login" */ '@/views/login/ForgetPassword');// 忘记密码
 const Register = () => import(/* webpackChunkName: "Register" */ '@/views/register/Register');// 忘记密码
 const RegisterSuc = () => import(/* webpackChunkName: "RegisterSuc" */ '@/views/register/RegisterSuc');// 注册成功
@@ -65,6 +66,14 @@ const data = [
     component: NoNetwork,
     meta: {
       title: '暂无网络'
+    }
+  },
+  {
+    path: '/except',
+    name: 'Except',
+    component: Except,
+    meta: {
+      title: '敬请期待'
     }
   },
   {
@@ -164,7 +173,7 @@ const data = [
       },
       {
         name: 'HomeRollOut',
-        path: '/homeRollOut/:title',
+        path: '/homeRollOut/:title/:money',
         component: HomeRollOut,
         props: true,
         meta: {
@@ -216,7 +225,7 @@ const data = [
       },
       {
         name: 'ProductOrder',
-        path: '/productOrder/:productId:productName',
+        path: '/productOrder/:productId/:productName',
         component: ProductOrder,
         props: true,
         meta: {

@@ -20,7 +20,7 @@
             placeholder="收款人钱包地址"
             clearable
             name="address"
-            v-validate="'required|length:6'"
+            v-validate="'required|enOrNumber'"
             data-vv-as="钱包地址"
           >
           </van-field>
@@ -33,7 +33,7 @@
             clearable
             name="num"
             v-validate="'required|decimal'"
-            data-vv-as="数量"
+            data-vv-as="转出数量"
           >
           </van-field>
         </div>
@@ -58,7 +58,8 @@
         <button
           class="btn active"
           @click="submit"
-        >提交申请</button>
+        >提交申请
+        </button>
       </div>
     </div>
   </div>
@@ -87,8 +88,6 @@ export default {
       }
     };
   },
-  computed: {},
-  watch: {},
   created() {
   },
   mounted() {
@@ -99,6 +98,10 @@ export default {
     async submit() {
       const valid = this.$validator.validateAll();
       if (!valid) {
+        return;
+      }
+      if (this.money * 1 < this.form.num * 1) {
+        this.$toast('转出数量不能大于可用数量');
         return;
       }
       const { status, data } = await this.axPost(
@@ -126,9 +129,6 @@ export default {
 
 <style scoped lang="scss">
   .outBox {
-    * {
-      box-sizing: border-box;
-    }
 
     .content {
       padding: 15px;

@@ -54,7 +54,11 @@ export default {
     },
     en(val) {
       /* 字母 */
-      return /^a-zA-Z+$/.test(val);
+      return /^[a-zA-Z]+$/.test(val);
+    },
+    enOrNumber(val) {
+      /* 数字字母 */
+      return /^[a-zA-Z0-9]+$/.test(val);
     },
     IDCard(val) {
       /* 身份证号 */

@@ -1,5 +1,11 @@
 <template>
   <div>
+    <van-nav-bar
+      left-arrow
+      :title="navTitle"
+      @click-left="back"
+    >
+    </van-nav-bar>
     <div class="exchange-swipe-par">
       <van-swipe
         class="exchange-swipe"
