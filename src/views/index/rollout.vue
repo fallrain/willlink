@@ -96,7 +96,7 @@ export default {
   },
   methods: {
     async submit() {
-      const valid = this.$validator.validateAll();
+      const valid = await this.$validator.validateAll();
       if (!valid) {
         return;
       }
