@@ -13,6 +13,7 @@
           class="login-body-group"
         >
           <van-field
+            class="login-phone-pre-par"
             v-model="form.name"
             placeholder="手机号/邮箱"
             clearable
@@ -21,6 +22,13 @@
             v-validate="'required|phoneOrEmail'"
             data-vv-as="手机号/邮箱"
           >
+            <span
+              slot="label"
+              class="login-phone-pre"
+              @click="toChooseAreaCode"
+            >
+              +{{areaCode}}<i class="iconfont icon-youjiantou"></i>
+            </span>
           </van-field>
           <div class="w-vee-error">{{ errors.first('name') }}</div>
           <van-field
@@ -67,6 +75,13 @@
             clearable
             @input="nopwdLoginInput"
           >
+            <span
+              slot="label"
+              class="login-phone-pre"
+              @click="toChooseAreaCode"
+            >
+              +{{areaCode}}<i class="iconfont icon-youjiantou"></i>
+            </span>
           </van-field>
           <van-field
             v-model="form.verificationCode"
@@ -113,7 +128,8 @@
 <script>
 import Vue from 'vue';
 import {
-  mapMutations
+  mapMutations,
+  mapState
 } from 'vuex';
 import mutationType from '@/store/mutations_types';
 import { Field } from 'vant';
@@ -143,6 +159,7 @@ export default {
     };
   },
   computed: {
+    ...mapState(['areaCode']),
     loginStatusName() {
       return {
         1: {
@@ -232,10 +249,10 @@ export default {
       } = this.form;
       this.axPost('v1/login', {
         val,
-        password
+        password,
+        mobile_prefix: this.areaCode
       }).then(({ status, data }) => {
         if (status === 200) {
-
           localStorage.setItem('acces_token', `${data.token_type} ${data.acces_token}`);
           this.queryUserInfo().then(() => {
             this.$router.push({
@@ -252,6 +269,11 @@ export default {
         requestNoToast: true
       });
       this[mutationType.UPDATE_USER](data);
+    },
+    toChooseAreaCode() {
+      this.$router.push({
+        name: 'ChooseAreaCode'
+      });
     }
   }
 };

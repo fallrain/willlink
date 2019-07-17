@@ -494,6 +494,33 @@
     }
   }
 }
+.login-phone-pre-par{
+  .van-field__label{
+    width: 60px;
+    position: relative;
+    margin-right: 15px;
+    &:after{
+      display: block;
+      content: '';
+      position: absolute;
+      background:#474E66;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1px;
+      height: 20px;
+    }
+  }
+}
+
+.login-phone-pre{
+  display: flex;
+  align-items: center;
+  .iconfont{
+    margin-left: 9px;
+    font-size: 8px;
+  }
+}
 
 .login-body-title {
   font-size: 24px;

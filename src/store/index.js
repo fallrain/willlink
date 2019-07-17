@@ -24,7 +24,8 @@ export default new Vuex.Store({
       'HomeDetail',
       'HomeRollOutDetail'
     ],
-    loadingShow: false// loading 显示隐藏
+    loadingShow: false, // loading 显示隐藏
+    areaCode: '86'
   },
   getters: {
   },
@@ -49,6 +50,9 @@ export default new Vuex.Store({
     },
     hideLoading(state) {
       state.loadingShow = false;
+    },
+    changeAreaCode(state, areaCode) {
+      state.areaCode = areaCode;
     }
   },
   actions: {

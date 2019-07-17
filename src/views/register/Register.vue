@@ -26,6 +26,13 @@
             slot="right-icon"
             class="w-vee-error"
           >此账号已经被注册</span>
+          <span
+            slot="label"
+            class="login-phone-pre"
+            @click="toChooseAreaCode"
+          >
+              +{{areaCode}}<i class="iconfont icon-youjiantou"></i>
+            </span>
         </van-field>
         <div class="w-vee-error">{{ errors.first('phone') }}</div>
         <van-field
@@ -157,6 +164,10 @@ import Vue from 'vue';
 import { Field } from 'vant';
 import { WModel, WRadio, WVerificationcode } from '@/components/form';
 import wValidateRules from '@/lib/wValidate/wValidateRules';
+import {
+  mapMutations,
+  mapState
+} from 'vuex';
 
 Vue.use(Field);
 export default {
@@ -185,7 +196,9 @@ export default {
       verificationCodeError: false, // 验证码错误
     };
   },
-  computed: {},
+  computed: {
+    ...mapState(['areaCode']),
+  },
   methods: {
     toLogin() {
       /* 跳转账号登录页面 */
@@ -233,7 +246,8 @@ export default {
           password: this.form.password,
           re_password: this.form.password2,
           fuid: this.form.invitationCode,
-          code: this.form.verificationCode
+          code: this.form.verificationCode,
+          mobile_prefix: this.areaCode
         });
         if (status === 200) {
           this.hadRegister = true;
@@ -249,6 +263,11 @@ export default {
           }
         }
       }
+    },
+    toChooseAreaCode() {
+      this.$router.push({
+        name: 'ChooseAreaCode'
+      });
     }
   }
 };

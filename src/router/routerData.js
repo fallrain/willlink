@@ -1,6 +1,7 @@
 import Nav from '@/views/Nav';
 
 const Login = () => import(/* webpackChunkName: "Login" */ '@/views/login/Login');// 登录
+const ChooseAreaCode = () => import(/* webpackChunkName: "ChooseAreaCode" */ '@/views/login/ChooseAreaCode');// 登录
 const NoNetwork = () => import(/* webpackChunkName: "NoNetwork" */ '@/views/404/NoNetwork.vue');// 暂无网络
 const Except = () => import(/* webpackChunkName: "Except" */ '@/views/404/Except.vue');// 敬请期待
 const ForgetPassword = () => import(/* webpackChunkName: "Login" */ '@/views/login/ForgetPassword');// 忘记密码
@@ -58,6 +59,14 @@ const data = [
     component: Login,
     meta: {
       title: '登录'
+    }
+  },
+  {
+    path: '/chooseAreaCode',
+    name: 'ChooseAreaCode',
+    component: ChooseAreaCode,
+    meta: {
+      title: ''
     }
   },
   {

@@ -8,6 +8,8 @@
   </button>
 </template>
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'WVerificationcode',
   props: [
@@ -26,6 +28,9 @@ export default {
       trueTime: this.time || 60
     };
   },
+  computed: {
+    ...mapState(['areaCode'])
+  },
   methods: {
     async sendCode() {
       /* 发送验证码 */
@@ -33,7 +38,7 @@ export default {
         return;
       }
       this.$nextTick(() => {
-        const url = this.type === 1 ? 'v1/send_code/' : 'v1/send_code_by_email/';
+        const url = this.type === 1 ? `v1/send_code/${this.areaCode}/` : 'v1/send_code_by_email/';
         this.axGet(`${url}${this.phone}`).then(({ status }) => {
           if (status === '02') {
             if (this.callBack) {
