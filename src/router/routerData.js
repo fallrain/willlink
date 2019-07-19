@@ -112,6 +112,7 @@ const data = [
   {
     path: '/home',
     name: 'Home',
+    alias: '/',
     component: Home,
     meta: {
       title: '首页'
@@ -562,7 +563,7 @@ const data = [
 ];
 if (process.env.NODE_ENV !== 'production') {
   data.unshift({
-    path: '/',
+    path: '/nav',
     name: 'Nav',
     component: Nav,
     meta: {
