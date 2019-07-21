@@ -47,7 +47,7 @@
         <div class="assetsList-title">
           全部资产<div class="assetsList-title-btn right" @click="homeAdd"><van-icon :name="addBtn" size="18" color="#838299"/>新增</div>
         </div>
-        <div class="assetsList-line" @click="homeDetail">
+        <div class="assetsList-line" @click="homeDetail('WCC')">
           <img class="img left" src="@/assets/img/user/WCC@2x.png">
           <div class="name left">WCC</div>
           <div class="num right">
@@ -58,7 +58,7 @@
           </div>
           <div class="van-clearfix"></div>
         </div>
-        <div class="assetsList-line">
+        <div class="assetsList-line" @click="homeDetail('USDT')">
           <img class="img left" src="@/assets/img/user/USDT@2x.png">
           <div class="name left">USDT</div>
           <div class="num right">
@@ -114,8 +114,8 @@ export default {
     homeAdd() {
       this.$router.push({ name: 'HomeAdd' });
     },
-    homeDetail() {
-      this.$router.push({ name: 'HomeDetail', params: { title: 'WCC' } });
+    homeDetail(titles) {
+      this.$router.push({ name: 'HomeDetail', params: { title: titles } });
     },
     sweep() {
       this.$router.push({ name: 'HomeSweep' });

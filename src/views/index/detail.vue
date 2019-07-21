@@ -9,13 +9,13 @@
     <div class="content">
       <div class="box">
         <div class="name">WCC</div>
-        <div class="num">{{totalWCC}}</div>
+        <div class="num">{{widProfit}}</div>
         <div class="operate">
-          <div class="line" @click="intoBtn('WCC', totalWCC)">
+          <div class="line" @click="intoBtn('WCC', widProfit)">
             <van-icon :name="intoImg" size="13"/>
             转入
           </div>
-          <div class="line" @click="rollOutBtn('WCC', totalWCC)">
+          <div class="line" @click="rollOutBtn('WCC', widProfit)">
             <van-icon :name="rollOutImg" size="13"/>
             转出
           </div>
@@ -23,18 +23,18 @@
       </div>
       <div class="box">
         <div class="name">USDT</div>
-        <div class="num">{{totalUSDT}}</div>
+        <div class="num">{{usdtProfit}}</div>
         <div class="operate">
           <div
             class="line"
-            @click="intoBtn('USDT', totalUSDT)"
+            @click="intoBtn('USDT', usdtProfit)"
           >
             <van-icon :name="intoImg" size="13"/>
             转入
           </div>
           <div
             class="line"
-            @click="rollOutBtn('USDT', totalUSDT)"
+            @click="rollOutBtn('USDT', usdtProfit)"
           >
             <van-icon :name="rollOutImg" size="13"/>
             转出
@@ -176,6 +176,8 @@ export default {
       time: false,
       totalWCC: '',
       totalUSDT: '',
+      usdtProfit: '',
+      widProfit: '',
       recordList: []
     };
   },
@@ -203,6 +205,7 @@ export default {
         name: 'HomeInto',
         params: {
           title: `转入${type}`,
+          type: `${type}`,
           money: `${money}`
         }
       });
@@ -213,6 +216,7 @@ export default {
         name: 'HomeRollOut',
         params: {
           title: `转出${type}`,
+          type: `${type}`,
           money: `${money}`
         }
       });
@@ -225,8 +229,11 @@ export default {
       /* 查询用户财产（总） */
       this.axGet(`v1/member/total_profit/${this.userInfo.uuid}`).then(({ status, data }) => {
         if (status === 200) {
+          console.log(data);
           this.totalWCC = data.total_wid;
           this.totalUSDT = data.total_usdt;
+          this.usdtProfit = data.usdt_profit;
+          this.widProfit = data.wid_profit;
           this.productProfitWCC = data.product_profit;
           this.productProfitUSDT = data.product_profit;
           this.proportionUSDT = data.total_usdt * 100 / data.total_wid;

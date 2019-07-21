@@ -11,7 +11,7 @@
     <div class="content">
       <div class="infoBox">
         <div class="name">可用</div>
-        <div class="num">{{money}}<span>WCC</span></div>
+        <div class="num">{{money}}<span>{{type}}</span></div>
       </div>
       <div class="formBox">
         <div class="line">
@@ -76,7 +76,7 @@ export default {
   name: 'HomeRollOut',
   mixins: [],
   components: {},
-  props: ['title', 'money'],
+  props: ['title', 'money', 'type'],
   data() {
     return {
       disabled: false,

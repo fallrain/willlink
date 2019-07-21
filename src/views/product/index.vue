@@ -18,7 +18,7 @@
           v-model="yesterdayProfitFix"
         >
         </van-field>
-        <span>WCC</span>
+        <span>WID</span>
       </div>
       <div class="btn" @click="eyeBtn">
         <img :src="eye?openImg:closeImg"/>
@@ -111,6 +111,7 @@ export default {
         if (status === 200) {
           this.productList = data.data.map(v => ({
             ...v,
+            // eslint-disable-next-line global-require,import/no-dynamic-require
             imgSrc: require(`@/assets/img/product/product${v.name}.png`)
           }));
         }
@@ -122,6 +123,7 @@ export default {
         'v1/product/yesterday_profit'
       ).then(({ status, data }) => {
         if (status === 200) {
+          console.log(data);
           this.all_profit_of_yesterday = data.all_profit_of_yesterday;
         }
       });
