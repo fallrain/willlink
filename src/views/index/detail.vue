@@ -43,21 +43,26 @@
       </div>
       <div class="recordBox">
         <div class="record left">交易记录</div>
-        <div class="time right" @click="timeBtn">2019年10月<i></i></div>
+        <div class="time right" @click="timeBtn">{{timeSearchList[dateType].value}}<i></i></div>
         <div class="van-clearfix"></div>
       </div>
     </div>
     <div class="timeSearch" v-show="time">
-      <div class="line">前一个月</div>
-      <div class="line">前三个月</div>
-      <div class="line">前半年</div>
+      <div
+        class="line"
+        v-for="(item) in timeSearchList"
+        :key="item.key"
+        @click="resetTime(item.key)"
+      >{{item.value}}
+      </div>
     </div>
     <div class="detailLine">
       <div class="mask" v-show="time"></div>
       <md-scroll-view
         ref="scrollView"
         :scrolling-x="false"
-        @refreshing="detailRefresh"
+        @refreshing="topDetailRefresh"
+        @end-reached="btmDetailRefresh"
       >
         <md-scroll-view-refresh
           slot="refresh"
@@ -81,52 +86,57 @@
             </div>
             <div class="time">{{item.created_at}}</div>
           </li>
-         <!-- <li class="box" @click="rolloutDetail">
-            <div class="line">
-              <div class="name left">Token合约转出</div>
-              <div class="lable left active">进行中</div>
-              <div class="num right">-10,000.00</div>
-              <div class="van-clearfix"></div>
-            </div>
-            <div class="time">10-23 12:13</div>
-          </li>
-          <li class="box">
-            <div class="line">
-              <div class="name left">自动充值</div>
-              <div class="lable left">已完成</div>
-              <div class="num right active">+10,000.00</div>
-              <div class="van-clearfix"></div>
-            </div>
-            <div class="time">10-23 12:13</div>
-          </li>
-          <li class="box">
-            <div class="line">
-              <div class="name left">融资回款</div>
-              <div class="lable left">已完成</div>
-              <div class="num right active">+10,000.00</div>
-              <div class="van-clearfix"></div>
-            </div>
-            <div class="time">10-23 12:13</div>
-          </li>
-          <li class="box">
-            <div class="line">
-              <div class="name left">Token合约转出</div>
-              <div class="lable left">已完成</div>
-              <div class="num right">-10,000.00</div>
-              <div class="van-clearfix"></div>
-            </div>
-            <div class="time">10-23 12:13</div>
-          </li>
-          <li class="box">
-            <div class="line">
-              <div class="name left">购买金融产品</div>
-              <div class="lable left">已完成</div>
-              <div class="num right">-10,000.00</div>
-              <div class="van-clearfix"></div>
-            </div>
-            <div class="time">10-23 12:13</div>
-          </li>-->
+          <!-- <li class="box" @click="rolloutDetail">
+             <div class="line">
+               <div class="name left">Token合约转出</div>
+               <div class="lable left active">进行中</div>
+               <div class="num right">-10,000.00</div>
+               <div class="van-clearfix"></div>
+             </div>
+             <div class="time">10-23 12:13</div>
+           </li>
+           <li class="box">
+             <div class="line">
+               <div class="name left">自动充值</div>
+               <div class="lable left">已完成</div>
+               <div class="num right active">+10,000.00</div>
+               <div class="van-clearfix"></div>
+             </div>
+             <div class="time">10-23 12:13</div>
+           </li>
+           <li class="box">
+             <div class="line">
+               <div class="name left">融资回款</div>
+               <div class="lable left">已完成</div>
+               <div class="num right active">+10,000.00</div>
+               <div class="van-clearfix"></div>
+             </div>
+             <div class="time">10-23 12:13</div>
+           </li>
+           <li class="box">
+             <div class="line">
+               <div class="name left">Token合约转出</div>
+               <div class="lable left">已完成</div>
+               <div class="num right">-10,000.00</div>
+               <div class="van-clearfix"></div>
+             </div>
+             <div class="time">10-23 12:13</div>
+           </li>
+           <li class="box">
+             <div class="line">
+               <div class="name left">购买金融产品</div>
+               <div class="lable left">已完成</div>
+               <div class="num right">-10,000.00</div>
+               <div class="van-clearfix"></div>
+             </div>
+             <div class="time">10-23 12:13</div>
+           </li>-->
         </ul>
+        <md-scroll-view-more
+          slot="more"
+          :is-finished="isFinished"
+        >
+        </md-scroll-view-more>
       </md-scroll-view>
       <w-text-line
         text="暂无记录"
@@ -140,13 +150,21 @@
 <script>
 import Vue from 'vue';
 import {
-  DatetimePicker, Icon, NavBar, Popup, Search
+  DatetimePicker,
+  Icon,
+  NavBar,
+  Popup,
+  Search
 } from 'vant';
 import sweep from '@/icon/sweep.png';
 import into from '@/assets/img/home/into.png';
 import rollOut from '@/assets/img/home/rollOut.png';
 import bottom from '@/assets/img/home/arrow-bottom.png';
-import { ScrollView, ScrollViewMore, ScrollViewRefresh } from 'mand-mobile';
+import {
+  ScrollView,
+  ScrollViewMore,
+  ScrollViewRefresh
+} from 'mand-mobile';
 import WTextLine from '../../components/form/WTextLine';
 
 Vue.use(NavBar);
@@ -161,7 +179,6 @@ export default {
     WTextLine,
     'md-scroll-view': ScrollView,
     'md-scroll-view-refresh': ScrollViewRefresh,
-    // eslint-disable-next-line vue/no-unused-components
     'md-scroll-view-more': ScrollViewMore
   },
   props: {},
@@ -176,11 +193,30 @@ export default {
       time: false,
       totalWCC: '',
       totalUSDT: '',
-      recordList: []
+      recordList: [],
+      isFinished: false,
+      dateType: 0,
+      timeSearchList: [
+        {
+          key: 0,
+          value: this.wUtil.formatDate(new Date(), 'yyyy年MM月'),
+        },
+        {
+          key: 1,
+          label: '',
+          value: '前一个月'
+        },
+        {
+          key: 2,
+          value: '前三月'
+        },
+        {
+          key: 3,
+          value: '前半年'
+        },
+      ]
     };
   },
-  computed: {},
-  watch: {},
   created() {
     this.queryMyProperty();
     this.detailRefresh();
@@ -236,16 +272,20 @@ export default {
     resetTradeRrcord() {
       /* 重置 */
     },
-    detailRefresh() {
+    detailRefresh({
+      more = false
+    } = {}) {
       /**/
       return this.axGet(
-        `v1/withdraw/record/10000${this.userInfo.uuid}`,
+        `v1/withdraw/record/${this.userInfo.uuid}`,
         {
+          page: this.pageCfg.page.page,
+          date_type: this.dateType,
           noLoading: true
         }
       ).then(({ status, data }) => {
         if (status === 200) {
-          this.recordList = data.data.map(v => ({
+          const recordListTemp = data.data.map(v => ({
             ...v,
             typeName: {
               0: 'Token合约转出',
@@ -259,9 +299,35 @@ export default {
               4: '到账成功'
             }[v.status]
           }));
+          more ? this.recordList = [...this.recordList, ...recordListTemp] : this.recordList = recordListTemp;
         }
-        this.$refs.scrollView.finishRefresh();
+        return {
+          isFinished: !!(this.recordList.length && data.current_page === data.last_page)
+        };
       });
+    },
+    topDetailRefresh() {
+      this.pageCfg.page.page = 1;
+      this.isFinished = false;
+      this.detailRefresh().then(() => {
+        this.$refs.scrollView.finishRefresh();
+        this.$refs.scrollView.finishLoadMore()();
+      });
+    },
+    btmDetailRefresh() {
+      if (this.isFinished) {
+        return;
+      }
+      this.pageCfg.page.page++;
+      this.detailRefresh({ more: true }).then(({ isFinished }) => {
+        this.isFinished = isFinished;
+        this.$refs.scrollView.finishLoadMore();
+      });
+    },
+    resetTime(key) {
+      this.dateType = key;
+      this.detailRefresh();
+      this.time = false;
     }
   }
 };
@@ -401,6 +467,7 @@ export default {
         color: rgba(131, 130, 153, 1);
         display: inline-block;
         margin-right: 15px;
+        margin-bottom: 10px;
       }
     }
 

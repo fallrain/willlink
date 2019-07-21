@@ -1,7 +1,24 @@
 import { mapState } from 'vuex';
+import mutationType from '@/store/mutations_types';
+import { axGet } from '../lib/ajax';
+import store from '@/store';
 
 export default {
   async beforeRouteEnter(to, from, next) {
+    /* 查询用户信息 */
+    // 此接口不规范
+    if (to.name === 'Login') {
+      next();
+      return;
+    }
+    if (JSON.stringify(store.state.user.userInfo) !== '{}') {
+      next();
+      return;
+    }
+    const data = await axGet('v1/me', {
+      requestNoToast: true
+    });
+    store.commit(mutationType.UPDATE_USER, data);
     next();
   },
   data() {
@@ -9,7 +26,7 @@ export default {
       pageCfg: {
         page: {
           pageSize: 10,
-          pageNum: 1
+          page: 1
         }
       }
     };

@@ -106,7 +106,7 @@ export default {
               uuid: this.userInfo.uuid,
               context: this.form.feedback,
               mobile: this.form.phone,
-              img_url: this.form.imgUrl.join(','),
+              img_url: this.form.imgUrl.join(',') || undefined,
             }
           ).then(({ status, data }) => {
             if (status === 200) {
